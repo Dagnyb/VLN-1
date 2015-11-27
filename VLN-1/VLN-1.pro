@@ -7,5 +7,10 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp
+SOURCES += \
+    VLN-1.cpp \
+    scientists_repo.cpp
+
+HEADERS += \
+    scientists_repo.h
 
