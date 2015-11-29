@@ -8,6 +8,9 @@ public:
     UserInterface();
     void initial();
     void options();
+    void inputData();
+    void searchData();
+
 
 };
 
