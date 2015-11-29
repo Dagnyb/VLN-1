@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "anitem.h"
+#include <fstream>
 
 using namespace std;
 
@@ -49,11 +50,8 @@ void UserInterface::options()
 }
 void UserInterface::inputData()
 {
-cout <<"case 1\n";
-anItem x("jon","karl",12,12);
-cout << x;
-}
 
+}
 void UserInterface::searchData()
 {
 cout <<"case 2\n";
