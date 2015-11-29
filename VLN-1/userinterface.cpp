@@ -1,6 +1,8 @@
 #include "userinterface.h"
 #include <iostream>
 #include <cstdlib>
+#include "anitem.h"
+
 using namespace std;
 
 UserInterface::UserInterface()
@@ -48,6 +50,8 @@ void UserInterface::options()
 void UserInterface::inputData()
 {
 cout <<"case 1\n";
+anItem x("jon","karl",12,12);
+cout << x;
 }
 
 void UserInterface::searchData()

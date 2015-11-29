@@ -10,9 +10,11 @@ TEMPLATE = app
 SOURCES += \
     VLN-1.cpp \
     scientists_repo.cpp \
-    userinterface.cpp
+    userinterface.cpp \
+    anitem.cpp
 
 HEADERS += \
     scientists_repo.h \
-    userinterface.h
+    userinterface.h \
+    anitem.h
 

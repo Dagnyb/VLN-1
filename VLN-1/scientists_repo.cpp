@@ -4,10 +4,10 @@
 
 using namespace std;
 
-Scientists_Repo::Scientists_Repo()
+Scientists_Repo::Scientists_Repo(int age)
 {
-    private:
-    int a = age;
-    vector
+
+    a = age;
+    //vector
 }
 

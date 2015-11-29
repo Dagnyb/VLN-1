@@ -5,7 +5,10 @@
 class Scientists_Repo
 {
 public:
-    Scientists_Repo();
+    Scientists_Repo(int age);
+private:
+    int a;
+    //vector
 };
 
 #endif // SCIENTISTS_REPO_H
