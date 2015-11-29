@@ -7,6 +7,12 @@ anItem::anItem (string aName, string aGender, int aBirthYear, int aDeathYear) {
     birthYear = aBirthYear;
     deathYear = aDeathYear;
 }
+anItem::anItem(string aName, string aGender, int aBirthYear){
+    name = aName;
+    gender = aGender;
+    birthYear = aBirthYear;
+    deathYear = 0;
+}
 
 string anItem::getName() const {
     return name;

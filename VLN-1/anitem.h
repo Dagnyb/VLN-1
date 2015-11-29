@@ -11,6 +11,7 @@ class anItem
         //prints out the item
 
         anItem(string aName, string aGender, int aBirthYear, int aDeathYear);
+        anItem(string aName, string aGender, int aBirthYear);
         string getName() const;
         string getGender() const;
         int getBirthYear() const;

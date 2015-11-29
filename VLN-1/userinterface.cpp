@@ -1,7 +1,4 @@
 #include "userinterface.h"
-#include <iostream>
-#include <cstdlib>
-#include "anitem.h"
 
 using namespace std;
 
@@ -34,13 +31,13 @@ void UserInterface::options()
     {
         case '1':
             inputData();
-        break;
+            break;
         case '2':
             searchData();
-        break;
+            break;
         case '3':
            exit(1);
-        break;
+            break;
         default:
             cout << "Invalid input\n";
             options();
@@ -50,8 +47,6 @@ void UserInterface::options()
 void UserInterface::inputData()
 {
 cout <<"case 1\n";
-anItem x("jon","karl",12,12);
-cout << x;
 }
 
 void UserInterface::searchData()
