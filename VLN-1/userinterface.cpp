@@ -49,6 +49,7 @@ void UserInterface::options()
             break;
     }
 }
+
 void UserInterface::inputData()
 {
     ifstream Scientistfile;
@@ -62,6 +63,10 @@ void UserInterface::inputData()
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a6c09a2dad24a737010da232472593484ed6f406
 void UserInterface::searchData()
 {
 cout <<"case 2\n";
