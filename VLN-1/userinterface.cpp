@@ -48,6 +48,7 @@ void UserInterface::options()
             break;
     }
 }
+
 void UserInterface::inputData()
 {
     ifstream Scientistfile;
@@ -59,10 +60,6 @@ void UserInterface::inputData()
     }
 
 }
-
-
-
-
 
 
 
