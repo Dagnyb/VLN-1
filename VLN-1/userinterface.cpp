@@ -35,13 +35,13 @@ void UserInterface::options()
     {
         case '1':
             inputData();
-        break;
+            break;
         case '2':
             searchData();
-        break;
+            break;
         case '3':
            exit(1);
-        break;
+            break;
         default:
             cout << "Invalid input\n";
             options();
@@ -50,8 +50,22 @@ void UserInterface::options()
 }
 void UserInterface::inputData()
 {
+    ifstream Scientistfile;
+    Scientistfile.open ("scientist.txt");
+    if (Scientistfile.fail())
+    {
+        cout<< "Input file opening fail.\n";
+        exit(1);
+    }
 
 }
+
+
+
+
+
+
+
 void UserInterface::searchData()
 {
 cout <<"case 2\n";
