@@ -1,4 +1,8 @@
 #include "userinterface.h"
+#include <iostream>
+#include <cstdlib>
+#include "anitem.h"
+#include <fstream>
 
 using namespace std;
 
@@ -46,8 +50,21 @@ void UserInterface::options()
 }
 void UserInterface::inputData()
 {
-cout <<"case 1\n";
+    ifstream Scientistfile;
+    Scientistfile.open ("scientist.txt");
+    if (Scientistfile.fail())
+    {
+        cout<< "Input file opening fail.\n";
+        exit(1);
+    }
+
 }
+
+
+
+
+
+
 
 void UserInterface::searchData()
 {
