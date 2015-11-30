@@ -18,12 +18,12 @@ anItem List::extract (string aString)
     string dYear = aString.substr(pos3+1, pos4-pos2-1);
 
     char birth [bYear.size()];
-    for(int i = 0; i<bYear.size(); i++){
+    for(unsigned int i = 0; i<bYear.size(); i++){
         birth[i] = bYear[i];
     }
 
     char death [dYear.size()];
-    for(int i = 0; i<dYear.size(); i++){
+    for(unsigned int i = 0; i<dYear.size(); i++){
         death[i]=dYear[i];
     }
 
@@ -36,4 +36,24 @@ anItem List::extract (string aString)
     cout << "prufa :" << sciInfo;
 return sciInfo;
 }
+
+/*anItem List::search(list<anItem> list)
+{
+    // fall til að leita í listanum:
+    list<anItem> sciSearch;
+
+        //spyrja notendan hér hvað hann vill finna
+
+        for (list<anItem>::iterator it = sciSearch.begin(); it != sciSearch.end(); ++it)
+        {
+            if ( sciSearch.end() == it )
+            {
+                cout << "Scientist not found" << endl;
+            }
+            else
+            {
+                // skrifa hér út vísindamanninn (með for lykkju?)
+            }
+        }
+}*/
 
