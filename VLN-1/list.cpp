@@ -32,6 +32,7 @@ anItem List::extract (string aString)
 
     anItem sciInfo (name, gender, birthYear, deathYear);
 
+
     //muna að taka út í endalegri útgáfu:
     cout << "prufa :" << sciInfo;
 return sciInfo;
