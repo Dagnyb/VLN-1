@@ -2,6 +2,8 @@
 #include <iostream>
 #include "userinterface.h"
 #include "anitem.h"
+#include "list.h"
+
 
 
 
@@ -13,6 +15,10 @@ int main()
 
     ui.initial();
     ui.options();
+
+
+
+
 
     return 0;
 }
