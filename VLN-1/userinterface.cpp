@@ -50,15 +50,35 @@ void UserInterface::options()
 }
 void UserInterface::inputData()
 {
-    ifstream Scientistfile;
-    Scientistfile.open ("scientist.txt");
-    if (Scientistfile.fail())
-    {
-        cout<< "Input file opening fail.\n";
-        exit(1);
-    }
+ //   ifstream Scientistfile;
+   // Scientistfile.open ("scientist.txt");
+   // if (Scientistfile.fail())
+   // {
+     //   cout<< "Input file opening fail.\n";
+       // exit(1);
+   // }
 
-}
+    string name;
+    string gender;
+    int dayofbirth;
+    int dayofdeath;
+
+  cout << "Enter the name of the scientist: ";
+  cin >> name;
+  cout << "Enter gender: ";
+  cin >> gender;
+  cout << "Enter day of birth: ";
+  cin >> dayofbirth;
+  cout << "Enter day of death: ";
+  cin >> dayofdeath;
+
+  ofstream Scientistfile;
+  Scientistfile.open("Scientist.txt");
+  Scientistfile << name << ";" << gender << ";" << dayofbirth << ";" << dayofdeath;
+  Scientistfile.close();
+
+  }
+
 
 
 
