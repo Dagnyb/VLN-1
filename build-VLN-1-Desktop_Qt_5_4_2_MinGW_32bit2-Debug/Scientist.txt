@@ -1,1 +1,3 @@
-Halla;kvk;1980;0
+Halla;Palla;0;0;;;
+;;;
+;;;
