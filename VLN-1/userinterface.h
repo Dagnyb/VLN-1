@@ -3,6 +3,12 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <list>
+#include <fstream>
+using namespace std;
+
+
+
 #include "anitem.h"
 
 
@@ -14,8 +20,9 @@ public:
     void options();
     void inputData();
     void searchData();
-
-
+    void viewData();
+private:
+    list <anItem> list;
 };
 
 #endif // USERINTERFACE_H

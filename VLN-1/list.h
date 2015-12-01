@@ -4,8 +4,6 @@
 #include <string>
 #include <list>
 #include <cstdlib>
-
-
 using namespace std;
 
 

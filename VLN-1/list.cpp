@@ -32,28 +32,12 @@ anItem List::extract (string aString)
 
     anItem sciInfo (name, gender, birthYear, deathYear);
 
+
     //muna að taka út í endalegri útgáfu:
     cout << "prufa :" << sciInfo;
 return sciInfo;
 }
 
-/*anItem List::search(list<anItem> list)
-{
-    // fall til að leita í listanum:
-    list<anItem> sciSearch;
+//anItem List::search(list<anItem> list)
 
-        //spyrja notendan hér hvað hann vill finna
-
-        for (list<anItem>::iterator it = sciSearch.begin(); it != sciSearch.end(); ++it)
-        {
-            if ( sciSearch.end() == it )
-            {
-                cout << "Scientist not found" << endl;
-            }
-            else
-            {
-                // skrifa hér út vísindamanninn (með for lykkju?)
-            }
-        }
-}*/
 
