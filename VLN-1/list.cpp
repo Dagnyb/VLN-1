@@ -43,6 +43,49 @@ anItem List::extract (string aString)
 return sciInfo;
 }
 
-//anItem List::search(list<anItem> list)
+void List::searchData()
+{
+        string nameSearch;
+        UserInterface obj;
+
+        list<anItem>::iterator it;
+
+        cout << "Please enter the name of scientist you wish to find: ";
+        cin.sync();
+        getline(cin, nameSearch);
+
+        for(it = sciList.begin(); it != sciList.end(); it++)
+        {
+            if((*it).getName() == nameSearch)
+            {
+                cout << "print fallið" << endl;
+            }
+                else
+                {
+                    cout << "Scientist not found\n";
+
+                    char ans;
+
+                    cout << "Do want to try again? Y/N ";
+                    cin >> ans;
+
+                    if(ans=='Y' || ans=='y')
+                    {
+                        searchData();
+                    }
+                    else if (ans=='N' || ans=='n')
+                    {
+                         obj.options();
+                    }
+                    else
+                    {
+                        cout << "Sorry this was invalid input. You will be directed to the main menu";
+                        cout << endl << endl;
+                        obj.options();
+                    }
+                }
+
+         }
+}
 
 

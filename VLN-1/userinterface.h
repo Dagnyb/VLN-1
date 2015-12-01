@@ -11,6 +11,7 @@
 
 
 
+
 using namespace std;
 
 class UserInterface
@@ -20,7 +21,7 @@ public:
     void initial();
     void options();
     void inputData();
-    void searchData();
+    //void searchData();
     void viewData(list<anItem> aList);
 
 private:

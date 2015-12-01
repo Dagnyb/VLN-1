@@ -33,3 +33,7 @@ Halla;Palla;0;0;;;
 ;dd;dd;dd
 ;dd;dd;dd
 ;dd;d;d
+;male;1983;1999
+;k;1982;1234
+;df;1233;1234
+;;;

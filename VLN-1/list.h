@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 #include <cstdlib>
+#include "userinterface.h"
 using namespace std;
 
 
@@ -11,12 +12,14 @@ class List
 {
 public:
     List();
-   // anItem search(list<anItem> list); // fall til að leita í listanum
+    void searchData(); // fall til að leita í listanum
     anItem extract (string aString);
     list<anItem> getList();
 
+
 private:
     list <anItem> sciList;
+
 };
 
 #endif // LIST_H

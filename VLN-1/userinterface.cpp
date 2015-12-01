@@ -1,4 +1,5 @@
 #include "userinterface.h"
+#include "list.h"
 
 UserInterface::UserInterface()
 {
@@ -20,6 +21,7 @@ void UserInterface::options()
     char control;
     List sciList;
 
+
     cout << "Choose:\n"
          << "1 to input new computer scientist.\n"
          << "2 to search in the existing database.\n"
@@ -34,7 +36,7 @@ void UserInterface::options()
             inputData();
             break;
         case '2':
-            searchData();
+            sciList.searchData();
             break;
         case '3':
             viewData(sciList.getList());
@@ -108,10 +110,7 @@ void UserInterface::inputData()
 
 
 
-void UserInterface::searchData()
-{
-cout <<"case 2\n";
-}
+
 
 
 void UserInterface::viewData(list<anItem> aList)
