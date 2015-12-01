@@ -60,9 +60,9 @@ void UserInterface::inputData()
       getline (cin, name);
       cout << "Enter gender: ";
       getline (cin,gender);
-      cout << "Enter day of birth: ";
+      cout << "Enter year of birth: ";
       getline (cin, dayofbirth);
-      cout << "Enter day of death: ";
+      cout << "Enter year of death: ";
       getline (cin, dayofdeath);
 
     string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
@@ -80,8 +80,26 @@ void UserInterface::inputData()
             }
 
     Scientistfile.close();
+    cout << endl << endl;
 
+    char svar;
 
+    cout << "Add another scientist? Y/N ";
+    cin >> svar;
+
+    if(svar=='Y' || svar=='y'){
+        inputData();
+    }
+    else if (svar=='N' || svar=='n') {
+        options();
+
+    }
+    else {
+        cout << "Sorry this was invalid input. You will be directed to the main menu";
+        cout << endl << endl;
+        options();
+
+    }
   }
 
 
