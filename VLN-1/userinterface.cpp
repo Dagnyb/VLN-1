@@ -1,5 +1,6 @@
 #include "userinterface.h"
 
+
 UserInterface::UserInterface()
 {
 
@@ -59,15 +60,58 @@ void UserInterface::inputData()
     string gender;
     string dayofbirth;
     string dayofdeath;
+    int genderans;
+    char liveans;
 
       cout << "Enter the name of the scientist: ";
-      getline (cin, name);
-      cout << "Enter gender: ";
-      getline (cin,gender);
-      cout << "Enter day of birth: ";
-      getline (cin, dayofbirth);
-      cout << "Enter day of death: ";
-      getline (cin, dayofdeath);
+      cin.sync();
+      getline(cin, name);
+
+      cout << "Enter 1 for female or 2 for male: ";
+      cin >> genderans;
+
+      if (genderans == 1){
+          gender = "female";
+      }
+      else if (genderans == 2) {
+          gender = "male";
+      }
+      else {
+          cout << "Invalit input";
+          cout << endl << endl;
+          inputData();
+      }
+
+      cin.sync();
+      cout << "Enter year of birth: ";
+      while(getline(cin, dayofbirth)&& dayofbirth.size() !=4){
+          cout << "Please enter a valid year.";
+      }
+
+      cin.sync();
+
+      cout << "Is " << name << " a live?  Y/N: ";
+      cin >> liveans;
+      if(liveans=='Y' || liveans=='y'){
+
+          dayofdeath = "0";
+
+      }
+      else if (liveans=='N' || liveans=='n') {
+          cin.sync();
+          cout << "Enter year of death: ";
+          while(getline (cin, dayofdeath) && dayofdeath.size()!=4){
+              cout << "Please enter a valid year.: ";
+
+      }}
+      else {
+          cout << "Sorry this was invalid input. You will be directed to the main menu";
+          cout << endl << endl;
+          options();
+
+      }
+
+
 
     string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
     ofstream Scientistfile;
@@ -84,8 +128,26 @@ void UserInterface::inputData()
             }
 
     Scientistfile.close();
+    cout << endl << endl;
 
+    char svar;
 
+    cout << "Add another scientist? Y/N ";
+    cin >> svar;
+
+    if(svar=='Y' || svar=='y'){
+        inputData();
+    }
+    else if (svar=='N' || svar=='n') {
+        options();
+
+    }
+    else {
+        cout << "Sorry this was invalid input. You will be directed to the main menu";
+        cout << endl << endl;
+        options();
+
+    }
   }
 
 void UserInterface::sortOption()
