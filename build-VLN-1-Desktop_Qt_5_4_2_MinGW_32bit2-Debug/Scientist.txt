@@ -19,3 +19,4 @@ Dagnì;female;1234;1234
 Halla Palla;female;1980;0000
 Halla Skalla;female;1980;0
 Ada L;female;1800;1850
+fffff;female;4567;0
