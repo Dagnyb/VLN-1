@@ -1,8 +1,7 @@
 #include "anitem.h"
 
 
-anItem::anItem(){
-}
+anItem::anItem(){}
 
 anItem::anItem (string aName, string aGender, int aBirthYear, int aDeathYear) {
     name = aName;
@@ -27,10 +26,12 @@ int anItem::getDeathYear() const {
     return deathYear;
 }
 ostream& operator << (ostream& outs, const anItem& anItem) {
-    outs << anItem.name << "\t"
+    outs << setw(30);
+    outs.setf(ios::left);
+    outs << anItem.name
          << anItem.gender << "\t"
          << anItem.birthYear << "\t"
-         << anItem.deathYear << "\t"
+         << anItem.deathYear
          << endl;
     return outs;
 }

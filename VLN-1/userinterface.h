@@ -21,10 +21,14 @@ public:
     void options();
     void inputData();
     void searchData();
-    void viewData(list<anItem> aList);
+    void viewData();
+    void printList (list<anItem> aList);
+    void sortOption();
+    //takes an list and prints it out
+
 
 private:
-   // list<anItem> sciList;
+
 };
 
 #endif // USERINTERFACE_H
