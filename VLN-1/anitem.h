@@ -11,9 +11,8 @@ class anItem
     public:
         friend ostream& operator << (ostream& outs, const anItem& anItem);
         //prints out the item
-
+        anItem();
         anItem(string aName, string aGender, int aBirthYear, int aDeathYear);
-        anItem(string aName, string aGender, int aBirthYear);
         string getName() const;
         string getGender() const;
         int getBirthYear() const;

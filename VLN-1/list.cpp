@@ -2,8 +2,13 @@
 
 List::List()
 {
-
+    list<anItem> sciList = list<anItem>();
 }
+list<anItem> List::getList()
+{
+    return sciList;
+}
+
 
 anItem List::extract (string aString)
 {

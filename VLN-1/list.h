@@ -13,6 +13,7 @@ public:
     List();
    // anItem search(list<anItem> list); // fall til að leita í listanum
     anItem extract (string aString);
+    list<anItem> getList();
 
 private:
     list <anItem> sciList;

@@ -6,6 +6,8 @@
 #include <list>
 #include <fstream>
 #include "anitem.h"
+#include "list.h"
+
 
 using namespace std;
 
@@ -18,8 +20,9 @@ public:
     void inputData();
     void searchData();
     void viewData(list<anItem> aList);
+
 private:
-    list<anItem> sciList;
+   // list<anItem> sciList;
 };
 
 #endif // USERINTERFACE_H
