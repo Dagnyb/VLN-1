@@ -1,4 +1,5 @@
 #include "userinterface.h"
+#include <cctype>
 
 UserInterface::UserInterface()
 {
@@ -55,15 +56,37 @@ void UserInterface::inputData()
     string gender;
     string dayofbirth;
     string dayofdeath;
+    int genderans;
 
       cout << "Enter the name of the scientist: ";
-      getline (cin, name);
-      cout << "Enter gender: ";
-      getline (cin,gender);
+      cin.sync();
+      getline(cin, name);
+
+      cout << "Enter 1 for female or 2 for male: ";
+      cin >> genderans;
+
+      if (genderans == 1){
+          gender = "female";
+      }
+      else if (genderans == 2) {
+          gender = "male";
+      }
+      else {
+          cout << "Invalit input";
+          cout << endl << endl;
+          inputData();
+      }
+
+      cin.sync();
       cout << "Enter year of birth: ";
-      getline (cin, dayofbirth);
+      while(getline(cin, dayofbirth)&& dayofbirth.size() !=4){
+          cout << "Please enter a valid year.";
+      }
+
       cout << "Enter year of death: ";
-      getline (cin, dayofdeath);
+      while(getline (cin, dayofdeath) && dayofdeath.size()!=4){
+          cout << "Please enter a valid year.: ";
+      }
 
     string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
     ofstream Scientistfile;

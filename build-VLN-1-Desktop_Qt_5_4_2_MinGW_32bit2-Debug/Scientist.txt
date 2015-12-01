@@ -33,3 +33,15 @@ Halla;Palla;0;0;;;
 ;dd;dd;dd
 ;dd;dd;dd
 ;dd;d;d
+;;ww;ww
+;;dd;dg
+;;dd;dd
+;;f;f
+;;dd;dd
+;2;;w
+;female;;1
+;female;;1
+;female;1234;kk
+;female;1234;1234
+dkdk;female;2222;3333
+Dagnì;female;1234;1234
