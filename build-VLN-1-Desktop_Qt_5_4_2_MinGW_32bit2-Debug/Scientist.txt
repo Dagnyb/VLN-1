@@ -26,3 +26,4 @@ Halla Palla;female;1980;0000
 Halla Skalla;female;1980;0
 Ada L;female;1800;1850
 >>>>>>> aa70e881d55f1f558e88afa805e89561116660ec
+;hrundøø;;
