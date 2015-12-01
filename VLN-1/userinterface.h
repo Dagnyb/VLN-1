@@ -9,9 +9,8 @@
 #include "anitem.h"
 #include "list.h"
 
-
-
 using namespace std;
+
 
 class UserInterface
 {
@@ -21,10 +20,13 @@ public:
     void options();
     void inputData();
     void searchData();
+    void viewData();
+    void printList (list<anItem> aList);
+    void sortOption();
+    //takes an list and prints it out
     void viewData(list<anItem> aList);
-
 private:
-   // list<anItem> sciList;
+    //List sci;
 };
 
 #endif // USERINTERFACE_H

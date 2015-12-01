@@ -1,11 +1,6 @@
 #include <fstream>
 #include <iostream>
 #include "userinterface.h"
-#include "anitem.h"
-#include "list.h"
-
-
-
 
 using namespace std;
 
@@ -14,7 +9,7 @@ int main()
     UserInterface ui;
 
     ui.initial();
-    ui.options();
+
     /*
     //henda þessu út//
         anItem prufa1("hrund","kona",1975,2100);

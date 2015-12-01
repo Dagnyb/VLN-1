@@ -1,25 +1,31 @@
 #include "userinterface.h"
+#include "list.h"
 
 
 UserInterface::UserInterface()
 {
-
+  //  sci = List() ;
 }
 
 void UserInterface::initial()
 {
+    cout << "- - - - - - - - -\n ";
     cout << "D A T A B A S E\n";
+    cout << "- - - - - - - - -";
     cout << endl;
     cout << "This database contains known computer scientist.\n"
             "You can add new scientists, view, sort and/or "
             "search for a scientist in the database.\n"
             "";
     cout << endl;
+    List sci;
+    sci.dataFromFile();
+    options();
+    cout << endl;
 }
 void UserInterface::options()
 {
     char control;
-    List sciList;
 
     cout << "Choose:\n"
          << "1 to input new computer scientist.\n"
@@ -38,7 +44,7 @@ void UserInterface::options()
             searchData();
             break;
         case '3':
-            viewData(sciList.getList());
+            viewData();
             break;
         case '4':
             exit(1);
@@ -145,20 +151,65 @@ void UserInterface::inputData()
 
     }
   }
-
-
-
-    //TO DO Dagný skrifar fall sem les úr csv skránni og skrifar það í listann.
-
-
-
 void UserInterface::searchData()
 {
-cout <<"case 2\n";
+    List sci;
+    sci.findData();
+}
+void UserInterface::sortOption()
+{
+   List temp;
+   char sort;
+   bool repeat;
+   cout << "Please enter s for an alphabetically "
+        << "sorted list, r for a reversed alphabetically "
+        << "sorted list or q to quit: "
+        << endl;
+
+   do{
+       repeat = false;
+       cin >> sort;
+       sort = toupper(sort);
+
+
+   switch (sort)
+   {
+       case 'S':
+           cout << "The list in alphabetical order: " << endl;
+           printList(temp.sortListS());
+       break;
+       case 'R':
+           cout << "The list in reversed alphabetical order: " << endl;
+           printList(temp.sortListR());
+
+       break;
+       case 'Q':
+       break;
+       default:
+       repeat = true;
+       cout << "Invalid input please enter s for an alphabetically sorted list, r for a reversed alphabetically sorted list or q to quit: " << endl;
+   }
+}
+while (repeat);
 }
 
 
-void UserInterface::viewData(list<anItem> aList)
+
+
+void UserInterface::viewData()
+{
+    List sci;
+    sci.dataFromFile();
+    sortOption();
+    printList(sci.getList());
+    cout << endl;
+    options();
+    //    ath setja inn valmöguleika fyrir sort
+}
+
+
+
+void UserInterface::printList(list<anItem> aList)
 {
     for (list<anItem>::iterator it = aList.begin(); it != aList.end(); it++)
     {
