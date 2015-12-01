@@ -3,7 +3,7 @@
 
 List::List()
 {
-    list<anItem> sciList = list<anItem>();
+   list<anItem> sciList = list<anItem>();
 }
 
 list<anItem> List::getList()
@@ -70,6 +70,7 @@ anItem List::extract (string aString)
 return sciInfo;
 }
 
+
 list<anItem> List::sortListS()
 {
    // list<anItem>::iterator a = sciList.begin();
@@ -90,5 +91,56 @@ list<anItem> List::sortListR()
 
 }
 //anItem List::search(list<anItem> list)
+
+void List::findData()
+{
+
+        string nameSearch;
+        UserInterface obj;
+        obj.printList(sciList);
+        cout << "virkar";
+        list<anItem>::iterator it;
+
+        cout << "Please enter the name of scientist you wish to find: ";
+        cin.sync();
+        getline(cin, nameSearch);
+
+        for(it = sciList.begin(); it != sciList.end(); it++)
+        {
+            if((*it).getName() == nameSearch)
+            {
+
+                cout << *it;
+                cout << endl;
+
+            }
+                else
+                {
+                    cout << "Scientist not found\n";
+
+                    char ans;
+
+                    cout << "Do want to try again? Y/N ";
+                    cin >> ans;
+
+                    if(ans=='Y' || ans=='y')
+                    {
+                        findData();
+                    }
+                    else if (ans=='N' || ans=='n')
+                    {
+                         obj.options();
+                    }
+                    else
+                    {
+                        cout << "Sorry this was invalid input. You will be directed to the main menu";
+                        cout << endl << endl;
+                        obj.options();
+                    }
+                }
+
+         }
+}
+
 
 

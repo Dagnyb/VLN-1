@@ -134,14 +134,16 @@ release/VLN-1.o: ../VLN-1/VLN-1.cpp ../VLN-1/userinterface.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\VLN-1.o ..\VLN-1\VLN-1.cpp
 
 release/userinterface.o: ../VLN-1/userinterface.cpp ../VLN-1/userinterface.h \
-		../VLN-1/anitem.h
+		../VLN-1/anitem.h \
+		../VLN-1/list.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\userinterface.o ..\VLN-1\userinterface.cpp
 
 release/anitem.o: ../VLN-1/anitem.cpp ../VLN-1/anitem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\anitem.o ..\VLN-1\anitem.cpp
 
 release/list.o: ../VLN-1/list.cpp ../VLN-1/list.h \
-		../VLN-1/anitem.h
+		../VLN-1/anitem.h \
+		../VLN-1/userinterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\list.o ..\VLN-1\list.cpp
 
 ####### Install

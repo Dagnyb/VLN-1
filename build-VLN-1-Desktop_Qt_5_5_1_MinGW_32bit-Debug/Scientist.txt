@@ -1,2 +1,5 @@
 ;faf;fa;afj
 ;s;12;12
+hrund;female;1223;0
+hrund;male;1234;1234
+hrund;male;1344;7890

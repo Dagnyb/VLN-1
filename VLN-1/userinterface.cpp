@@ -1,9 +1,10 @@
 #include "userinterface.h"
+#include "list.h"
 
 
 UserInterface::UserInterface()
 {
-
+  //  sci = List() ;
 }
 
 void UserInterface::initial()
@@ -17,13 +18,14 @@ void UserInterface::initial()
             "search for a scientist in the database.\n"
             "";
     cout << endl;
+    List sci;
+    sci.dataFromFile();
     options();
     cout << endl;
 }
 void UserInterface::options()
 {
     char control;
-    List sciList;
 
     cout << "Choose:\n"
          << "1 to input new computer scientist.\n"
@@ -149,7 +151,11 @@ void UserInterface::inputData()
 
     }
   }
-
+void UserInterface::searchData()
+{
+    List sci;
+    sci.findData();
+}
 void UserInterface::sortOption()
 {
    List temp;
@@ -188,17 +194,14 @@ while (repeat);
 }
 
 
-void UserInterface::searchData()
-{
-cout <<"case 2\n";
-}
+
 
 void UserInterface::viewData()
 {
-    List sciList;
-    sciList.dataFromFile();
+    List sci;
+    sci.dataFromFile();
     sortOption();
-    printList(sciList.getList());
+    printList(sci.getList());
     cout << endl;
     options();
     //    ath setja inn valmöguleika fyrir sort
