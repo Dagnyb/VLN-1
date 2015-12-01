@@ -1,5 +1,5 @@
 #include "userinterface.h"
-#include <cctype>
+
 
 UserInterface::UserInterface()
 {
@@ -57,6 +57,7 @@ void UserInterface::inputData()
     string dayofbirth;
     string dayofdeath;
     int genderans;
+    char liveans;
 
       cout << "Enter the name of the scientist: ";
       cin.sync();
@@ -83,10 +84,30 @@ void UserInterface::inputData()
           cout << "Please enter a valid year.";
       }
 
-      cout << "Enter year of death: ";
-      while(getline (cin, dayofdeath) && dayofdeath.size()!=4){
-          cout << "Please enter a valid year.: ";
+      cin.sync();
+
+      cout << "Is " << name << " a live?  Y/N: ";
+      cin >> liveans;
+      if(liveans=='Y' || liveans=='y'){
+
+          dayofdeath = "0";
+
       }
+      else if (liveans=='N' || liveans=='n') {
+          cin.sync();
+          cout << "Enter year of death: ";
+          while(getline (cin, dayofdeath) && dayofdeath.size()!=4){
+              cout << "Please enter a valid year.: ";
+
+      }}
+      else {
+          cout << "Sorry this was invalid input. You will be directed to the main menu";
+          cout << endl << endl;
+          options();
+
+      }
+
+
 
     string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
     ofstream Scientistfile;

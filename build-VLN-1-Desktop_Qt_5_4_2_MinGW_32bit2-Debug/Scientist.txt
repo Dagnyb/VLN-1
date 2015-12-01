@@ -1,33 +1,4 @@
-Halla;Palla;0;0;;;
-;;;
-;;;
-;dd;dd;dd
-;dkd;kdkd;dkdk
-;hhh;hh;h
-;j;j;j
-;herra bla bla;kdkd;d
-;dk;dk;k
-;d;d;d
-;dd;dd;dd
-;dd;dd;dd
-;;;
-;sss;ss;ss
-;ss;ss;s
-;d;dddd;d
-;d;dd;d
-;ss;s;s
-;ddsda;s;dd
-;dd;dd;dd
-;fd;dd;dd
-;d;d;d
-;dd;d;d
-;dd;d;d
-;ss;ss;ss
-;wef;f;d
-;d;s;s
-;dd;ddd;dd
-;dd;dd;dd
-;22;2;2
+
 ;dd;dd;d
 ;cc;c;c
 ;dd;dd;dd
@@ -45,3 +16,6 @@ Halla;Palla;0;0;;;
 ;female;1234;1234
 dkdk;female;2222;3333
 Dagnì;female;1234;1234
+Halla Palla;female;1980;0000
+Halla Skalla;female;1980;0
+Ada L;female;1800;1850
