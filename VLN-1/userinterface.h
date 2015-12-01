@@ -5,12 +5,11 @@
 #include <cstdlib>
 #include <list>
 #include <fstream>
-using namespace std;
-
-
-
+#include <string>
 #include "anitem.h"
 
+
+using namespace std;
 
 class UserInterface
 {
@@ -20,9 +19,9 @@ public:
     void options();
     void inputData();
     void searchData();
-    void viewData();
+    void viewData(list<anItem> aList);
 private:
-    list <anItem> list;
+    list<anItem> sciList;
 };
 
 #endif // USERINTERFACE_H

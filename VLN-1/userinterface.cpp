@@ -1,8 +1,5 @@
 #include "userinterface.h"
 #include "anitem.h"
-#include <string>
-#include <iostream>
-#include <fstream>
 
 UserInterface::UserInterface()
 {
@@ -40,7 +37,7 @@ void UserInterface::options()
             searchData();
             break;
         case '3':
-            viewData();
+            viewData(sciList);
             break;
         case '4':
             exit(1);
@@ -99,7 +96,10 @@ cout <<"case 2\n";
 }
 
 
-void UserInterface::viewData()
+void UserInterface::viewData(list<anItem> aList)
 {
-    cout << "case 3\n";
+    for (list<anItem>::iterator it = aList.begin(); it != aList.end(); it++)
+    {
+        cout << *it;
+    }
 }
