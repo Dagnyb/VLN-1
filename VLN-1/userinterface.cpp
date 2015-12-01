@@ -1,6 +1,5 @@
 #include "userinterface.h"
 
-
 UserInterface::UserInterface()
 {
 
@@ -52,33 +51,36 @@ void UserInterface::options()
 
 void UserInterface::inputData()
 {
-
- //   ifstream Scientistfile;
-   // Scientistfile.open ("scientist.txt");
-   // if (Scientistfile.fail())
-   // {
-     //   cout<< "Input file opening fail.\n";
-       // exit(1);
-   // }
-
     string name;
     string gender;
-    int dayofbirth;
-    int dayofdeath;
+    string dayofbirth;
+    string dayofdeath;
 
-  cout << "Enter the name of the scientist: ";
-  cin >> name;
-  cout << "Enter gender: ";
-  cin >> gender;
-  cout << "Enter day of birth: ";
-  cin >> dayofbirth;
-  cout << "Enter day of death: ";
-  cin >> dayofdeath;
+      cout << "Enter the name of the scientist: ";
+      getline (cin, name);
+      cout << "Enter gender: ";
+      getline (cin,gender);
+      cout << "Enter day of birth: ";
+      getline (cin, dayofbirth);
+      cout << "Enter day of death: ";
+      getline (cin, dayofdeath);
 
-  ofstream Scientistfile;
-  Scientistfile.open("Scientist.txt");
-  Scientistfile << name << ";" << gender << ";" << dayofbirth << ";" << dayofdeath;
-  Scientistfile.close();
+    string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
+    ofstream Scientistfile;
+    Scientistfile.open("Scientist.txt", ios::out | ios::app);
+        if (Scientistfile.fail())
+            {
+                cout<< "Input file opening fail.\n";
+                exit(1);
+             }
+
+        else
+            {
+                Scientistfile << out.c_str();
+            }
+
+    Scientistfile.close();
+
 
   }
 

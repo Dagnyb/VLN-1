@@ -5,8 +5,10 @@
 #include <cstdlib>
 #include <list>
 #include <fstream>
+#include <string>
 #include "anitem.h"
 #include "list.h"
+
 
 
 using namespace std;
