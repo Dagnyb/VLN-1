@@ -134,14 +134,16 @@ debug/VLN-1.o: ../VLN-1/VLN-1.cpp ../VLN-1/userinterface.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\VLN-1.o ..\VLN-1\VLN-1.cpp
 
 debug/userinterface.o: ../VLN-1/userinterface.cpp ../VLN-1/userinterface.h \
-		../VLN-1/anitem.h
+		../VLN-1/anitem.h \
+		../VLN-1/list.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\userinterface.o ..\VLN-1\userinterface.cpp
 
 debug/anitem.o: ../VLN-1/anitem.cpp ../VLN-1/anitem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\anitem.o ..\VLN-1\anitem.cpp
 
 debug/list.o: ../VLN-1/list.cpp ../VLN-1/list.h \
-		../VLN-1/anitem.h
+		../VLN-1/anitem.h \
+		../VLN-1/userinterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\list.o ..\VLN-1\list.cpp
 
 ####### Install

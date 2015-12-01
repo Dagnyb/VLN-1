@@ -1,6 +1,7 @@
 #include "userinterface.h"
 #include "list.h"
 
+
 UserInterface::UserInterface()
 {
 
@@ -57,15 +58,58 @@ void UserInterface::inputData()
     string gender;
     string dayofbirth;
     string dayofdeath;
+    int genderans;
+    char liveans;
 
       cout << "Enter the name of the scientist: ";
-      getline (cin, name);
-      cout << "Enter gender: ";
-      getline (cin,gender);
+      cin.sync();
+      getline(cin, name);
+
+      cout << "Enter 1 for female or 2 for male: ";
+      cin >> genderans;
+
+      if (genderans == 1){
+          gender = "female";
+      }
+      else if (genderans == 2) {
+          gender = "male";
+      }
+      else {
+          cout << "Invalit input";
+          cout << endl << endl;
+          inputData();
+      }
+
+      cin.sync();
       cout << "Enter year of birth: ";
-      getline (cin, dayofbirth);
-      cout << "Enter year of death: ";
-      getline (cin, dayofdeath);
+      while(getline(cin, dayofbirth)&& dayofbirth.size() !=4){
+          cout << "Please enter a valid year.";
+      }
+
+      cin.sync();
+
+      cout << "Is " << name << " a live?  Y/N: ";
+      cin >> liveans;
+      if(liveans=='Y' || liveans=='y'){
+
+          dayofdeath = "0";
+
+      }
+      else if (liveans=='N' || liveans=='n') {
+          cin.sync();
+          cout << "Enter year of death: ";
+          while(getline (cin, dayofdeath) && dayofdeath.size()!=4){
+              cout << "Please enter a valid year.: ";
+
+      }}
+      else {
+          cout << "Sorry this was invalid input. You will be directed to the main menu";
+          cout << endl << endl;
+          options();
+
+      }
+
+
 
     string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
     ofstream Scientistfile;
