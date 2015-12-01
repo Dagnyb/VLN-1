@@ -1,5 +1,4 @@
 #include "userinterface.h"
-#include "anitem.h"
 
 UserInterface::UserInterface()
 {
@@ -19,6 +18,7 @@ void UserInterface::initial()
 void UserInterface::options()
 {
     char control;
+    List sciList;
 
     cout << "Choose:\n"
          << "1 to input new computer scientist.\n"
@@ -37,7 +37,7 @@ void UserInterface::options()
             searchData();
             break;
         case '3':
-            viewData(sciList);
+            viewData(sciList.getList());
             break;
         case '4':
             exit(1);
