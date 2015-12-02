@@ -27,4 +27,4 @@ class anItem // Returns anItem with appropriate variebles set: Name, gender, yea
 };
 
 #endif // ANITEM_H
-// pr
+// git prufa Eva
