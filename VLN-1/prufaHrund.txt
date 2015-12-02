@@ -1,4 +1,3 @@
-
 Charles Babbage, male, 1791, 1871
 John von Neumann, male, 1903, 1957
 Alan Turing, male, 1912, 1954
