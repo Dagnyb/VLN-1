@@ -50,7 +50,7 @@ anItem List::extract (string aString)
     string name = aString.substr(pos1, pos2);
     string gender = aString.substr(pos2+1, pos3-pos2-1);
     string bYear = aString.substr(pos3+1, pos4-pos2-1);
-    string dYear = aString.substr(pos3+1, pos4-pos2-1);
+    string dYear = aString.substr(pos3+1, pos4-pos2-1); //eftir að laga
 
     char birth [bYear.size()];
     for(unsigned int i = 0; i<bYear.size(); i++){
