@@ -16,17 +16,16 @@ class UserInterface
 {
 public:
     UserInterface();
-    void initial();
-    void options();
-    void inputData();
-    void searchData();
-    void viewData();
-    void printList (list<anItem> aList);
-    void sortOption();
-    //takes an list and prints it out
-    void viewData(list<anItem> aList);
+    void initial(); // the head of the output
+    void options(); // allows the user to choose what to do
+    void inputData(); // allows the user to choose what to do
+    void searchData(); // search for name in List
+    void viewData(); // writes list to screen without parameters
+    void printList (list<anItem> aList); // prints out the list
+    void sortOption(); // allows the user to choose how he wants to sort the list
+    void viewData(list<anItem> aList); // writes out the list to the screen with parameters
 private:
-    //List sci;
+    List sci;
 };
 
 #endif // USERINTERFACE_H

@@ -1,10 +1,11 @@
 #include "userinterface.h"
-#include "list.h"
+
 
 
 UserInterface::UserInterface()
 {
-  //  sci = List() ;
+    sci = List() ;
+
 }
 
 void UserInterface::initial()
@@ -18,7 +19,6 @@ void UserInterface::initial()
             "search for a scientist in the database.\n"
             "";
     cout << endl;
-    List sci;
     sci.dataFromFile();
     options();
     cout << endl;
@@ -39,6 +39,7 @@ void UserInterface::options()
     {
         case '1':
             inputData();
+            sci.dataFromFile();
             break;
         case '2':
             searchData();
@@ -115,9 +116,9 @@ void UserInterface::inputData()
 
 
 
-    string out = name + ";" + gender + ";" + dayofbirth + ";" + dayofdeath + "\n";
+    string out = name + ", " + gender + ", " + dayofbirth + ", " + dayofdeath + "\n";
     ofstream Scientistfile;
-    Scientistfile.open("Scientist.txt", ios::out | ios::app);
+    Scientistfile.open(FILENAME.c_str(), ios::out | ios::app);
         if (Scientistfile.fail())
             {
                 cout<< "Input file opening fail.\n";
@@ -150,15 +151,50 @@ void UserInterface::inputData()
         options();
 
     }
+
   }
 void UserInterface::searchData()
 {
-    List sci;
-    sci.findData();
-}
+    string nameSearch;
+
+    cout << "Please enter the name of scientist you wish to find: ";
+    cin.sync();
+    getline(cin, nameSearch);
+    list<anItem> sciFindData = sci.findData(nameSearch);
+
+
+    if (sciFindData.empty())
+    {
+            cout << "Scientist not found\n";
+    }
+    else
+    {
+        printList(sciFindData);
+    }
+
+            char ans;
+
+            cout << "Do want to try again? Y/N ";
+            cin >> ans;
+
+            if(ans=='Y' || ans=='y')
+            {
+                searchData();
+            }
+            else if (ans=='N' || ans=='n')
+            {
+                options();
+            }
+            else
+            {
+                cout << "Sorry this was invalid input. You will be directed to the main menu";
+                cout << endl << endl;
+                options();
+            }
+        }
+
 void UserInterface::sortOption()
 {
-   List temp;
    char sort;
    bool repeat;
    cout << "Please enter s for an alphabetically "
@@ -176,11 +212,11 @@ void UserInterface::sortOption()
    {
        case 'S':
            cout << "The list in alphabetical order: " << endl;
-           printList(temp.sortListS());
+           printList(sci.sortListS());
        break;
        case 'R':
            cout << "The list in reversed alphabetical order: " << endl;
-           printList(temp.sortListR());
+           printList(sci.sortListR());
 
        break;
        case 'Q':
@@ -193,20 +229,13 @@ void UserInterface::sortOption()
 while (repeat);
 }
 
-
-
-
 void UserInterface::viewData()
 {
-    List sci;
-    sci.dataFromFile();
-    sortOption();
     printList(sci.getList());
     cout << endl;
+    sortOption();
     options();
-    //    ath setja inn valmöguleika fyrir sort
 }
-
 
 
 void UserInterface::printList(list<anItem> aList)

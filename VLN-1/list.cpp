@@ -3,18 +3,18 @@
 
 List::List()
 {
-   list<anItem> sciList = list<anItem>();
+   sciList = list<anItem>();
 }
 
 list<anItem> List::getList()
 {
     return sciList;
 }
-
+/*
 void List::putList(list<anItem> inputList)
 {
     sciList = inputList;
-}
+} */
 
 void List::dataFromFile()
 {
@@ -50,7 +50,7 @@ anItem List::extract (string aString)
     string name = aString.substr(pos1, pos2);
     string gender = aString.substr(pos2+1, pos3-pos2-1);
     string bYear = aString.substr(pos3+1, pos4-pos2-1);
-    string dYear = aString.substr(pos3+1, pos4-pos2-1);
+    string dYear = aString.substr(pos3+1, pos4-pos2-1); //eftir að laga
 
     char birth [bYear.size()];
     for(unsigned int i = 0; i<bYear.size(); i++){
@@ -70,76 +70,41 @@ anItem List::extract (string aString)
 return sciInfo;
 }
 
+bool sortlikethis(anItem a, anItem b)
+{
+    return a.getName() < b.getName();
+}
 
 list<anItem> List::sortListS()
 {
-   // list<anItem>::iterator a = sciList.begin();
-    //sciList.sort();
+    list<anItem> temp = sciList;
+    temp.sort(sortlikethis);
 
-    return sciList;
+    return temp;
 }
 
 list<anItem> List::sortListR()
 {
-  //  anItem item1;
-  //  anItem item2;
-   //list<anItem>::iterator a = sciList.begin();
- //  sciList.sort(anItem, string.CASE_INSENSITIVE_ORDER);
-  // sciList.reverse();
+    list<anItem> temp = sciList;
+   // temp.sort(sortlikethis);
+    temp.reverse();
 
-    return sciList;
-
+    return temp;
 }
-//anItem List::search(list<anItem> list)
 
-void List::findData()
+list<anItem> List::findData(string nameSearch)
 {
+    list<anItem> temp = list<anItem> ();
+    list<anItem>::iterator it;
 
-        string nameSearch;
-        UserInterface obj;
-        obj.printList(sciList);
-        cout << "virkar";
-        list<anItem>::iterator it;
-
-        cout << "Please enter the name of scientist you wish to find: ";
-        cin.sync();
-        getline(cin, nameSearch);
-
-        for(it = sciList.begin(); it != sciList.end(); it++)
+    for(it = sciList.begin(); it != sciList.end(); it++)
+    {
+        if((*it).getName() == nameSearch)
         {
-            if((*it).getName() == nameSearch)
-            {
-
-                cout << *it;
-                cout << endl;
-
-            }
-                else
-                {
-                    cout << "Scientist not found\n";
-
-                    char ans;
-
-                    cout << "Do want to try again? Y/N ";
-                    cin >> ans;
-
-                    if(ans=='Y' || ans=='y')
-                    {
-                        findData();
-                    }
-                    else if (ans=='N' || ans=='n')
-                    {
-                         obj.options();
-                    }
-                    else
-                    {
-                        cout << "Sorry this was invalid input. You will be directed to the main menu";
-                        cout << endl << endl;
-                        obj.options();
-                    }
-                }
-
-         }
+          temp.push_back(*it);
+        }
+    return temp;
+    }
 }
 
 
