@@ -10,3 +10,8 @@ John Backus, male, 1924, 2007
 Tim Berners-Lee, male, 1955
 Linus Benedict Torvalds, ma, 1969 
 Edsger W. Djikstra, male, 1930, 2002
+hrund ;female;1023;1234
+hrund;female;1233;0
+hrund,female,1234,1234
+helga rut, female, 1234, 1233
+helga run, male, 1234, 0
