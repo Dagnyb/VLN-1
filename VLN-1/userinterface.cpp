@@ -39,7 +39,6 @@ void UserInterface::options()
     {
         case '1':
             inputData();
-            sci.dataFromFile();
             break;
         case '2':
             searchData();
@@ -160,7 +159,7 @@ void UserInterface::searchData()
     cout << "Please enter the name of scientist you wish to find: ";
     cin.sync();
     getline(cin, nameSearch);
-    list<anItem> sciFindData = sci.findData(nameSearch);
+    list<anItem> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
 
 
     if (sciFindData.empty())
