@@ -18,6 +18,7 @@ class anItem
         string getGender() const;
         int getBirthYear() const;
         int getDeathYear() const;
+        //string name;
     private:
         string name, gender;
         int birthYear, deathYear;

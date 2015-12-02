@@ -18,15 +18,15 @@ public:
     UserInterface();
     void initial();
     void options();
-    void inputData();
     void searchData();
     void viewData();
+    void inputData();
     void printList (list<anItem> aList);
-    void sortOption();
     //takes an list and prints it out
+    void sortOption();
     void viewData(list<anItem> aList);
 private:
-    //List sci;
+    List sci;
 };
 
 #endif // USERINTERFACE_H
