@@ -57,7 +57,7 @@ void UserInterface::options()
                     viewData();
                     break;
                 case '4':
-                    loopAgain = false;
+                    exit(1);
                     break;
                 default:
                     errorMessage("select 1, 2, 3 or 4");
@@ -78,6 +78,7 @@ void UserInterface::inputData()
         gender();
         birthYear();
         deathYear();
+        cout << endl;
         add = addAnother();
     }
 }
@@ -99,67 +100,88 @@ string UserInterface::name()
 
 string UserInterface::gender()
 {
+    cout << "Gender select 1) for female\n"
+            "              2) for male\n"
+            "selection:    ";
+
+    char ans;
+    cin >> ans;
+    bool again = true;
     string gender;
 
-    cout << "Gender select 1) for female and 2) for male:\n";
-
-    char genderans;
-    cin >> genderans;
-
-    switch (genderans)
+    while(again == true)
     {
-        case '1':
-            gender = "female";
-            break;
-        case '2':
-            gender = "male";
-            break;
-        default:
-            cout << "Invalid input\n";
-            //eftir að höndla villur megum ekki vísa aftur í sama fallið
-            break;
+        again = false;
+        switch (ans)
+        {
+            case '1':
+                gender = "female";
+                break;
+            case '2':
+                gender = "male";
+                break;
+            default:
+                errorMessage("input 1 or 2. ");
+                cin >> ans;
+                cout <<"selection:    ";
+                again = true;
+                break;
+        }
     }
     return gender;
 }
 
 int UserInterface::birthYear()
 {
-    int input;
+    int year;
     cout << "Year of birth: ";
-    cin >> input;
+    cin >> year;
 
-    while (input < MINYEAR || input > MAXYEAR )
+    while (year < MINYEAR || year > MAXYEAR )
     {
-        errorMessage("Please input valid year");
-        cin >> input;
+        errorMessage("Please input valid year on the format YYYY. ");
+        cin >> year;
     }
-
-    return input;
+    return year;
 }
 
 int UserInterface::deathYear()
 {
-    int input;
+    int year;
 
     cout << "Stil alive (y/n): ";
-    char liveans;
-    cin >> liveans;
+    char ans;
+    cin >> ans;
 
-    if (liveans == 'y' || liveans == 'Y')
+    bool again = true;
+
+    while(again == true)
     {
-        input = 0;
-    }
-    if (liveans == 'n' || liveans == 'N')
-    {
-        cout << "Year of death: ";
-        cin >> input;
-        while (input < MINYEAR || input > MAXYEAR )
+        again = false;
+        switch (ans)
         {
-            errorMessage("Please input valid year");
-            cin >> input;
+            case 'y':
+            case 'Y':
+                year = 0;  //kann ekki að gera ekkert eins og databaseinn tekur við
+                break;
+            case 'n':
+            case 'N':
+                cout << "Year of death: ";
+                cin >> year;
+                while (year < MINYEAR || year > MAXYEAR )
+                {
+                    errorMessage("Please input valid year");
+                    cin >> year;
+                }
+                break;
+            default:
+                errorMessage("input y or n. ");
+                cin >> ans;
+                again = true;
+                break;
         }
     }
-    return input;
+    return year;
 }
 
 bool UserInterface::addAnother()
