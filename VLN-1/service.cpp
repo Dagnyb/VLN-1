@@ -1,22 +1,22 @@
-#include "list.h"
+#include "service.h"
 
 
-List::List()
+Service::Service()
 {
    sciList = list<anItem>();
 }
 
-list<anItem> List::getList()
+list<anItem> Service::getList()
 {
     return sciList;
 }
 /*
-void List::putList(list<anItem> inputList)
+void Service::putList(list<anItem> inputList)
 {
     sciList = inputList;
 } */
 
-void List::dataFromFile()
+void Service::dataFromFile()
 {
     ifstream inStream;
 
@@ -39,7 +39,7 @@ void List::dataFromFile()
 
 }
 
-anItem List::extract (string aString)
+anItem Service::extract (string aString)
 {
     char SYMBOL = ',';
     int pos1 = 0;
@@ -75,7 +75,7 @@ bool sortlikethis(anItem a, anItem b)
     return a.getName() < b.getName();
 }
 
-list<anItem> List::sortListS()
+list<anItem> Service::sortListS()
 {
     list<anItem> temp = sciList;
     temp.sort(sortlikethis);
@@ -83,7 +83,7 @@ list<anItem> List::sortListS()
     return temp;
 }
 
-list<anItem> List::sortListR()
+list<anItem> Service::sortListR()
 {
     list<anItem> temp = sciList;
    // temp.sort(sortlikethis);
@@ -92,7 +92,7 @@ list<anItem> List::sortListR()
     return temp;
 }
 
-list<anItem> List::findData(string nameSearch)
+list<anItem> Service::findData(string nameSearch)
 {
     list<anItem> temp = list<anItem> ();
     list<anItem>::iterator it;

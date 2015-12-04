@@ -1,5 +1,5 @@
-#ifndef LIST_H
-#define LIST_H
+#ifndef SERVICE_H
+#define SERVICE_H
 #include "anitem.h"
 #include <string>
 #include <list>
@@ -13,10 +13,10 @@ using namespace std;
 const string FILENAME = "prufaHrund.txt";
 
 
-class List
+class Service
 {
 public:
-    List(); // Initializes the list
+    Service(); // Initializes the list
     void dataFromFile(); // instreams the .txt file
     void putList(list<anItem> inputList); // returns input in sciList
     anItem extract (string aString); // read from the txt file in string and converts two string to int
@@ -29,4 +29,4 @@ private:
     list <anItem> sciList;
 };
 
-#endif // LIST_H
+#endif // SERVICE_H

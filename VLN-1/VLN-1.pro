@@ -10,11 +10,11 @@ TEMPLATE = app
 SOURCES += \
     userinterface.cpp \
     anitem.cpp \
-    list.cpp \
-    main_.cpp
+    main_.cpp \
+    service.cpp
 
 HEADERS += \
     userinterface.h \
     anitem.h \
-    list.h
+    service.h
 

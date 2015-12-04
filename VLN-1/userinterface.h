@@ -7,7 +7,7 @@
 #include <fstream>
 #include <string>
 #include "anitem.h"
-#include "list.h"
+#include "service.h"
 
 using namespace std;
 
@@ -25,9 +25,13 @@ public:
     void sortOption(); // allows the user to choose how he wants to sort the list
     void viewData(list<anItem> aList); // writes out the list to the screen with parameters
     void errorMessage(string aString);
-
+    bool addAnother();
+    string name();
+    string gender();
+    int birthYear();
+    int deathYear();
 private:
-    List sci;
+    Service sci;
 };
 
 #endif // USERINTERFACE_H

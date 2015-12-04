@@ -1,9 +1,11 @@
 #include "userinterface.h"
 
+const int MINYEAR = 1800;
+const int MAXYEAR = 2015;
 
 UserInterface::UserInterface()
 {
-    sci = List() ;
+    sci = Service() ;
 }
 
 void UserInterface::initial()
@@ -55,12 +57,138 @@ void UserInterface::options()
     }
 }
 
-void UserInterface::errorMessage(string aString)
+void UserInterface::inputData()
 {
-    cout << "Invalid input: " << aString << endl;
+    do
+    {
+        name();
+        gender();
+        birthYear();
+        deathYear();
+    }
+    while (addAnother());
 }
 
-void UserInterface::inputData()
+string UserInterface::name()
+{
+    cout << "Name of the scientist: ";
+    string name;
+    cin.sync();
+    getline(cin, name);
+
+    while(name.empty())
+    {
+        errorMessage("Plese input name: ");
+        getline(cin, name);
+    }
+    return name;
+}
+
+string UserInterface::gender()
+{
+    string gender;
+
+    cout << "Gender select 1) for female and 2) for male:\n";
+
+    char genderans;
+    cin >> genderans;
+
+    switch (genderans)
+    {
+        case '1':
+            gender = "female";
+            break;
+        case '2':
+            gender = "male";
+            break;
+        default:
+            cout << "Invalid input\n";
+            //eftir að höndla villur megum ekki vísa aftur í sama fallið
+            break;
+    }
+    return gender;
+}
+
+int UserInterface::birthYear()
+{
+    int input;
+    cout << "Year of birth: ";
+    cin >> input;
+
+    while (input < MINYEAR || input > MAXYEAR )
+    {
+        errorMessage("Please input valid year");
+        cin >> input;
+    }
+
+    return input;
+}
+
+int UserInterface::deathYear()
+{
+    int input;
+
+    cout << "Stil alive (y/n): ";
+    char liveans;
+    cin >> liveans;
+
+    if (liveans == 'y' || liveans == 'Y')
+    {
+        input = 0;
+    }
+    if (liveans == 'n' || liveans == 'N')
+    {
+        cout << "Year of death: ";
+        cin >> input;
+        while (input < MINYEAR || input > MAXYEAR )
+        {
+            errorMessage("Please input valid year");
+            cin >> input;
+        }
+    }
+    return input;
+}
+
+bool UserInterface::addAnother()
+{
+
+        cout << "Add another scientist? (y/n)\n";
+        char another1, another2;
+        cin >> another1;
+
+        bool ans;
+        bool again = false;
+
+        do
+        {
+            if (another1 == 'y' || another1 == 'Y')
+            {
+            ans = true;
+            }
+            else if (another1 == 'n' || another1 == 'N')
+            {
+            ans = false;
+            }
+            else
+            {
+                do
+                {
+                errorMessage("select y or n: ");
+                cin >> another2;
+                }
+                while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
+
+            another1 = another2;
+            again = true;
+            }
+        }
+        while(again == true);
+
+        return ans;
+}
+
+/*
+void UserInterface::inputDataHalla()
 {
     string name;
     string gender;
@@ -156,6 +284,7 @@ void UserInterface::inputData()
     }
 
   }
+*/
 void UserInterface::searchData()
 {
     string nameSearch;
@@ -194,7 +323,7 @@ void UserInterface::searchData()
                 cout << endl << endl;
                 options();
             }
-        }
+}
 
 void UserInterface::sortOption()
 {
@@ -205,14 +334,15 @@ void UserInterface::sortOption()
         << "sorted list or q to quit: "
         << endl;
 
-   do{
+   do
+    {
        repeat = false;
        cin >> sort;
        sort = toupper(sort);
 
 
-   switch (sort)
-   {
+    switch (sort)
+    {
        case 'S':
            cout << "The list in alphabetical order: " << endl;
            printList(sci.sortListS());
@@ -227,9 +357,9 @@ void UserInterface::sortOption()
        default:
        repeat = true;
        cout << "Invalid input please enter s for an alphabetically sorted list, r for a reversed alphabetically sorted list or q to quit: " << endl;
-   }
-}
-while (repeat);
+    }
+    }
+    while (repeat);
 }
 
 void UserInterface::viewData()
@@ -247,4 +377,9 @@ void UserInterface::printList(list<anItem> aList)
     {
         cout << *it;
     }
+}
+
+void UserInterface::errorMessage(string aString)
+{
+    cout << "Invalid input: " << aString << endl;
 }
