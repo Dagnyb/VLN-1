@@ -22,53 +22,66 @@ void UserInterface::initial()
          << endl;
     sci.dataFromFile();  // HÉR DATA
     options();
-    cout << endl;
+
 }
 void UserInterface::options()
 {
-    char lastControl = '1';
+    bool loopAgain = true;
+    bool insideLoopAgain = true;
 
-    cout << "Select:\n"
-         << "1) to input new computer scientist.\n"
-         << "2) to search in the existing database.\n"
-         << "3) to view existing data.\n"
-         << "4) to quit program.\n"
-         << endl
-         << "Selection: ";
-    cin >> lastControl;
-    cout << endl;
-
-    while (lastControl != '4')
+    while(loopAgain == true)
     {
-        switch (lastControl)
+        cout << endl
+             << "Select:\n"
+             << "1) to input new computer scientist.\n"
+             << "2) to search in the existing database.\n"
+             << "3) to view existing data.\n"
+             << "4) to quit program.\n"
+             << endl
+             << "Selection: ";
+        char lastControl;
+        cin >> lastControl;
+        cout << endl;
+        while (insideLoopAgain == true)
         {
-        case '1':
-            inputData();
-            break;
-        case '2':
-            searchData();
-            break;
-        case '3':
-            viewData();
-            break;
-        default:
-            errorMessage("select 1, 2, 3 or 4");
-            cin >> lastControl;
-            break;
+            insideLoopAgain = false;
+            switch (lastControl)
+            {
+                case '1':
+                    inputData();
+                    break;
+                case '2':
+                    searchData();
+                    break;
+                case '3':
+                    viewData();
+                    break;
+                case '4':
+                    exit(1);
+                    loopAgain = false;
+                    break;
+                default:
+                    errorMessage("select 1, 2, 3 or 4");
+                    cin >> lastControl;
+                    insideLoopAgain = true;
+                    break;
+            }
         }
     }
 }
 
 void UserInterface::inputData()
 {
-    do
+    bool add = true;
+    while (add == true)
     {
         name();
         gender();
         birthYear();
         deathYear();
+        cout << endl;
+        add = addAnother();
     }
-    while (addAnother());
 }
 
 string UserInterface::name()
@@ -77,10 +90,10 @@ string UserInterface::name()
     string name;
     cin.sync();
     getline(cin, name);
-
-    while(name.empty())
+    //locale loc;
+    while(name.empty())  //setja in isdigit held samt að það vinni bara með char ath ef við höfum tíma.
     {
-        errorMessage("Plese input name: ");
+        errorMessage("Please input name. ");
         getline(cin, name);
     }
     return name;
@@ -88,105 +101,126 @@ string UserInterface::name()
 
 string UserInterface::gender()
 {
+    cout << "Gender select 1) for female\n"
+            "              2) for male\n"
+            "selection:    ";
+
+    char ans;
+    cin >> ans;
+    bool again = true;
     string gender;
 
-    cout << "Gender select 1) for female and 2) for male:\n";
-
-    char genderans;
-    cin >> genderans;
-
-    switch (genderans)
+    while(again == true)
     {
-        case '1':
-            gender = "female";
-            break;
-        case '2':
-            gender = "male";
-            break;
-        default:
-            cout << "Invalid input\n";
-            //eftir að höndla villur megum ekki vísa aftur í sama fallið
-            break;
+        again = false;
+        switch (ans)
+        {
+            case '1':
+                gender = "female";
+                break;
+            case '2':
+                gender = "male";
+                break;
+            default:
+                errorMessage("input 1 or 2. ");
+                cin >> ans;
+                cout <<"selection:    ";
+                again = true;
+                break;
+        }
     }
     return gender;
 }
 
 int UserInterface::birthYear()
 {
-    int input;
+    int year;
     cout << "Year of birth: ";
-    cin >> input;
+    cin >> year;
 
-    while (input < MINYEAR || input > MAXYEAR )
+    while (year < MINYEAR || year > MAXYEAR )
     {
-        errorMessage("Please input valid year");
-        cin >> input;
+        errorMessage("Please input valid year on the format YYYY. ");
+        cin >> year;
     }
-
-    return input;
+    return year;
 }
 
 int UserInterface::deathYear()
 {
-    int input;
+    int year;
 
     cout << "Stil alive (y/n): ";
-    char liveans;
-    cin >> liveans;
+    char ans;
+    cin >> ans;
 
-    if (liveans == 'y' || liveans == 'Y')
+    bool again = true;
+
+    while(again == true)
     {
-        input = 0;
-    }
-    if (liveans == 'n' || liveans == 'N')
-    {
-        cout << "Year of death: ";
-        cin >> input;
-        while (input < MINYEAR || input > MAXYEAR )
+        again = false;
+        switch (ans)
         {
-            errorMessage("Please input valid year");
-            cin >> input;
+            case 'y':
+            case 'Y':
+                year = 0;  //kann ekki að gera ekkert eins og databaseinn tekur við
+                break;
+            case 'n':
+            case 'N':
+                cout << "Year of death: ";
+                cin >> year;
+                while (year < MINYEAR || year > MAXYEAR )
+                {
+                    errorMessage("Please input valid year");
+                    cin >> year;
+                }
+                break;
+            default:
+                errorMessage("input y or n. ");
+                cin >> ans;
+                again = true;
+                break;
         }
     }
-    return input;
+    return year;
 }
 
 bool UserInterface::addAnother()
 {
+    bool add = false;
+    bool loopAgain = true;
 
-        cout << "Add another scientist? (y/n)\n";
+    while(loopAgain == true)
+    {
+        cout << "Add another scientist? (y/n): ";
         char another1, another2;
         cin >> another1;
 
-        bool ans;
-        bool again = false;
-
-        do
+        if (another1 == 'y' || another1 == 'Y')
         {
-            if (another1 == 'y' || another1 == 'Y')
-            {
-            ans = true;
-            }
-            else if (another1 == 'n' || another1 == 'N')
-            {
-            ans = false;
-            }
-            else
-            {
-                do
-                {
-                errorMessage("select y or n: ");
-                cin >> another2;
-                }
-                while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
-
-            another1 = another2;
-            again = true;
-            }
+            add = true;
+            loopAgain = false;
         }
-        while(again == true);
+        else if (another1 == 'n' || another1 == 'N')
+        {
+            add = false;
+            loopAgain = false;
+        }
+        else
+        {
+            do
+            {
+            errorMessage("select y or n: ");
+            cin >> another2;
+            }
+            while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
 
-        return ans;
+        another1 = another2;
+        loopAgain = true;
+        }
+    }
+
+    return add;
 }
 
 /*
@@ -295,7 +329,7 @@ void UserInterface::searchData()
     cout << "Please enter the name of scientist you wish to find: ";
     cin.sync();
     getline(cin, nameSearch);
-    list<anItem> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
+    list<Scientist> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
 
 
     if (sciFindData.empty())
@@ -374,9 +408,9 @@ void UserInterface::viewData()
 }
 
 
-void UserInterface::printList(list<anItem> aList)
+void UserInterface::printList(list<Scientist> aList)
 {
-    for (list<anItem>::iterator it = aList.begin(); it != aList.end(); it++)
+    for (list<Scientist>::iterator it = aList.begin(); it != aList.end(); it++)
     {
         cout << *it;
     }

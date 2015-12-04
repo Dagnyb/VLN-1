@@ -1,5 +1,5 @@
-#ifndef SCIENTIST_H
-#define SCIENTIST_H
+#ifndef SCIENTIST__H
+#define SCIENTIST__H
 
 #include <iostream>
 #include <string>
@@ -10,6 +10,9 @@ using namespace std;
 class Scientist // Returns Scientist with appropriate variebles set: Name, gender, year, of birth & year of death
 {
     public:
+        friend ostream& operator << (ostream& outs, const Scientist& Scientist);
+        // << operator overwritten to print Scientist
+        //prints out the item
         Scientist();
         // combines Name, gender, year of birth
         Scientist(string aName, string aGender, int aBirthYear, int aDeathYear);
@@ -17,12 +20,10 @@ class Scientist // Returns Scientist with appropriate variebles set: Name, gende
         string getGender() const;
         int getBirthYear() const;
         int getDeathYear() const;
-        // operator << overwritten to print Scientist
-        friend ostream& operator << (ostream& outs, const Scientist& Scientist);
+        //string name;
     private:
         string name, gender;
         int birthYear, deathYear;
-
 };
 
-#endif // SCIENTIST_H
+#endif // SCIENTIST__H

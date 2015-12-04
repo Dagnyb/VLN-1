@@ -3,15 +3,15 @@
 
 Service::Service()
 {
-   sciList = list<anItem>();
+   sciList = list<Scientist>();
 }
 
-list<anItem> Service::getList()
+list<Scientist> Service::getList()
 {
     return sciList;
 }
 /*
-void Service::putList(list<anItem> inputList)
+void Service::putList(list<Scientist> inputList)
 {
     sciList = inputList;
 } */
@@ -30,7 +30,7 @@ void Service::dataFromFile()
     string next = "";
     do{
         getline(inStream,next);
-        anItem info = extract(next);
+        Scientist info = extract(next);
         sciList.push_back(info);
 
     }while (inStream);
@@ -39,7 +39,7 @@ void Service::dataFromFile()
 
 }
 
-anItem Service::extract (string aString)
+Scientist Service::extract (string aString)
 {
     char SYMBOL = ',';
     int pos1 = 0;
@@ -65,37 +65,37 @@ anItem Service::extract (string aString)
     int birthYear = atoi(birth);
     int deathYear = atoi(death);
 
-    anItem sciInfo (name, gender, birthYear, deathYear);
+    Scientist sciInfo (name, gender, birthYear, deathYear);
 
 return sciInfo;
 }
 
-bool sortlikethis(anItem a, anItem b)
+bool sortlikethis(Scientist a, Scientist b)
 {
     return a.getName() < b.getName();
 }
 
-list<anItem> Service::sortListS()
+list<Scientist> Service::sortListS()
 {
-    list<anItem> temp = sciList;
+    list<Scientist> temp = sciList;
     temp.sort(sortlikethis);
 
     return temp;
 }
 
-list<anItem> Service::sortListR()
+list<Scientist> Service::sortListR()
 {
-    list<anItem> temp = sciList;
+    list<Scientist> temp = sciList;
    // temp.sort(sortlikethis);
     temp.reverse();
 
     return temp;
 }
 
-list<anItem> Service::findData(string nameSearch)
+list<Scientist> Service::findData(string nameSearch)
 {
-    list<anItem> temp = list<anItem> ();
-    list<anItem>::iterator it;
+    list<Scientist> temp = list<Scientist> ();
+    list<Scientist>::iterator it;
 
     for(it = sciList.begin(); it != sciList.end(); it++)
     {
@@ -103,7 +103,6 @@ list<anItem> Service::findData(string nameSearch)
         {
           temp.push_back(*it);
         }
-
     }
     return temp;
 }
