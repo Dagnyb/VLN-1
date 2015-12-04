@@ -8,10 +8,10 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += \
-    VLN-1.cpp \
     userinterface.cpp \
     anitem.cpp \
-    list.cpp
+    list.cpp \
+    main_.cpp
 
 HEADERS += \
     userinterface.h \

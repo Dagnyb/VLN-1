@@ -1,18 +1,13 @@
-#include <fstream>
-#include <iostream>
+//#include <fstream>
+//#include <iostream>
 #include "userinterface.h"
-//#include "list.h"
-//#include "anitem.h"
-
 
 using namespace std;
 
 int main()
 {
     UserInterface ui;
-
-    ui.initial();
+    ui.begin();
 
     return 0;
 }
-
