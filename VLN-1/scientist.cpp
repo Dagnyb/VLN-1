@@ -3,7 +3,7 @@
 
 Scientist::Scientist(){}
 
-Scientist::Scientist(string aName, string aGender, int aBirthYear, int aDeathYear) {
+Scientist::Scientist (string aName, string aGender, int aBirthYear, int aDeathYear) {
     name = aName;
     gender = aGender;
     birthYear = aBirthYear;

@@ -9,14 +9,14 @@ TEMPLATE = app
 
 SOURCES += \
     userinterface.cpp \
-    anitem.cpp \
-    main_.cpp \
     service.cpp \
-    database.cpp
+    database.cpp \
+    main.cpp \
+    scientist.cpp
 
 HEADERS += \
     userinterface.h \
-    anitem.h \
     service.h \
-    database.h
+    database.h \
+    scientist.h
 

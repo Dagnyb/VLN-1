@@ -58,6 +58,7 @@ void UserInterface::options()
                     break;
                 case '4':
                     exit(1);
+                    loopAgain = false;
                     break;
                 default:
                     errorMessage("select 1, 2, 3 or 4");
@@ -328,7 +329,7 @@ void UserInterface::searchData()
     cout << "Please enter the name of scientist you wish to find: ";
     cin.sync();
     getline(cin, nameSearch);
-    list<anItem> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
+    list<Scientist> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
 
 
     if (sciFindData.empty())
@@ -407,9 +408,9 @@ void UserInterface::viewData()
 }
 
 
-void UserInterface::printList(list<anItem> aList)
+void UserInterface::printList(list<Scientist> aList)
 {
-    for (list<anItem>::iterator it = aList.begin(); it != aList.end(); it++)
+    for (list<Scientist>::iterator it = aList.begin(); it != aList.end(); it++)
     {
         cout << *it;
     }

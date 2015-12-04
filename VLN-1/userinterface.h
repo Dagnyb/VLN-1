@@ -6,7 +6,7 @@
 #include <list>
 #include <fstream>
 #include <string>
-#include "anitem.h"
+#include "scientist.h"
 #include "service.h"
 
 using namespace std;
@@ -21,9 +21,9 @@ public:
     void inputData(); // allows the user to choose what to do
     void searchData(); // search for name in List
     void viewData(); // writes list to screen without parameters
-    void printList (list<anItem> aList); // prints out the list
+    void printList (list<Scientist> aList); // prints out the list
     void sortOption(); // allows the user to choose how he wants to sort the list
-    void viewData(list<anItem> aList); // writes out the list to the screen with parameters
+    void viewData(list<Scientist> aList); // writes out the list to the screen with parameters
     void errorMessage(string aString);
     bool addAnother();
     string name();
