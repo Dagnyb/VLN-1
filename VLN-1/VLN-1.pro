@@ -11,10 +11,12 @@ SOURCES += \
     userinterface.cpp \
     anitem.cpp \
     main_.cpp \
-    service.cpp
+    service.cpp \
+    database.cpp
 
 HEADERS += \
     userinterface.h \
     anitem.h \
-    service.h
+    service.h \
+    database.h
 
