@@ -12,11 +12,13 @@ SOURCES += \
     service.cpp \
     database.cpp \
     main.cpp \
-    scientist.cpp
+    scientist.cpp \
+    computer.cpp
 
 HEADERS += \
     userinterface.h \
     service.h \
     database.h \
-    scientist.h
+    scientist.h \
+    computer.h
 
