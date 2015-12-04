@@ -1,42 +1,43 @@
 #include "userinterface.h"
 #include <QtSql/QSql>
 
-
 UserInterface::UserInterface()
 {
     sci = List() ;
-
 }
 
 void UserInterface::initial()
 {
-    cout << "- - - - - - - - -\n ";
-    cout << "D A T A B A S E\n";
-    cout << "- - - - - - - - -";
-    cout << endl;
-    cout << "This database contains known computer scientist.\n"
-            "You can add new scientists, view, sort and/or "
-            "search for a scientist in the database.\n"
-            "";
-    cout << endl;
-    sci.dataFromFile();
+    cout << "\t- - - - - - - - -\n "
+         << "\t D A T A B A S E\n"
+         << "\t- - - - - - - - -"
+         << endl
+         << "This database contains known computer scientist.\n"
+         << "You can add new scientists, view, sort and/or\n"
+         << "search for a scientist in the database.\n"
+         << endl;
+    sci.dataFromFile();  // HÉR DATA
     options();
     cout << endl;
 }
 void UserInterface::options()
 {
-    char control;
+    char lastControl = '1';
 
-    cout << "Choose:\n"
-         << "1 to input new computer scientist.\n"
-         << "2 to search in the existing database.\n"
-         << "3 to view existing data.\n"
-         << "4 to quit program.\n";
+    cout << "Select:\n"
+         << "1) to input new computer scientist.\n"
+         << "2) to search in the existing database.\n"
+         << "3) to view existing data.\n"
+         << "4) to quit program.\n"
+         << endl
+         << "Selection: ";
+    cin >> lastControl;
     cout << endl;
-    cin >> control;
 
-    switch (control)
+    while (lastControl != '4')
     {
+        switch (lastControl)
+        {
         case '1':
             inputData();
             break;
@@ -46,14 +47,17 @@ void UserInterface::options()
         case '3':
             viewData();
             break;
-        case '4':
-            exit(1);
-            break;
         default:
-            cout << "Invalid input\n";
-            options();
+            errorMessage("select 1, 2, 3 or 4");
+            cin >> lastControl;
             break;
+        }
     }
+}
+
+void UserInterface::errorMessage(string aString)
+{
+    cout << "Invalid input: " << aString << endl;
 }
 
 void UserInterface::inputData()

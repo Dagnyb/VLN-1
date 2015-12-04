@@ -24,6 +24,8 @@ public:
     void printList (list<anItem> aList); // prints out the list
     void sortOption(); // allows the user to choose how he wants to sort the list
     void viewData(list<anItem> aList); // writes out the list to the screen with parameters
+    void errorMessage(string aString);
+
 private:
     List sci;
 };
