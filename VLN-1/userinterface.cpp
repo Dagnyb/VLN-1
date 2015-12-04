@@ -1,5 +1,5 @@
 #include "userinterface.h"
-
+#include <QtSql/QSql>
 
 
 UserInterface::UserInterface()
@@ -117,7 +117,8 @@ void UserInterface::inputData()
 
     string out = name + ", " + gender + ", " + dayofbirth + ", " + dayofdeath + "\n";
     ofstream Scientistfile;
-    Scientistfile.open(FILENAME.c_str(), ios::out | ios::app);
+    QString dbScience = "dbScience.sqlite";
+    Scientistfile.open(dbScience.sqlite, ios::out | ios::app);
         if (Scientistfile.fail())
             {
                 cout<< "Input file opening fail.\n";
