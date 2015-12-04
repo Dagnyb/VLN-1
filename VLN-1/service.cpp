@@ -103,9 +103,12 @@ list<anItem> Service::findData(string nameSearch)
         {
           temp.push_back(*it);
         }
-    return temp;
+
     }
+    return temp;
 }
+
+
 
 
 
