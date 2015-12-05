@@ -3,12 +3,10 @@
 #include <QCoreApplication>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSql>
-#include "string"
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <bits/stringfwd.h>
-#include <QtSql>
+#include <QSqlQuery>
 #include <QtSql/QSqlDatabase>
 
 using namespace std;
