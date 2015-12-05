@@ -1,9 +1,8 @@
 #include "database.h"
 
 using namespace std;
-//----- Ekki horfa á neitt fyrir en komið er á fallinu.. ;)
 
-/*bool Connection()
+bool Connection()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -18,8 +17,13 @@ using namespace std;
     }
     return true;
 }
+<<<<<<< HEAD
 /*Database::Database()
 
+=======
+
+Database::Database()
+>>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -29,11 +33,15 @@ using namespace std;
     db.open();
     QSqlQuery query(db);
 
+<<<<<<< HEAD
     // þetta keyrir fínt en þetta var bara prufa en vil ekki henta
    string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
+=======
+    string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
+>>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
     query.exec(QString(queryInsert.c_str()));
 
-    //þetta er ég að laga
+}
 
    query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:Name, :Gender, :YearOfBirth, :YearOfDeath)");
    query.bindValue(":Name",         QString::fromStdString(Scientist.getName()));
@@ -44,7 +52,7 @@ using namespace std;
 =======
 
 void Database::add(Scientist scientist)
-  {
+{
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -62,6 +70,7 @@ void Database::add(Scientist scientist)
     query.exec();
 }
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 }
@@ -75,6 +84,8 @@ void Database::add(Scientist scientist)
 
 >>>>>>> 85f06a44306517eb37aa2c6e2387a52f6cd78b2c
 
+=======
+>>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
 /*void searchScientists()
 {
     QSqlDatabase SciDatabase;
@@ -92,9 +103,9 @@ void Database::add(Scientist scientist)
     query.searchYearOfBirth ("SELECT * FROM Scientists WHERE YearOfBirth LIKE %inputYearOfBirth") // Search by year of birth
     query.searchYearOfDeath ("SELECT * FROM Scientists WHERE YearOfDeath LIKE %inputYearOfDeath") // Search by year of death
 
-}
+}*/
 
-void searchComputers()
+/*void searchComputers()
 {
     QSqlDatabase SciDatabase;
     QSqlQuery query(SciDatabase);
@@ -104,6 +115,7 @@ void searchComputers()
     query.searchYearBuilt ("SELECT * FROM Computers WHERE YearBuilt LIKE inputYearBuilt") // Search by year built
     query.searchType ("SELECT * FROM Computers WHERE Type LIKE inputType") // Search by type
     query.searchWasItBuilt ("SELECT * FROM Computers WHERE WasItBuilt LIKE inputWasItBuilt") // Search by was it built
+<<<<<<< HEAD
 }
 */
 
@@ -124,3 +136,7 @@ void sortScientists()
     query.sortNameAsc ("SELECT * FROM Scientists s ORDER BY s.name "); // Sort scientists by name Ascending
     query.sortNameDesc ("SELECT * FROM Scientists s ORDER BY s.name DESC"); // Sort scientists by name Descending
 }*/
+=======
+}*/
+
+>>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c

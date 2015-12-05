@@ -8,7 +8,6 @@
 #include <string>
 #include <stdexcept>
 #include <QSqlQuery>
-#include <QtSql/QSqlDatabase>
 #include <QtSql>
 
 using namespace std;
