@@ -1,8 +1,28 @@
 #include "database.h"
 
 using namespace std;
+//----- Ekki horfa á neitt fyrir en komið er á fallinu.. ;)
+
+/*bool Connection()
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    if(!db.isOpen()){
+       throw std::runtime_error("Failed to open database");
+    }
+    return true;
+}
+/*Database::Database()
+=======
 
 Database::Database()
+>>>>>>> 572ea1d16c7842185e1a18e731db1ae1f2c0b745
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -17,24 +37,33 @@ Database::Database()
     query.exec(QString(queryInsert.c_str()));*/
 
     //þetta er ég að laga
-    /*
-   query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:Name, :Gender, :YearOfBirth, :YearOfDeath)");
-   query.bindValue(":Name",         QString::fromStdString(Scientist.getName()));
-   query.bindValue(":Gender",       QString::fromStdString(Scientist.getGender()));
-   query.bindValue(":YearOfBirth",  QString::fromStdString(Scientist.getBirthYear()));
-   query.bindValue(":YearOfDeath",  QString::fromStdString(Scientist.getDeathYear()));
 
-*/
+void Database::add(Scientist scientist)
+  {
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:Name, :Gender, :YearOfBirth, :YearOfDeath)");
+    query.bindValue(":Name",         QString::fromStdString(scientist.getName()));
+    query.bindValue(":Gender",       QString::fromStdString(scientist.getGender()));
+    query.bindValue(":YearOfBirth",  QString::number(scientist.getBirthYear()));
+    query.bindValue(":YearOfDeath",  QString::number(scientist.getDeathYear()));
     query.exec();
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
 
 /*void searchScientists()
 {

@@ -1,21 +1,22 @@
 #ifndef DATABASE_H
 #define DATABASE_H
+#include "scientist.h"
 #include <QCoreApplication>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSql>
-#include "string"
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <bits/stringfwd.h>
-#include <QtSql>
+#include <QSqlQuery>
 #include <QtSql/QSqlDatabase>
+#include <QtSql>
 
 using namespace std;
 class Database
 {
 public:
     Database();
+    void add(Scientist);
     //void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
 
