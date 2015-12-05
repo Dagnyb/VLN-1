@@ -51,24 +51,20 @@ void Database::add(Scientist scientist)
     query.exec();
 }
 
-/*void searchScientists()
+void searchScientists()
 {
-    QSqlDatabase SciDatabase;
-    SciDatabase = QSqlDatabase::addDatabase("QSQLITE"); //lætur vita hvaða
-    QString SciDatabaseName = "dbScience.sqlite";
-    SciDatabase.setDataBaseName(SciDatabaseName);
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
 
-    SciDatabase.open();
+    db.open();
+    QSqlQuery query(db);
 
-    QSqlQuery query(SciDatabase);
-    //Setja inn fall sem les inn töfluna
-    query.searchId ("SELECT * FROM Scientists WHERE ID LIKE %inputId") // Search by ID
-    query.searchName ("SELECT * FROM Scientists WHERE Name LIKE %inputName") // Search by name
-    query.searchGender ("SELECT * FROM Scientists WHERE Gender LIKE %inputGender") // Search by gender
-    query.searchYearOfBirth ("SELECT * FROM Scientists WHERE YearOfBirth LIKE %inputYearOfBirth") // Search by year of birth
-    query.searchYearOfDeath ("SELECT * FROM Scientists WHERE YearOfDeath LIKE %inputYearOfDeath") // Search by year of death
+    query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
+    query.bindValue(":name", QString::fromStdString("inputFromUser"));
 
-}*/
+}
 
 /*void searchComputers()
 {
