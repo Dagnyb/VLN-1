@@ -1,29 +1,12 @@
 #include "database.h"
-
+#include <stdexcept>
 using namespace std;
-//----- Ekki horfa á neitt fyrir en komið er á fallinu.. ;)
 
-/*bool Connection()
-{
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
 
-    db.open();
-    QSqlQuery query(db);
 
-    if(!db.isOpen()){
-       throw std::runtime_error("Failed to open database");
-    }
-    return true;
-}
-/*Database::Database()
-=======
+Database::Database(){}
 
-Database::Database()
->>>>>>> 572ea1d16c7842185e1a18e731db1ae1f2c0b745
-{
+/*
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -33,10 +16,10 @@ Database::Database()
     QSqlQuery query(db);
 
     // þetta keyrir fínt en þetta var bara prufa en vil ekki henta
-   /* string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
+    string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
     query.exec(QString(queryInsert.c_str()));*/
 
-    //þetta er ég að laga
+
 
 void Database::add(Scientist scientist)
   {
