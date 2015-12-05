@@ -1,15 +1,7 @@
 #include "database.h"
-#include <QtSql/QSql>
-#include "string"
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <bits/stringfwd.h>
-#include <QtSql>
-#include <QtSql/QSqlDatabase>
-
 
 using namespace std;
+
 Database::Database()
 {
     QSqlDatabase db;
