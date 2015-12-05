@@ -1,13 +1,4 @@
 #include "database.h"
-#include <QtSql/QSql>
-#include "string"
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <bits/stringfwd.h>
-#include <QtSql>
-#include <QtSql/QSqlDatabase>
-
 
 using namespace std;
 //----- Ekki horfa á neitt fyrir en komið er á fallinu.. ;)
@@ -28,6 +19,10 @@ using namespace std;
     return true;
 }
 /*Database::Database()
+=======
+
+Database::Database()
+>>>>>>> 572ea1d16c7842185e1a18e731db1ae1f2c0b745
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -73,13 +68,19 @@ void Database::add(Scientist scientist)
 /*void searchScientists()
 {
     QSqlDatabase SciDatabase;
+    SciDatabase = QSqlDatabase::addDatabase("QSQLITE"); //lætur vita hvaða
+    QString SciDatabaseName = "dbScience.sqlite";
+    SciDatabase.setDataBaseName(SciDatabaseName);
+
+    SciDatabase.open();
+
     QSqlQuery query(SciDatabase);
     //Setja inn fall sem les inn töfluna
-    query.searchId ("SELECT * FROM Scientists WHERE ID LIKE inputId") // Search by ID
-    query.searchName ("SELECT * FROM Scientists WHERE Name LIKE inputName") // Search by name
-    query.searchGender ("SELECT * FROM Scientists WHERE Gender LIKE inputGender") // Search by gender
-    query.searchYearOfBirth ("SELECT * FROM Scientists WHERE YearOfBirth LIKE inputYearOfBirth") // Search by year of birth
-    query.searchYearOfDeath ("SELECT * FROM Scientists WHERE YearOfDeath LIKE inputYearOfDeath") // Search by year of death
+    query.searchId ("SELECT * FROM Scientists WHERE ID LIKE %inputId") // Search by ID
+    query.searchName ("SELECT * FROM Scientists WHERE Name LIKE %inputName") // Search by name
+    query.searchGender ("SELECT * FROM Scientists WHERE Gender LIKE %inputGender") // Search by gender
+    query.searchYearOfBirth ("SELECT * FROM Scientists WHERE YearOfBirth LIKE %inputYearOfBirth") // Search by year of birth
+    query.searchYearOfDeath ("SELECT * FROM Scientists WHERE YearOfDeath LIKE %inputYearOfDeath") // Search by year of death
 
 }
 
