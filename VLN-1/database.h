@@ -16,7 +16,7 @@ class Database
 public:
     Database();
     void add(Scientist);
-    //void searchScientists(); // Search for scientists on database
+    void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
 
 private:
@@ -28,8 +28,6 @@ private:
     string searchYearBuilt;
     string searchType;
     string searchWasItBuilt;
-
-
 };
 
 
