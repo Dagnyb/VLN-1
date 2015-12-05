@@ -1,9 +1,8 @@
 #include "database.h"
 
 using namespace std;
-//----- Ekki horfa á neitt fyrir en komið er á fallinu.. ;)
 
-/*bool Connection()
+bool Connection()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -18,11 +17,8 @@ using namespace std;
     }
     return true;
 }
-/*Database::Database()
-=======
 
 Database::Database()
->>>>>>> 572ea1d16c7842185e1a18e731db1ae1f2c0b745
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -32,14 +28,13 @@ Database::Database()
     db.open();
     QSqlQuery query(db);
 
-    // þetta keyrir fínt en þetta var bara prufa en vil ekki henta
-   /* string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
-    query.exec(QString(queryInsert.c_str()));*/
+    string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
+    query.exec(QString(queryInsert.c_str()));
 
-    //þetta er ég að laga
+}
 
 void Database::add(Scientist scientist)
-  {
+{
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -55,15 +50,6 @@ void Database::add(Scientist scientist)
     query.bindValue(":YearOfDeath",  QString::number(scientist.getDeathYear()));
     query.exec();
 }
-
-
-
-
-
-
-
-
-
 
 /*void searchScientists()
 {
@@ -82,9 +68,9 @@ void Database::add(Scientist scientist)
     query.searchYearOfBirth ("SELECT * FROM Scientists WHERE YearOfBirth LIKE %inputYearOfBirth") // Search by year of birth
     query.searchYearOfDeath ("SELECT * FROM Scientists WHERE YearOfDeath LIKE %inputYearOfDeath") // Search by year of death
 
-}
+}*/
 
-void searchComputers()
+/*void searchComputers()
 {
     QSqlDatabase SciDatabase;
     QSqlQuery query(SciDatabase);
@@ -94,5 +80,5 @@ void searchComputers()
     query.searchYearBuilt ("SELECT * FROM Computers WHERE YearBuilt LIKE inputYearBuilt") // Search by year built
     query.searchType ("SELECT * FROM Computers WHERE Type LIKE inputType") // Search by type
     query.searchWasItBuilt ("SELECT * FROM Computers WHERE WasItBuilt LIKE inputWasItBuilt") // Search by was it built
-}
-*/
+}*/
+
