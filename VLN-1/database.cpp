@@ -17,13 +17,8 @@ bool Connection()
     }
     return true;
 }
-<<<<<<< HEAD
-/*Database::Database()
-
-=======
 
 Database::Database()
->>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -33,23 +28,10 @@ Database::Database()
     db.open();
     QSqlQuery query(db);
 
-<<<<<<< HEAD
-    // þetta keyrir fínt en þetta var bara prufa en vil ekki henta
-   string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
-=======
-    string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
->>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
+    string queryInsert = "INSERT INTO Scientists VALUES (30, 'Halla Palla', 'female', 1980, 0)";
     query.exec(QString(queryInsert.c_str()));
 
 }
-
-   query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:Name, :Gender, :YearOfBirth, :YearOfDeath)");
-   query.bindValue(":Name",         QString::fromStdString(Scientist.getName()));
-   query.bindValue(":Gender",       QString::fromStdString(Scientist.getGender()));
-   query.bindValue(":YearOfBirth",  QString::fromStdString(Scientist.getBirthYear()));
-   query.bindValue(":YearOfDeath",  QString::fromStdString(Scientist.getDeathYear()));
-
-=======
 
 void Database::add(Scientist scientist)
 {
@@ -66,26 +48,9 @@ void Database::add(Scientist scientist)
     query.bindValue(":Gender",       QString::fromStdString(scientist.getGender()));
     query.bindValue(":YearOfBirth",  QString::number(scientist.getBirthYear()));
     query.bindValue(":YearOfDeath",  QString::number(scientist.getDeathYear()));
->>>>>>> 85f06a44306517eb37aa2c6e2387a52f6cd78b2c
     query.exec();
 }
 
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-}
-=======
-
-
-
-
-
-
-
->>>>>>> 85f06a44306517eb37aa2c6e2387a52f6cd78b2c
-
-=======
->>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
 /*void searchScientists()
 {
     QSqlDatabase SciDatabase;
@@ -115,7 +80,6 @@ void Database::add(Scientist scientist)
     query.searchYearBuilt ("SELECT * FROM Computers WHERE YearBuilt LIKE inputYearBuilt") // Search by year built
     query.searchType ("SELECT * FROM Computers WHERE Type LIKE inputType") // Search by type
     query.searchWasItBuilt ("SELECT * FROM Computers WHERE WasItBuilt LIKE inputWasItBuilt") // Search by was it built
-<<<<<<< HEAD
 }
 */
 
@@ -136,7 +100,4 @@ void sortScientists()
     query.sortNameAsc ("SELECT * FROM Scientists s ORDER BY s.name "); // Sort scientists by name Ascending
     query.sortNameDesc ("SELECT * FROM Scientists s ORDER BY s.name DESC"); // Sort scientists by name Descending
 }*/
-=======
-}*/
 
->>>>>>> 848c5228c8899697e0afec387a334a7e54ce915c
