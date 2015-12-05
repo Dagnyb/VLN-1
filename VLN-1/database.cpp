@@ -8,17 +8,8 @@ using namespace std;
 using namespace std;
 
 
-Database::Database(){}
-
-
-    /* þetta keyrir fínt en þetta var bara prufa en vil ekki henta
-    string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
-    query.exec(QString(queryInsert.c_str()));*/
-
-
-    /*string queryInsert = "INSERT INTO Scientists VALUES (30, 'Halla Palla', 'female', 1980, 0)";
-    query.exec(QString(queryInsert.c_str()));*/
-
+Database::Database(){
+}
 
 
 void Database::add(Scientist scientist)
