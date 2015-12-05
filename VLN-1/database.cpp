@@ -1,8 +1,25 @@
 #include "database.h"
 
 using namespace std;
+//----- Ekki horfa á neitt fyrir en komið er á fallinu.. ;)
 
-Database::Database()
+/*bool Connection()
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    if(!db.isOpen()){
+       throw std::runtime_error("Failed to open database");
+    }
+    return true;
+}
+/*Database::Database()
+
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -24,9 +41,39 @@ Database::Database()
    query.bindValue(":YearOfBirth",  QString::fromStdString(Scientist.getBirthYear()));
    query.bindValue(":YearOfDeath",  QString::fromStdString(Scientist.getDeathYear()));
 
-    query.exec();
+=======
 
+void Database::add(Scientist scientist)
+  {
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:Name, :Gender, :YearOfBirth, :YearOfDeath)");
+    query.bindValue(":Name",         QString::fromStdString(scientist.getName()));
+    query.bindValue(":Gender",       QString::fromStdString(scientist.getGender()));
+    query.bindValue(":YearOfBirth",  QString::number(scientist.getBirthYear()));
+    query.bindValue(":YearOfDeath",  QString::number(scientist.getDeathYear()));
+>>>>>>> 85f06a44306517eb37aa2c6e2387a52f6cd78b2c
+    query.exec();
 }
+
+
+<<<<<<< HEAD
+}
+=======
+
+
+
+
+
+
+
+>>>>>>> 85f06a44306517eb37aa2c6e2387a52f6cd78b2c
 
 /*void searchScientists()
 {
