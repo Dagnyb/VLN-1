@@ -1,4 +1,6 @@
 #include "database.h"
+#include <iostream> // For testing purposes only
+                    // TODO: Delete before final version
 
 using namespace std;
 
@@ -83,21 +85,37 @@ void Database::add(Scientist scientist)
 }
 */
 
-/*
+
 void sortComputers()
 {
-    QSqlDatabase SciDatabase;
-    QSqlQuery query(SciDatabase);
-    query.sortNameAsc ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
-    query.sortNameDesc ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
-}*/
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
 
-/*
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
+    query.bindValue(":name","%");
+    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
+    query.bindValue(":name","%");
+}
+
+
 void sortScientists()
 {
-    QSqlDatabase SciDatabase;
-    QSqlQuery query(SciDatabase);
-    query.sortNameAsc ("SELECT * FROM Scientists s ORDER BY s.name "); // Sort scientists by name Ascending
-    query.sortNameDesc ("SELECT * FROM Scientists s ORDER BY s.name DESC"); // Sort scientists by name Descending
-}*/
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM scientists s ORDER BY s.name "); // Sort scientists by name Ascending
+    query.bindValue(":name","%");
+    query.prepare ("SELECT * FROM scientists s ORDER BY c.name DESC"); // Sort scientists by name Descending
+    query.bindValue(":name","%");
+}
 

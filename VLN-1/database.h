@@ -20,7 +20,7 @@ public:
     //void searchCompters(); // Search for computer in database
 
 private:
-    /*string searchId;
+    string searchId;
     string searchName;
     string searchGender;
     string searchYearOfBirth;
@@ -28,7 +28,7 @@ private:
     string searchYearBuilt;
     string searchType;
     string searchWasItBuilt;
-    */
+
 
 };
 
