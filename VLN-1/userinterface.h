@@ -6,7 +6,7 @@
 #include <list>
 #include <fstream>
 #include <string>
-#include "anitem.h"
+#include "scientist.h"
 #include "service.h"
 
 using namespace std;
@@ -16,19 +16,47 @@ class UserInterface
 {
 public:
     UserInterface();
-    void initial(); // the head of the output
-    void options(); // allows the user to choose what to do
-    void inputData(); // allows the user to choose what to do
-    void searchData(); // search for name in List
-    void viewData(); // writes list to screen without parameters
-    void printList (list<anItem> aList); // prints out the list
-    void sortOption(); // allows the user to choose how he wants to sort the list
-    void viewData(list<anItem> aList); // writes out the list to the screen with parameters
+
+    // the head of the output
+    void initial();
+
+    // allows the user to choose what to do
+    void options();
+
+    // allows the user to choose what to do
+    void inputData();
+
+    // search for name in List
+    void searchData();
+
+    // writes list to screen without parameters
+    void viewData();
+
+    // prints out the list
+    void printList (list<Scientist> aList);
+
+    // allows the user to choose how he wants to sort the list
+    void sortOption();
+
+    // writes out the list to the screen with parameters
+    void viewData(list<Scientist> aList);
+
+    // writes out error message and takes in string of instructions.
     void errorMessage(string aString);
+
+    // offers user to input another scientist, returns bool walue.
     bool addAnother();
+
+    // promts user and takes in name as a string and returns it
     string name();
+
+    // promts user and takes in gender as a string and returns it
     string gender();
+
+    // promts user and takes in year of birth s a int and returns it
     int birthYear();
+
+    // promts user and takes in year of death s a int and returns it
     int deathYear();
 private:
     Service sci;

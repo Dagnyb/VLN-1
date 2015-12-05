@@ -3,15 +3,15 @@
 
 Service::Service()
 {
-   sciList = list<anItem>();
+   sciList = list<Scientist>();
 }
 
-list<anItem> Service::getList()
+list<Scientist> Service::getList()
 {
     return sciList;
 }
 /*
-void Service::putList(list<anItem> inputList)
+void Service::putList(list<Scientist> inputList)
 {
     sciList = inputList;
 } */
@@ -30,7 +30,7 @@ void Service::dataFromFile()
     string next = "";
     do{
         getline(inStream,next);
-        anItem info = extract(next);
+        Scientist info = extract(next);
         sciList.push_back(info);
 
     }while (inStream);
@@ -39,20 +39,24 @@ void Service::dataFromFile()
 
 }
 
-anItem Service::extract (string aString)
+Scientist Service::extract (string aString)
 {
+    aString.c_str();
     char SYMBOL = ',';
     int pos1 = 0;
-    int pos2 = aString.find(SYMBOL);
-    int pos3 = aString.find(SYMBOL, pos2 + 1);
-    int pos4 = aString.find(SYMBOL, pos3 + 1);
+    size_t pos2 = aString.find(SYMBOL);
+    size_t pos3 = aString.find(SYMBOL, pos2 + 1);
+    size_t pos4 = aString.find(SYMBOL, pos3 + 1);
 
     string name = aString.substr(pos1, pos2);
     string gender = aString.substr(pos2+1, pos3-pos2-1);
     string bYear = aString.substr(pos3+1, pos4-pos2-1);
     string dYear = aString.substr(pos3+1, pos4-pos2-1); //eftir að laga
 
-    char birth [bYear.size()];
+    bYear.c_str();
+    dYear.c_str();
+
+    /*char birth [bYear.size()];
     for(unsigned int i = 0; i<bYear.size(); i++){
         birth[i] = bYear[i];
     }
@@ -61,41 +65,41 @@ anItem Service::extract (string aString)
     for(unsigned int i = 0; i<dYear.size(); i++){
         death[i]=dYear[i];
     }
+*/
+    int birthYear = atoi(bYear.c_str());
+    int deathYear = atoi(dYear.c_str());
 
-    int birthYear = atoi(birth);
-    int deathYear = atoi(death);
-
-    anItem sciInfo (name, gender, birthYear, deathYear);
+    Scientist sciInfo (name, gender, birthYear, deathYear);
 
 return sciInfo;
 }
 
-bool sortlikethis(anItem a, anItem b)
+bool sortlikethis(Scientist a, Scientist b)
 {
     return a.getName() < b.getName();
 }
 
-list<anItem> Service::sortListS()
+list<Scientist> Service::sortListS()
 {
-    list<anItem> temp = sciList;
+    list<Scientist> temp = sciList;
     temp.sort(sortlikethis);
 
     return temp;
 }
 
-list<anItem> Service::sortListR()
+list<Scientist> Service::sortListR()
 {
-    list<anItem> temp = sciList;
+    list<Scientist> temp = sciList;
    // temp.sort(sortlikethis);
     temp.reverse();
 
     return temp;
 }
 
-list<anItem> Service::findData(string nameSearch)
+list<Scientist> Service::findData(string nameSearch)
 {
-    list<anItem> temp = list<anItem> ();
-    list<anItem>::iterator it;
+    list<Scientist> temp = list<Scientist> ();
+    list<Scientist>::iterator it;
 
     for(it = sciList.begin(); it != sciList.end(); it++)
     {
@@ -103,9 +107,11 @@ list<anItem> Service::findData(string nameSearch)
         {
           temp.push_back(*it);
         }
-    return temp;
     }
+    return temp;
 }
+
+
 
 
 
