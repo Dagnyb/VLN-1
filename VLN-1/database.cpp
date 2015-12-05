@@ -2,27 +2,27 @@
 #include <stdexcept>
 using namespace std;
 
+#include <iostream> // For testing purposes only
+                    // TODO: Delete before final version
+
+using namespace std;
 
 
 Database::Database(){}
 
-/*
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
 
-    db.open();
-    QSqlQuery query(db);
-
-    // þetta keyrir fínt en þetta var bara prufa en vil ekki henta
+    /* þetta keyrir fínt en þetta var bara prufa en vil ekki henta
     string queryInsert = "INSERT INTO Sientict VALUES (30, 'Halla Palla', 'female', 1980, 0)";
+    query.exec(QString(queryInsert.c_str()));*/
+
+
+    /*string queryInsert = "INSERT INTO Scientists VALUES (30, 'Halla Palla', 'female', 1980, 0)";
     query.exec(QString(queryInsert.c_str()));*/
 
 
 
 void Database::add(Scientist scientist)
-  {
+{
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -39,35 +39,22 @@ void Database::add(Scientist scientist)
     query.exec();
 }
 
-
-
-
-
-
-
-
-
-
-/*void searchScientists()
+void searchScientists()
 {
-    QSqlDatabase SciDatabase;
-    SciDatabase = QSqlDatabase::addDatabase("QSQLITE"); //lætur vita hvaða
-    QString SciDatabaseName = "dbScience.sqlite";
-    SciDatabase.setDataBaseName(SciDatabaseName);
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
 
-    SciDatabase.open();
+    db.open();
+    QSqlQuery query(db);
 
-    QSqlQuery query(SciDatabase);
-    //Setja inn fall sem les inn töfluna
-    query.searchId ("SELECT * FROM Scientists WHERE ID LIKE %inputId") // Search by ID
-    query.searchName ("SELECT * FROM Scientists WHERE Name LIKE %inputName") // Search by name
-    query.searchGender ("SELECT * FROM Scientists WHERE Gender LIKE %inputGender") // Search by gender
-    query.searchYearOfBirth ("SELECT * FROM Scientists WHERE YearOfBirth LIKE %inputYearOfBirth") // Search by year of birth
-    query.searchYearOfDeath ("SELECT * FROM Scientists WHERE YearOfDeath LIKE %inputYearOfDeath") // Search by year of death
+    query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
+    query.bindValue(":name", QString::fromStdString("inputFromUser"));
 
 }
 
-void searchComputers()
+/*void searchComputers()
 {
     QSqlDatabase SciDatabase;
     QSqlQuery query(SciDatabase);
@@ -79,3 +66,38 @@ void searchComputers()
     query.searchWasItBuilt ("SELECT * FROM Computers WHERE WasItBuilt LIKE inputWasItBuilt") // Search by was it built
 }
 */
+
+
+void sortComputers()
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
+    query.bindValue(":name","%");
+    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
+    query.bindValue(":name","%");
+}
+
+
+void sortScientists()
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM scientists s ORDER BY s.name "); // Sort scientists by name Ascending
+    query.bindValue(":name","%");
+    query.prepare ("SELECT * FROM scientists s ORDER BY c.name DESC"); // Sort scientists by name Descending
+    query.bindValue(":name","%");
+}
+
