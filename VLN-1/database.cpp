@@ -5,8 +5,6 @@ using namespace std;
 #include <iostream> // For testing purposes only
                     // TODO: Delete before final version
 
-//using namespace std; er í .h skránni á ekki að þurfa hér
-
 
 Database::Database(){
 }
@@ -59,7 +57,7 @@ void searchScientists()
 */
 
 
-void sortComputers()
+void sortComputersAsc()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -70,12 +68,24 @@ void sortComputers()
     QSqlQuery query(db);
 
     query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
-    query.bindValue(":name","%");
-    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
-    query.bindValue(":name","%");
+    query.bindValue(":name","%" + QString::fromStdString("ae") + "%");
     query.exec();
 }
 
+/*void sortComputersDesc()
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
+    query.bindValue(":name","%");
+    query.exec();
+}*/
 
 /*void sortScientists()
 {

@@ -2,14 +2,12 @@
 #define DATABASE_H
 #include "scientist.h"
 #include <QCoreApplication>
-//#include <QtSql/QSqlDatabase>
-//#include <QtSql/QSql>
 #include <iostream>
 #include <string>
 #include <stdexcept>
 #include <QSqlQuery>
 #include <QtSql>
-#include "service.h"
+
 
 using namespace std;
 class Database
@@ -19,7 +17,8 @@ public:
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
-    void sortComputers();
+    void sortComputersAsc();
+    //void sortComputersDesc();
     //void sortScientists();
 private:
     string searchId;

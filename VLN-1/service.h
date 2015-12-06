@@ -1,6 +1,7 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 #include "scientist.h"
+#include "database.h"
 #include <string>
 #include <list>
 #include <cstdlib>
