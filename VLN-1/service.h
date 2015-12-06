@@ -28,6 +28,7 @@ public:
     //bool sortlikethis(Scientist a, Scientist b);
 private:
     list <Scientist> sciList;
+    Database db;
 };
 
 #endif // SERVICE_H

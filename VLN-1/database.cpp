@@ -1,22 +1,21 @@
 #include "database.h"
-#include <stdexcept>
-using namespace std;
-
-#include <iostream> // For testing purposes only
-                    // TODO: Delete before final version
 
 
-Database::Database(){
+Database::Database()
+{
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
 }
 
 
 void Database::add(Scientist scientist)
-{
+{/*
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
-
+*/
     db.open();
     QSqlQuery query(db);
 
@@ -28,19 +27,15 @@ void Database::add(Scientist scientist)
     query.exec();
 }
 
-void searchScientists()
+void Database::searchScientists()
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
+
 
     db.open();
     QSqlQuery query(db);
 
     query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
     query.bindValue(":name", QString::fromStdString("inputFromUser"));
-
 }
 
 /*void searchComputers()
@@ -90,19 +85,45 @@ void Database::sortComputersAsc()
     query.exec();
 }*/
 
-/*void sortScientists()
+list <Scientist> Database::sortScientists()
 {
+    /*
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
-
+    */
     db.open();
-    QSqlQuery query(db);
 
+    QSqlQuery query(db);
+    /*
     query.prepare ("SELECT * FROM scientists s ORDER BY s.name "); // Sort scientists by name Ascending
     query.bindValue(":name","%");
     query.prepare ("SELECT * FROM scientists s ORDER BY c.name DESC"); // Sort scientists by name Descending
     query.bindValue(":name","%");
-}*/
+    */
 
+    query.exec("SELECT * FROM scientists");
+    list <Scientist> result = list<Scientist>();
+    result = databaseToList(query);
+
+    return result;
+
+}
+list <Scientist> Database::databaseToList(QSqlQuery query)
+{
+    list <Scientist> result = list<Scientist>();
+
+    while (query.next())
+    {
+        string name = query.value("Name").toString().toStdString();
+        string gender = query.value("Gender").toString().toStdString();
+        int birthYear = query.value("YearOfBirth").toInt();
+        int deathYear = query.value("YearOfDeath").toInt();
+
+        Scientist newLine(name, gender, birthYear, deathYear);
+        result.push_back(newLine);
+    }
+
+    return result;
+}
