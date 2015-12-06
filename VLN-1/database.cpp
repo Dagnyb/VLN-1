@@ -117,45 +117,32 @@ void Database::sortComputersAsc()
 list <Scientist> Database::sortScientists()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "hrund_db.sqlite";
+    QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
-
 
     db.open();
     if(!db.open())
     {
         exit(1);
     }
-    else cout <<"connection open\n";
 
     QSqlQuery query(db);
-    string create = "INSERT INTO VALUES(Name, Gender, YearOfBirth, YearOfDeath)";
-    query.exec(QString(create.c_str()));
 
-    query.prepare ("SELECT * FROM Scientists ORDER BY Name"); // Sort scientists by name Ascending
-  //  query.bindValue(":Name","%");
-    /*
-    query.prepare ("SELECT * FROM Scientists s ORDER BY s.name DESC"); // Sort scientists by name Descending
-    query.bindValue(":name","%");
-    */
+    query.prepare ("SELECT * FROM Scientists ORDER BY Name");
 
-    if (query.exec())//(query.exec())
+    if (!query.exec())
     {
-        cout << "exec works\n";
-    }
-    else
-    {
-        cout << "does not work\n";
         qDebug() << query.lastError().text();
     }
+
     list <Scientist> result = list<Scientist>();
     result = databaseToList(query);
 
     db.close();
 
     return result;
-
 }
+
 list <Scientist> Database::databaseToList(QSqlQuery& query)
 {
     list <Scientist> result = list<Scientist>();
