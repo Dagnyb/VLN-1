@@ -96,10 +96,11 @@ void sortComputers()
     query.bindValue(":name","%");
     query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
     query.bindValue(":name","%");
+    query.exec();
 }
 
 
-void sortScientists()
+/*void sortScientists()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -113,5 +114,5 @@ void sortScientists()
     query.bindValue(":name","%");
     query.prepare ("SELECT * FROM scientists s ORDER BY c.name DESC"); // Sort scientists by name Descending
     query.bindValue(":name","%");
-}
+}*/
 

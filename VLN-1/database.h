@@ -9,6 +9,7 @@
 #include <stdexcept>
 #include <QSqlQuery>
 #include <QtSql>
+#include "service.h"
 
 using namespace std;
 class Database
@@ -18,7 +19,8 @@ public:
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
-
+    void sortComputers();
+    //void sortScientists();
 private:
     string searchId;
     string searchName;
