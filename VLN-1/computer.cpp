@@ -48,6 +48,8 @@ ostream& operator << (ostream& outs, const Computer& Computer)
         cout << "Yes";
     }
     else
+    {
         cout << "No" << endl;
+    }
     return outs;
 }

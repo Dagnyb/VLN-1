@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include "scientist.h"
+#include "computer.h"
 #include "service.h"
 
 using namespace std;
@@ -32,8 +33,11 @@ public:
     // writes list to screen without parameters
     void viewData();
 
-    // prints out the list
+    // prints out the list of scientist
     void printList (list<Scientist> aList);
+
+    // prints out the list of computer
+    void printComputerList (list<Computer> aList);
 
     // allows the user to choose how he wants to sort the list
     void sortOption();

@@ -134,17 +134,46 @@ list <Scientist> Database::sortScientists()
         qDebug() << query.lastError().text();
     }
 
-    list <Scientist> result = list<Scientist>();
-    result = databaseToList(query);
+    list <Scientist> result = list <Scientist>();
+    result = databaseToScientistList(query);
 
     db.close();
 
     return result;
 }
 
-list <Scientist> Database::databaseToList(QSqlQuery& query)
+list <Computer> Database::sortComputer()
 {
-    list <Scientist> result = list<Scientist>();
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    if(!db.open())
+    {
+        exit(1);
+    }
+
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM Computers ORDER BY Name");
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Computer> result = list <Computer>();
+    result = databaseToComputerList(query);
+
+    db.close();
+
+    return result;
+}
+
+list <Scientist> Database::databaseToScientistList(QSqlQuery& query)
+{
+    list <Scientist> result = list <Scientist>();
 
     while (query.next())
     {
@@ -154,6 +183,24 @@ list <Scientist> Database::databaseToList(QSqlQuery& query)
         int deathYear = query.value("YearOfDeath").toInt();
 
         Scientist newLine(name, gender, birthYear, deathYear);
+        result.push_back(newLine);
+    }
+
+    return result;
+}
+
+list <Computer> Database::databaseToComputerList(QSqlQuery& query)
+{
+    list <Computer> result = list <Computer>();
+
+    while (query.next())
+    {
+        string name = query.value("Name").toString().toStdString();
+        int yearBuild = query.value("YearBuild").toInt();
+        string type = query.value("Type").toString().toStdString();
+        bool wasItBuild = query.value("WasItBuild").toBool();
+
+        Computer newLine(name, yearBuild, type, wasItBuild);
         result.push_back(newLine);
     }
 

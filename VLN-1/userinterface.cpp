@@ -231,7 +231,7 @@ void UserInterface::searchData()
     cout << "Please enter the name of scientist you wish to find: ";
     cin.sync();
     getline(cin, nameSearch);
-    list<Scientist> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
+    list <Scientist> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
 
 
     if (sciFindData.empty())
@@ -288,7 +288,7 @@ void UserInterface::sortOption()
        break;
        case 'R':
            cout << "The list in reversed alphabetical order: " << endl;
-           printList(sci.sortListR());
+           printComputerList(sci.sortListR());
 
        break;
        case 'Q':
@@ -303,16 +303,24 @@ void UserInterface::sortOption()
 
 void UserInterface::viewData()
 {
-    printList(sci.getList());
-    cout << endl;
+  //  printList(sci.getList());
+  //  cout << endl;
     sortOption();
     options();
 }
 
 
-void UserInterface::printList(list<Scientist> aList)
+void UserInterface::printList(list <Scientist> aList)
 {
-    for (list<Scientist>::iterator it = aList.begin(); it != aList.end(); it++)
+    for (list <Scientist>::iterator it = aList.begin(); it != aList.end(); it++)
+    {
+        cout << *it;
+    }
+}
+
+void UserInterface::printComputerList(list <Computer> aList)
+{
+    for (list <Computer>::iterator it = aList.begin(); it != aList.end(); it++)
     {
         cout << *it;
     }
