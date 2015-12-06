@@ -57,7 +57,7 @@ void searchScientists()
 */
 
 
-void sortComputersAsc()
+void Database::sortComputersAsc()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -67,9 +67,12 @@ void sortComputersAsc()
     db.open();
     QSqlQuery query(db);
 
-    query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
+   /* query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
     query.bindValue(":name","%" + QString::fromStdString("ae") + "%");
-    query.exec();
+    query.exec();*/
+
+    string name = query.value("Name").toString().toStdString();
+    cout << name << endl;
 }
 
 /*void sortComputersDesc()
