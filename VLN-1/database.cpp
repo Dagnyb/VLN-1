@@ -3,9 +3,9 @@
 
 Database::Database()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    /*db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
+    db.setDatabaseName(dbScienc);*/
 }
 
 
@@ -60,14 +60,42 @@ void Database::sortComputersAsc()
     db.setDatabaseName(dbScienc);
 
     db.open();
-    QSqlQuery query(db);
+    //QSqlQuery query(db);
 
-   /* query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
-    query.bindValue(":name","%" + QString::fromStdString("ae") + "%");
-    query.exec();*/
+    QSqlQuery q = db.exec("SELECT * FROM scientists");
+    if(!q.lastError().isValid())
+    {
+        qDebug()<<"works!";
+    }else qDebug() << "Failed, error: " <<q.lastError().text();
 
+    db.close();
+
+
+    //query.prepare ("SELECT * FROM computers"); // TEST
+    //query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
+    //query.bindValue(":name", QString::fromStdString("%"));
+
+/*    if( !query.exec() )
+    {
+        qDebug() << query.lastError().text();
+    }
+*/
+    /*if(query.exec())
+    {
+        cout << "exec virkar" << endl;
+    }else cout << "Not Working" << endl;
+    */
+
+   /* while(query.next())
+    {
+    int id = query.value(0).toInt();
     string name = query.value("Name").toString().toStdString();
-    cout << name << endl;
+    string gender = query.value ("Gender").toString().toStdString();
+    int birth = query.value ("YearOfBirth").toInt();
+    int death = query.value("YearOfDeath").toUInt();
+    cout << id << name << gender << birth << death << endl;
+    }
+    db.close();*/
 }
 
 /*void sortComputersDesc()
