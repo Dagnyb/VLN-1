@@ -82,8 +82,8 @@ bool sortlikethis(Scientist a, Scientist b)
 list<Scientist> Service::sortListS()
 {
     list<Scientist> temp = sciList;
-    temp.sort(sortlikethis);
-
+    //temp.sort(sortlikethis);
+    temp = db.sortScientists();
     return temp;
 }
 

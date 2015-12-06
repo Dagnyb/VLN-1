@@ -1,6 +1,7 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 #include "scientist.h"
+#include "database.h"
 #include <string>
 #include <list>
 #include <cstdlib>
@@ -27,6 +28,7 @@ public:
     //bool sortlikethis(Scientist a, Scientist b);
 private:
     list <Scientist> sciList;
+    Database db;
 };
 
 #endif // SERVICE_H

@@ -2,24 +2,34 @@
 #define DATABASE_H
 #include "scientist.h"
 #include <QCoreApplication>
-//#include <QtSql/QSqlDatabase>
-//#include <QtSql/QSql>
 #include <iostream>
 #include <string>
+#include <list>
 #include <stdexcept>
 #include <QSqlQuery>
 #include <QtSql>
 
+
+#include <iostream> // For testing purposes only
+                    // TODO: Delete before final version
+
+
 using namespace std;
+
 class Database
 {
 public:
     Database();
+    list <Scientist> databaseToList(QSqlQuery query);
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
+    list<Scientist> sortScientists();
+
 
 private:
+    QSqlDatabase db;
+
     string searchId;
     string searchName;
     string searchGender;
