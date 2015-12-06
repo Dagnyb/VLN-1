@@ -3,15 +3,21 @@
 
 Service::Service()
 {
-   sciList = list<Scientist>();
+   sciList = list <Scientist>();
+   comList = list <Computer>();
+
 }
 
-list<Scientist> Service::getList()
+list <Scientist> Service::getList()
 {
     return sciList;
 }
+list <Computer> Service::getComputerList()
+{
+    return comList;
+}
 /*
-void Service::putList(list<Scientist> inputList)
+void Service::putList(list <Scientist> inputList)
 {
     sciList = inputList;
 } */
@@ -79,27 +85,24 @@ bool sortlikethis(Scientist a, Scientist b)
     return a.getName() < b.getName();
 }
 
-list<Scientist> Service::sortListS()
+list <Scientist> Service::sortListS()
 {
-    list<Scientist> temp = sciList;
-    //temp.sort(sortlikethis);
+    list <Scientist> temp = sciList;
     temp = db.sortScientists();
     return temp;
 }
 
-list<Scientist> Service::sortListR()
+list <Computer> Service::sortListR()
 {
-    list<Scientist> temp = sciList;
-   // temp.sort(sortlikethis);
-    temp.reverse();
-
+    list <Computer> temp = comList;
+    temp = db.sortComputer();
     return temp;
 }
 
-list<Scientist> Service::findData(string nameSearch)
+list <Scientist> Service::findData(string nameSearch)
 {
-    list<Scientist> temp = list<Scientist> ();
-    list<Scientist>::iterator it;
+    list <Scientist> temp = list <Scientist> ();
+    list <Scientist>::iterator it;
 
     for(it = sciList.begin(); it != sciList.end(); it++)
     {

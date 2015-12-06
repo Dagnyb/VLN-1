@@ -1,6 +1,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 #include "scientist.h"
+#include "computer.h"
 //#include <QCoreApplication>
 #include <iostream>
 #include <string>
@@ -21,11 +22,15 @@ class Database
 public:
     Database();
 
-    list <Scientist> databaseToList(QSqlQuery& query);
+    list <Scientist> databaseToScientistList(QSqlQuery& query);
+    list <Computer> databaseToComputerList(QSqlQuery& query);
+
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
-    list<Scientist> sortScientists();
+    list <Scientist> sortScientists();
+    list <Computer> sortComputer();
+
 
     void sortComputersAsc();
     //void sortComputersDesc();
