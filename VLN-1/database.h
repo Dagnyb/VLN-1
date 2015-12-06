@@ -9,10 +9,8 @@
 #include <QSqlQuery>
 #include <QtSql>
 
-
 #include <iostream> // For testing purposes only
                     // TODO: Delete before final version
-
 
 using namespace std;
 
@@ -20,13 +18,15 @@ class Database
 {
 public:
     Database();
+
     list <Scientist> databaseToList(QSqlQuery query);
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
     list<Scientist> sortScientists();
 
-
+    void sortComputersAsc();
+    //void sortComputersDesc();
 private:
     QSqlDatabase db;
 

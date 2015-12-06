@@ -52,7 +52,7 @@ void Database::searchScientists()
 */
 
 
-void sortComputers()
+void sortComputersAsc()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -63,11 +63,24 @@ void sortComputers()
     QSqlQuery query(db);
 
     query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
-    query.bindValue(":name","%");
-    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
-    query.bindValue(":name","%");
+    query.bindValue(":name","%" + QString::fromStdString("ae") + "%");
+    query.exec();
 }
 
+/*void sortComputersDesc()
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
+    query.bindValue(":name","%");
+    query.exec();
+}*/
 
 list <Scientist> Database::sortScientists()
 {
@@ -86,6 +99,7 @@ list <Scientist> Database::sortScientists()
     query.prepare ("SELECT * FROM scientists s ORDER BY c.name DESC"); // Sort scientists by name Descending
     query.bindValue(":name","%");
     */
+
     query.exec("SELECT * FROM scientists");
     list <Scientist> result = list<Scientist>();
     result = databaseToList(query);
