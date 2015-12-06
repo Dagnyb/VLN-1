@@ -2,10 +2,11 @@
 
 
 Database::Database()
-{
+{/*
     db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
+    QString dbScienc = ".\dbScience.sqlite";
     db.setDatabaseName(dbScienc);
+*/
 }
 
 
@@ -52,13 +53,13 @@ void Database::searchScientists()
 */
 
 
-void sortComputersAsc()
-{
+void Database::sortComputersAsc()
+{/*
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
-
+*/
     db.open();
     QSqlQuery query(db);
 
@@ -84,30 +85,47 @@ void sortComputersAsc()
 
 list <Scientist> Database::sortScientists()
 {
-    /*
-    QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
+    QString dbScienc = "hrund_db.sqlite";
     db.setDatabaseName(dbScienc);
-    */
+
+
     db.open();
+    if(!db.open())
+    {
+        exit(1);
+    }
+    else cout <<"connection open\n";
 
     QSqlQuery query(db);
+    string create = "INSERT INTO VALUES(Name, Gender, YearOfBirth, YearOfDeath)";
+    query.exec(QString(create.c_str()));
+
+    query.prepare ("SELECT * FROM Scientists ORDER BY Name"); // Sort scientists by name Ascending
+  //  query.bindValue(":Name","%");
     /*
-    query.prepare ("SELECT * FROM scientists s ORDER BY s.name "); // Sort scientists by name Ascending
-    query.bindValue(":name","%");
-    query.prepare ("SELECT * FROM scientists s ORDER BY c.name DESC"); // Sort scientists by name Descending
+    query.prepare ("SELECT * FROM Scientists s ORDER BY s.name DESC"); // Sort scientists by name Descending
     query.bindValue(":name","%");
     */
 
-    query.exec("SELECT * FROM scientists");
+    if (query.exec())//(query.exec())
+    {
+        cout << "exec works\n";
+    }
+    else
+    {
+        cout << "does not work\n";
+        qDebug() << query.lastError().text();
+    }
     list <Scientist> result = list<Scientist>();
     result = databaseToList(query);
+
+    db.close();
 
     return result;
 
 }
-list <Scientist> Database::databaseToList(QSqlQuery query)
+list <Scientist> Database::databaseToList(QSqlQuery& query)
 {
     list <Scientist> result = list<Scientist>();
 

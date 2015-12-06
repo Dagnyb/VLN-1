@@ -1,13 +1,15 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 #include "scientist.h"
-#include <QCoreApplication>
+//#include <QCoreApplication>
 #include <iostream>
 #include <string>
 #include <list>
-#include <stdexcept>
-#include <QSqlQuery>
+//#include <stdexcept>
+//#include <QSqlQuery>
 #include <QtSql>
+#include <cstdlib>
+//#include <QSql>
 
 #include <iostream> // For testing purposes only
                     // TODO: Delete before final version
@@ -19,7 +21,7 @@ class Database
 public:
     Database();
 
-    list <Scientist> databaseToList(QSqlQuery query);
+    list <Scientist> databaseToList(QSqlQuery& query);
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
