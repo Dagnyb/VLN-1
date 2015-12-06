@@ -27,10 +27,9 @@ void UserInterface::initial()
 void UserInterface::options()
 {
     bool loopAgain = true;
-    bool insideLoopAgain = true;
-
     while(loopAgain == true)
     {
+        bool insideLoopAgain = true;
         cout << endl
              << "Select:\n"
              << "1) to input new computer scientist.\n"
@@ -49,20 +48,24 @@ void UserInterface::options()
             {
                 case '1':
                     inputData();
+                    loopAgain = true;
                     break;
                 case '2':
                     searchData();
+                    loopAgain = true;
                     break;
                 case '3':
                     viewData();
+                    loopAgain = true;
                     break;
                 case '4':
-                    exit(1);
                     loopAgain = false;
+                    exit(1);
                     break;
                 default:
-                    errorMessage("select 1, 2, 3 or 4");
+                    errorMessage(". Please select 1, 2, 3 or 4: ");
                     cin >> lastControl;
+                    loopAgain = false;
                     insideLoopAgain = true;
                     break;
             }
@@ -93,7 +96,7 @@ string UserInterface::name()
     //locale loc;
     while(name.empty())  //setja in isdigit held samt að það vinni bara með char ath ef við höfum tíma.
     {
-        errorMessage("Please input name. ");
+        errorMessage(". Please input name: ");
         getline(cin, name);
     }
     return name;
@@ -101,9 +104,8 @@ string UserInterface::name()
 
 string UserInterface::gender()
 {
-    cout << "Gender select 1) for female\n"
-            "              2) for male\n"
-            "selection:    ";
+    cout << "Select gender 1) for female\n"
+         << "              2) for male       : ";
 
     char ans;
     cin >> ans;
@@ -140,7 +142,7 @@ int UserInterface::birthYear()
 
     while (year < MINYEAR || year > MAXYEAR )
     {
-        errorMessage("Please input valid year on the format YYYY. ");
+        errorMessage(" Please input valid year on the format YYYY: ");
         cin >> year;
     }
     return year;
@@ -150,7 +152,7 @@ int UserInterface::deathYear()
 {
     int year;
 
-    cout << "Stil alive (y/n): ";
+    cout << "Is the scientist still alive? (y/n): ";
     char ans;
     cin >> ans;
 
@@ -171,7 +173,7 @@ int UserInterface::deathYear()
                 cin >> year;
                 while (year < MINYEAR || year > MAXYEAR )
                 {
-                    errorMessage("Please input valid year");
+                    errorMessage(" Please select y or n: ");
                     cin >> year;
                 }
                 break;
@@ -210,7 +212,7 @@ bool UserInterface::addAnother()
         {
             do
             {
-            errorMessage("select y or n: ");
+            errorMessage(" Please select y or n: ");
             cin >> another2;
             }
             while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
@@ -318,5 +320,5 @@ void UserInterface::printList(list<Scientist> aList)
 
 void UserInterface::errorMessage(string aString)
 {
-    cout << "Invalid input: " << aString << endl;
+    cout << "Invalid input" << aString << endl;
 }

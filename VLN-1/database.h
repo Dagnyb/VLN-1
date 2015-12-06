@@ -2,8 +2,8 @@
 #define DATABASE_H
 #include "scientist.h"
 #include <QCoreApplication>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSql>
+//#include <QtSql/QSqlDatabase>
+//#include <QtSql/QSql>
 #include <iostream>
 #include <string>
 #include <stdexcept>

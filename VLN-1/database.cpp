@@ -2,7 +2,7 @@
 #include <iostream> // For testing purposes only
                     // TODO: Delete before final version
 
-using namespace std;
+//using namespace std; er í .h skránni á ekki að þurfa hér
 
 bool Connection()
 {
