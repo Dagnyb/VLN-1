@@ -1,39 +1,16 @@
 #include "database.h"
+#include <stdexcept>
+using namespace std;
+
 #include <iostream> // For testing purposes only
                     // TODO: Delete before final version
 
-using namespace std;
+//using namespace std; er í .h skránni á ekki að þurfa hér
 
-bool Connection()
-{
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
 
-    db.open();
-    QSqlQuery query(db);
-
-    if(!db.isOpen()){
-       throw std::runtime_error("Failed to open database");
-    }
-    return true;
+Database::Database(){
 }
 
-Database::Database()
-{
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    QSqlQuery query(db);
-
-    string queryInsert = "INSERT INTO Scientists VALUES (30, 'Halla Palla', 'female', 1980, 0)";
-    query.exec(QString(queryInsert.c_str()));
-
-}
 
 void Database::add(Scientist scientist)
 {
