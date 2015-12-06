@@ -1,6 +1,6 @@
 #include "database.h"
 
-
+Database::Database()
 {
     /*db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -54,7 +54,6 @@ void Database::searchScientists()
 
 void Database::sortComputersAsc()
 {/*
->>>>>>> 04408e859e35a200a9151df3c2bb42b2e893644f
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
