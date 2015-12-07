@@ -1,5 +1,4 @@
 #include "userinterface.h"
-#include <QtSql/QSql>
 
 const int MINYEAR = 1800;
 const int MAXYEAR = 2015;
@@ -16,11 +15,14 @@ void UserInterface::initial()
          << "\t D A T A B A S E\n"
          << "\t- - - - - - - - -"
          << endl
-         << "This database contains known computer scientist.\n"
-         << "You can add new scientists, view, sort and/or\n"
-         << "search for a scientist in the database.\n"
+         << "This program connects to a database containing known computer\n"
+         << "scientists and the devices they have been credited to work on.\n"
+         << endl
+         << "You can use this program to add a new scientist and/or computer to\n"
+         << "the database and connect the corresponding scientist to his devices,\n"
+         << "search for a scientist or a device as well as change existing data "
+         << "regarding the scientists and/or their devices.\n"
          << endl;
-    sci.dataFromFile();  // HÉR DATA
     options();
 
 }
@@ -224,6 +226,66 @@ bool UserInterface::addAnother()
 
     return add;
 }
+
+string UserInterface::searchString()
+{
+    string search;
+
+    cout << "Please enter the name: ";
+    cin.sync();
+ //   cin.ignore();  Fyrir Maca eða ????
+    getline(cin, search);
+
+    return search;
+}
+
+void UserInterface::searchData()
+{
+    bool loopAgain = true;
+    while(loopAgain == true)
+    {
+        cout << endl
+             << "Select:\n"
+             << "1) to search for scientists.\n"
+             << "2) to search for computer.\n"
+             << "3) back to main menu"
+             << endl
+             << "Selection: ";
+        char control;
+        cin >> control;
+        cout << endl;
+        bool insideLoopAgain = true;
+        while (insideLoopAgain == true)
+        {
+            insideLoopAgain = false;
+            switch (control)
+            {
+                case '1':
+              //      list<Scientist> s = list<Scientist> ();
+              //      s = sci.searchScientistName(searchName());
+              //      printList(s);
+              //       sortOptionsScientist();
+                    loopAgain = true;
+                    break;
+                case '2':
+               //     searchData();
+                    loopAgain = true;
+                    break;
+                case '3':
+                    loopAgain = false;
+                    options();
+                    break;
+                default:
+                    errorMessage(". Please select 1, 2 or 3: ");
+                    cin >> control;
+                    loopAgain = false;
+                    insideLoopAgain = true;
+                    break;
+            }
+        }
+    }
+}
+/*  --------- er að vinna í að henda þessu út ------
 void UserInterface::searchData()
 {
     string nameSearch;
@@ -231,7 +293,7 @@ void UserInterface::searchData()
     cout << "Please enter the name of scientist you wish to find: ";
     cin.sync();
     getline(cin, nameSearch);
-    list <Scientist> sciFindData = sci.findData(nameSearch); // Upphaflsstillir listann
+    list <Scientist> findData = sci.findData(nameSearch); // Upphaflsstillir listann
 
 
     if (sciFindData.empty())
@@ -240,7 +302,7 @@ void UserInterface::searchData()
     }
     else
     {
-        printList(sciFindData);
+        printList(findData);
     }
 
             char control;
@@ -262,7 +324,9 @@ void UserInterface::searchData()
                 cout << endl << endl;
                 options();
             }
-}
+}----------------------------------------hingað ------------------
+*/
+
 /*
 void UserInterface::viewData()
 {
@@ -289,11 +353,11 @@ void UserInterface::sortOption()
     {
        case 'S':
            cout << "The list in alphabetical order: " << endl;
-           printList(sci.sortListS());
+           printList(.sortListS());
        break;
        case 'R':
            cout << "The list in reversed alphabetical order: " << endl;
-           printComputerList(sci.sortListR());
+           printComputerList(.sortListR());
 
        break;
        case 'Q':
@@ -306,6 +370,8 @@ void UserInterface::sortOption()
     while (repeat);
 }
 */
+
+
 //----- ER AÐ VINNA Í ÞESSU ---------
 void UserInterface::viewData()
 {
@@ -331,7 +397,7 @@ void UserInterface::viewData()
             switch (control)
             {
                 case '1':
-                    sortOptionsScientist();
+                    //sortOptionsScientist();
                     loopAgain = true;
                     break;
                 case '2':
@@ -360,7 +426,7 @@ void UserInterface::viewData()
         }
     }
 }
-
+/*
 void UserInterface::sortOptionsScientist()
 {
     cout << "Select:\n"
@@ -395,7 +461,7 @@ void UserInterface::sortOptionsScientist()
             }
         }
 }
-
+*/
 
 
 //          --------------------------------------------------------

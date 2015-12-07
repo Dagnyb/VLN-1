@@ -14,7 +14,7 @@ SOURCES += \
     main.cpp \
     scientist.cpp \
     computer.cpp \
-    servicedb.cpp
+    servicecomputer.cpp
 
 HEADERS += \
     userinterface.h \
@@ -22,5 +22,5 @@ HEADERS += \
     database.h \
     scientist.h \
     computer.h \
-    servicedb.h
+    servicecomputer.h
 

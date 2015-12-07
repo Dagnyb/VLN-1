@@ -4,46 +4,19 @@
 Service::Service()
 {
    sciList = list <Scientist>();
-   comList = list <Computer>();
-
 }
 
 list <Scientist> Service::getList()
 {
     return sciList;
 }
-list <Computer> Service::getComputerList()
-{
-    return comList;
-}
+
 /*
 void Service::putList(list <Scientist> inputList)
 {
     sciList = inputList;
 } */
 
-void Service::dataFromFile()
-{
-    ifstream inStream;
-
-    inStream.open(FILENAME.c_str());
-        if (inStream.fail())
-        {
-            cout << "Input file opening fail.\n";
-            exit(1);
-        }
-
-    string next = "";
-    do{
-        getline(inStream,next);
-        Scientist info = extract(next);
-        sciList.push_back(info);
-
-    }while (inStream);
-
-    inStream.close();
-
-}
 
 Scientist Service::extract (string aString)
 {

@@ -5,14 +5,8 @@
 #include <string>
 #include <list>
 #include <cstdlib>
-#include <fstream>
-
 
 using namespace std;
-
-
-const string FILENAME = "prufaHrund.txt";
-
 
 class Service
 {
@@ -22,17 +16,14 @@ public:
     void putList(list <Scientist> inputList); // returns input in sciList
     Scientist extract (string aString); // read from the txt file in string and converts two string to int
     list <Scientist> getList(); // Returns sciList
-    list <Computer> getComputerList();
+
     list <Scientist> findData(string name); // Allows the user to search in the list
     list <Scientist> viewScientistReverse();
     list <Scientist> viewScientistAlphabetically();
     list <Scientist> sortListS(); // Sorts the list in alphabetic order
-    list <Computer> sortListR()
-    ; // Sorts the list in reverse alphabetic order
-    //bool sortlikethis(Scientist a, Scientist b);
+    list <Computer> sortListR(); // Sorts the list in reverse alphabetic order
 private:
     list <Scientist> sciList;
-    list <Computer> comList;
 
     Database db;
 };

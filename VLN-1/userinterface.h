@@ -8,6 +8,7 @@
 #include <string>
 #include "scientist.h"
 #include "computer.h"
+#include "servicecomputer.h"
 #include "service.h"
 
 using namespace std;
@@ -42,6 +43,10 @@ public:
     // allows the user to choose how he wants to sort the list af scientists.
     void sortOptionsScientist();
 
+    // promt user and takes an input
+    string searchString();
+
+
 /* -----notum þetta væntanlega ekki
     // allows the user to choose how he wants to sort the list
     void sortOption();-------------------------- hingað */
@@ -68,6 +73,7 @@ public:
     int deathYear();
 private:
     Service sci;
+    ServiceComputer com;
 };
 
 #endif // USERINTERFACE_H
