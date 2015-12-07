@@ -332,7 +332,6 @@ void UserInterface::viewData()
             {
                 case '1':
                     sortOptionsScientist();
-                    printList(sci.viewScientistAlphabetically());
                     loopAgain = true;
                     break;
                 case '2':
@@ -379,7 +378,7 @@ void UserInterface::sortOptionsScientist()
             switch (control)
             {
                 case '1':
-                    cout << "case 1";
+                    printList(sci.viewScientistAlphabetically());
                     break;
                 case '2':
                     cout << "case 2";
