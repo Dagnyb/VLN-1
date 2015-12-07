@@ -80,10 +80,11 @@ Scientist Service::extract (string aString)
 return sciInfo;
 }
 
-bool sortlikethis(Scientist a, Scientist b)
+// Óþarfi fyrir database - notast með .txt skjali
+/*bool sortlikethis(Scientist a, Scientist b)
 {
     return a.getName() < b.getName();
-}
+}*/
 /* ---- hætt að nota þetta -------
 list <Scientist> Service::sortListS()
 {
@@ -92,12 +93,13 @@ list <Scientist> Service::sortListS()
     return temp;
 }-------- hrund -------------------*/
 
-list <Computer> Service::sortListR()
+// Óþarfi fyrir database - notast með .txt skjali
+/*list <Computer> Service::sortListR()
 {
     list <Computer> temp = comList;
     temp = db.sortComputer();
     return temp;
-}
+}*/
 
 list <Scientist> Service::viewScientistAlphabetically()
 {

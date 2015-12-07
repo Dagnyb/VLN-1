@@ -116,7 +116,31 @@ void Database::sortComputersAsc()
 
 list <Scientist> Database::sortScientistsReverse()
 {
-    //Dagný skrifa hér
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    if(!db.open())
+    {
+        exit(1);
+    }
+
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM Scientists ORDER BY Name DESC");
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Scientist> result = list <Scientist>();
+    result = databaseToScientistList(query);
+
+    db.close();
+
+    return result;
 }
 
 
