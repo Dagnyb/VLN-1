@@ -2,6 +2,8 @@
 
 Servicedb::Servicedb()
 {
+    sciList = list <Scientist>();
+    comList = list <Computer>();
 
 }
 

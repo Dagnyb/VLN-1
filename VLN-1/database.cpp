@@ -10,12 +10,12 @@ Database::Database()
 
 
 void Database::add(Scientist scientist)
-{/*
+{
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
-*/
+
     db.open();
     QSqlQuery query(db);
 
