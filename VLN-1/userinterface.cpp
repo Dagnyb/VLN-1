@@ -7,6 +7,7 @@ const int MAXYEAR = 2015;
 UserInterface::UserInterface()
 {
     sci = Service() ;
+    com = ServiceComputer();
 }
 
 void UserInterface::initial()
