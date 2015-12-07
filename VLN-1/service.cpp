@@ -95,7 +95,7 @@ list <Scientist> Service::findData(string nameSearch)
     return sciList;
 }
 
-list <Scientist> Service::findDataComp(string nameSearch)
+list <Scientist> Service::findDataComp(string nameSearch) // á að vera list <Computer> Service, eftir að breyta
 {
     compList = db.searchComputers(nameSearch);
 
