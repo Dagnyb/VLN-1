@@ -46,15 +46,34 @@ void Database::addcomputer(Computer computer)
     query.exec();
 }
 
-void Database::searchScientists()
+list <Scientist> Database::searchScientists()
 {
-
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
 
     db.open();
+    if(!db.open())
+    {
+        exit(1);
+    }
+
     QSqlQuery query(db);
 
-    query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
+    query.prepare ("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
     query.bindValue(":name", QString::fromStdString("inputFromUser"));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Scientist> result = list <Scientist>();
+    result = databaseToScientistList(query);
+
+    db.close();
+
+    return result;
 }
 
 /*void searchComputers()
