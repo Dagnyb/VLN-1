@@ -196,9 +196,9 @@ list <Computer> Database::databaseToComputerList(QSqlQuery& query)
     while (query.next())
     {
         string name = query.value("Name").toString().toStdString();
-        int yearBuild = query.value("YearBuild").toInt();
+        int yearBuild = query.value("YearBuilt").toInt();
         string type = query.value("Type").toString().toStdString();
-        bool wasItBuild = query.value("WasItBuild").toBool();
+        bool wasItBuild = query.value("WasItBuilt").toBool();
 
         Computer newLine(name, yearBuild, type, wasItBuild);
         result.push_back(newLine);
