@@ -12,9 +12,6 @@ using namespace std;
 int main()
 {
 
-    //Database db;
-    //db.sortComputersAsc();
-
     UserInterface ui;
 
     ui.initial();
