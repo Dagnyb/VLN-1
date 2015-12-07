@@ -10,12 +10,12 @@ Database::Database()
 
 
 void Database::add(Scientist scientist)
-{/*
+{
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
-*/
+
     db.open();
     QSqlQuery query(db);
 
@@ -36,6 +36,24 @@ void Database::searchScientists()
 
     query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
     query.bindValue(":name", QString::fromStdString("inputFromUser"));
+}
+
+void Database::addcomputer(Computer computer)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare("INSERT INTO Computers (Name, YearBuilt, Type, WasItBuilt) VALUES (:name, :year, :type, :built)");
+    query.bindValue(":name",         QString::fromStdString(computer.getName()));
+    query.bindValue(":year",         QString::number(computer.getYear()));
+    query.bindValue(":type",         QString::fromStdString(computer.getType()));
+    query.bindValue(":built",        QString::number(computer.getwasItBuilt()));
+    query.exec();
 }
 
 /*void searchComputers()
