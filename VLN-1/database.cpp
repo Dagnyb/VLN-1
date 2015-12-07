@@ -83,6 +83,14 @@ void Database::sortComputersAsc()
     query.exec();
 }*/
 
+
+list <Scientist> Database::sortScientistsReverse()
+{
+    //Dagný skrifa hér
+}
+
+
+
 list <Scientist> Database::sortScientistsAlpabetically()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
