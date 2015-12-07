@@ -90,16 +90,8 @@ list <Scientist> Service::viewScientistReverse()
 
 list <Scientist> Service::findData(string nameSearch)
 {
-    list <Scientist> temp = list <Scientist> ();
-    list <Scientist>::iterator it;
-
-    for(it = sciList.begin(); it != sciList.end(); it++)
-    {
-        if((*it).getName() == nameSearch)
-        {
-          temp.push_back(*it);
-        }
-    }
+    list <Scientist> temp = sciList;
+    temp = db.searchScientists();
     return temp;
 }
 
