@@ -39,8 +39,12 @@ public:
     // prints out the list of computer
     void printComputerList (list<Computer> aList);
 
+    // allows the user to choose how he wants to sort the list af scientists.
+    void sortOptionsScientist();
+
+/* -----notum þetta væntanlega ekki
     // allows the user to choose how he wants to sort the list
-    void sortOption();
+    void sortOption();-------------------------- hingað */
 
     // writes out the list to the screen with parameters
     void viewData(list<Scientist> aList);

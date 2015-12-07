@@ -1,0 +1,177 @@
+- - - - - - - - - 
+ D A T A B A S E
+- - - - - - - - - 
+
+This database contains known computer scientist.
+You can add new scientists, viwe, sort and/or
+search for a scientist in the database.
+
+Select:
+1) to input new data.
+	Select:
+	1) to input new computer scientist.
+		Name of the scientist: string
+			Error :Invalid input ":" (lúppa til baka í 1)1)name)
+		Select gender:
+		1) for female
+	 	2) for male       
+		Selection: int
+			Error :Invalid input ". Please select 1 or 2:" (lúppa til baka í 1)1)gender) (vantar)
+		Year of birth: int (1800-2015)
+			Error :Invalid input ". Please select valid year on the format YYYY: " (lúppa til baka í 1)1)bYear)
+		Is the scientist still alive? (y/n): char
+			y -> 1)1)add another...
+			n -> Year of death
+			Error :Invalid input ":" (lúppa til baka í 1)1)is ... alive?)
+		Year of death: int (1800-2015)
+			Error :Invalid input ". Please select valid year on the format YYYY: " (lúppa til baka í 1)1)dYear)
+
+		Add another scientist? (y/n): char 
+			y -> 1)1)name
+			n -> upphafsvalmynd
+			Error :Invalid input ". Please select y or n: " (lúppa til baka í 1)1) Add another ...)
+
+	2) to input new computer.
+		Name of the computer: string
+			Error :Invalid input ":" (lúppa til baka í 1)2) Name)			
+		Select make:
+		1) Electronic 
+		2) Mechanical
+		3) Transistor  
+		Selection: char
+			Error :Invalid input ". Please select 1,2 or 3: " (lúppa til baka í 1)2) Make)
+		Was the computer ever build? (y/n): char
+			y -> continu to year build
+			n -> 1)2) Add another?
+			Error :Invalid input ". Please select y or n: " (lúppa til baka í 1)2) Was..build?)
+		Year build: int (1800-2015)
+			Error :Invalid input ". Please select valid year on the format YYYY: " (lúppa til baka í 1)2) Was..build?)
+		Add another computer (y/n): char
+			y -> 1)2)name
+			n -> upphafsvalmynd
+			Error :Invalid input ". Please select y or n: " (lúppa til baka í 1)1) Add another ...)
+	3) to connect scientist and computer.
+		Select:
+		1) connect scientist to computer.
+			Name of scientist: string
+				Scientist not found in database. Try again? (y/n):" 
+					y -> (lúppa til baka 1)3)1)
+					n -> upphafsvalmynd
+					Error :Invalid input ":" (lúppa til baka 1)3)1)
+				Scientist found please select computer to connect to:  string
+					Connection between "Name of scientist" and "name computer" successfully added.
+					Add another connections to "Name of scientist"? (y/n): 
+						y -> lúppa í 1)3)1) scientist ... scientist.
+						n -> upphafsvalmynd
+						Error :Invalid input ":" (lúppa til baka 1)3)1 Scientist ... to)
+					Computer not found in database. Try again? (y/n):" 
+						y -> (lúppa til baka 1)3)1 Scientist ... to)
+						n -> upphafsvalmynd
+						Error :Invalid input ". Please select y or n: " (lúppa til baka 1)3)1) computer... database)
+				Sleppi error hér dugar að hafa scientist not found.	
+
+			Add another connections? (y/n): char
+				y -> 1)3)1)
+				n -> upphafsvalmynd
+				Error :Invalid input ". Please select y or n: " (lúppa til baka í 1)3)1) Add another ...)		
+		2) connect computer to scientist.
+			Name of computer: string
+				Computer not found in database. Try again? (y/n):" 
+					y -> (lúppa til baka 1)3)2)
+					n -> upphafsvalmynd
+					Error :Invalid input ":" (lúppa til baka 1)3)2)
+				Computer found please select scientist to connect to:  string
+					Connection between "Name of computer" and "name of scientist" successfully added.
+					Add another connections to "Name of computer(y/n): 
+						y -> (lúppa í 1)3)2) Computer... to)
+						n -> upphafsvalmynd
+					"Scientist not found in database. Try again? (y/n):" 
+						y -> (lúppa til baka 1)3)2 Computer...  to)
+						n -> upphafsvalmynd
+						Error :Invalid input ". Please select y or n: " (lúppa til baka 1)3)2) computer... database)
+				Sleppi error hér dugar að hafa computer not found.	
+
+			Add another connections? (y/n): char
+				y -> 1)3)2)
+				n -> upphafsvalmynd
+				Error :Invalid input ". Please select y or n: " (lúppa til baka í 1)3)2) Add another ...)
+		Selection: char
+		Error :Invalid input". Please select 1 or 2: " (lúppa til baka)
+2) to search in the existing database.
+	1) to search for scientist
+		1) by name. <tekur við list<Scientist> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)1))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)1)))
+		2) by gender. <tekur við list<Scientist> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)2))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)2)))
+		3) by year of birth <tekur við list<Scientist> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)2))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)2)))
+		4) by year of death <tekur við list<Scientist> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)2))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)1)2)))
+	2) to search for computer.
+		1) by name <tekur við list<Computer> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)2)1))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)2)1)))
+		2) by year build <tekur við list<Computer> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)2)1))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)2)1)))
+		3) by <tekur við list<Computer> og prentar út>
+			"Search again? (y/n): " char
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)2)1))
+			"Scientist not found do you want to search again? (y/n):" 
+				y -> (loop 2))
+				n -> (upphafsvalmynd)
+				Error :Invalid input ". Please select y or n: " (lúppa til baka 2)2)1)))
+	Selection: char
+	Error :Invalid input". Please select 1,2,3 or 4: " (lúppa til baka)
+3) to view existing data.
+	Select:
+	1) to view scientist
+		1) sort alphabetically
+	<tekur við list<Scientist> og prentar út> kannski ættum við að hafa fyrstu útprentun í stafrófsröð
+	4) to quit program.
+Selection: char
+Error :Invalid input". Please select 1,2,3 or 4: " (lúppa til baka)
+
+ 
