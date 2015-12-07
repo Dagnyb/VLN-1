@@ -76,23 +76,25 @@ list <Scientist> Service::sortListS()
 
 list <Scientist> Service::viewScientistAlphabetically()
 {
-    list <Scientist> temp = sciList;
-    temp = db.sortScientistsAlpabetically();
-    return temp;
+    //list <Scientist> temp = sciList;
+    sciList = db.sortScientistsAlpabetically();
+    return sciList;
 }
 
 list <Scientist> Service::viewScientistReverse()
 {
-    list <Scientist> temp = sciList;
-    temp = db.sortScientistsReverse();
-    return temp;
+    //list <Scientist> temp = sciList;
+    sciList = db.sortScientistsReverse();
+    return sciList;
 }
 
 list <Scientist> Service::findData(string nameSearch)
 {
-    list <Scientist> temp = sciList;
-    temp = db.searchScientists();
-    return temp;
+    //list <Scientist> temp = list <Scientist> ();
+    //temp = db.searchScientists();
+    sciList = db.searchScientists(nameSearch);
+
+    return sciList;
 }
 
 

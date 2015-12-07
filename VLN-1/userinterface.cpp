@@ -262,11 +262,10 @@ void UserInterface::searchData()
             switch (control)
             {
                 case '1':
-              //      list<Scientist> s = list<Scientist> ();
-              //      s =
-                    printList(sci.findData(searchString()));
-               //        sortOptionsScientist();
-                    loopAgain = true;
+                    {list<Scientist> s = list<Scientist>();
+                    s = sci.findData(searchString());
+                    printList(s);
+                    loopAgain = true;}
                     break;
                 case '2':
                //     searchData();
@@ -398,7 +397,7 @@ void UserInterface::viewData()
             switch (control)
             {
                 case '1':
-                    //sortOptionsScientist();
+                    sortOptionsScientist();
                     loopAgain = true;
                     break;
                 case '2':
@@ -427,7 +426,7 @@ void UserInterface::viewData()
         }
     }
 }
-/*
+
 void UserInterface::sortOptionsScientist()
 {
     cout << "Select:\n"
@@ -448,7 +447,7 @@ void UserInterface::sortOptionsScientist()
                     printList(sci.viewScientistAlphabetically());
                     break;
                 case '2':
-                printList(sci.viewScientistReverse());
+                    printList(sci.viewScientistReverse());
                     break;
                 case '3':
                     cout << "case 3";
@@ -462,7 +461,7 @@ void UserInterface::sortOptionsScientist()
             }
         }
 }
-*/
+
 
 
 //          --------------------------------------------------------

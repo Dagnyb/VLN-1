@@ -46,7 +46,7 @@ void Database::addcomputer(Computer computer)
     query.exec();
 }
 
-list <Scientist> Database::searchScientists()
+list <Scientist> Database::searchScientists(string inputFromUser)
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -61,7 +61,7 @@ list <Scientist> Database::searchScientists()
     QSqlQuery query(db);
 
     query.prepare ("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
-    query.bindValue(":name", QString::fromStdString("inputFromUser"));
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
 
     if (!query.exec())
     {
