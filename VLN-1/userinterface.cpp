@@ -124,7 +124,7 @@ string UserInterface::gender()
                 gender = "male";
                 break;
             default:
-                errorMessage("input 1 or 2. ");
+                errorMessage(". Please input 1 or 2: ");
                 cin >> control;
                 cout <<"selection:    ";
                 loopAgain = true;
@@ -212,7 +212,7 @@ bool UserInterface::addAnother()
         {
             do
             {
-            errorMessage(" Please select y or n: ");
+            errorMessage(". Please select y or n: ");
             cin >> another2;
             }
             while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
@@ -381,13 +381,13 @@ void UserInterface::sortOptionsScientist()
                     printList(sci.viewScientistAlphabetically());
                     break;
                 case '2':
-                    cout << "case 2";
+                printList(sci.viewScientistReverse());
                     break;
                 case '3':
                     cout << "case 3";
                     break;
                 default:
-                    errorMessage("input 1 or 2. ");
+                    errorMessage(". Please input 1, 2 or 3: ");
                     cin >> control;
                     cout <<"selection:    ";
                     loopAgain = true;

@@ -106,6 +106,13 @@ list <Scientist> Service::viewScientistAlphabetically()
     return temp;
 }
 
+list <Scientist> Service::viewScientistReverse()
+{
+    list <Scientist> temp = sciList;
+    temp = db.sortScientistsReverse();
+    return temp;
+}
+
 list <Scientist> Service::findData(string nameSearch)
 {
     list <Scientist> temp = list <Scientist> ();

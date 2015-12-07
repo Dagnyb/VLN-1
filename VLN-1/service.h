@@ -24,7 +24,7 @@ public:
     list <Scientist> getList(); // Returns sciList
     list <Computer> getComputerList();
     list <Scientist> findData(string name); // Allows the user to search in the list
-
+    list <Scientist> viewScientistReverse();
     list <Scientist> viewScientistAlphabetically();
     list <Scientist> sortListS(); // Sorts the list in alphabetic order
     list <Computer> sortListR()
