@@ -28,7 +28,7 @@ public:
     void add(Scientist);
     void searchScientists(); // Search for scientists on database
     //void searchCompters(); // Search for computer in database
-    list <Scientist> sortScientists();
+    list <Scientist> sortScientistsAlpabetically();
     list <Computer> sortComputer();
 
 

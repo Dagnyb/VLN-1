@@ -83,7 +83,7 @@ void Database::sortComputersAsc()
     query.exec();
 }*/
 
-list <Scientist> Database::sortScientists()
+list <Scientist> Database::sortScientistsAlpabetically()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";

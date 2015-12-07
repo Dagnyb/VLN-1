@@ -84,18 +84,25 @@ bool sortlikethis(Scientist a, Scientist b)
 {
     return a.getName() < b.getName();
 }
-
+/* ---- hætt að nota þetta -------
 list <Scientist> Service::sortListS()
 {
     list <Scientist> temp = sciList;
     temp = db.sortScientists();
     return temp;
-}
+}-------- hrund -------------------*/
 
 list <Computer> Service::sortListR()
 {
     list <Computer> temp = comList;
     temp = db.sortComputer();
+    return temp;
+}
+
+list <Scientist> Service::viewScientistAlphabetically()
+{
+    list <Scientist> temp = sciList;
+    temp = db.sortScientistsAlpabetically();
     return temp;
 }
 

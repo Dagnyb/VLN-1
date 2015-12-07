@@ -29,7 +29,6 @@ void UserInterface::options()
     bool loopAgain = true;
     while(loopAgain == true)
     {
-        bool insideLoopAgain = true;
         cout << endl
              << "Select:\n"
              << "1) to input new computer scientist.\n"
@@ -38,13 +37,14 @@ void UserInterface::options()
              << "4) to quit program.\n"
              << endl
              << "Selection: ";
-        char lastControl;
-        cin >> lastControl;
+        char control;
+        cin >> control;
         cout << endl;
+        bool insideLoopAgain = true;
         while (insideLoopAgain == true)
         {
             insideLoopAgain = false;
-            switch (lastControl)
+            switch (control)
             {
                 case '1':
                     inputData();
@@ -64,7 +64,7 @@ void UserInterface::options()
                     break;
                 default:
                     errorMessage(". Please select 1, 2, 3 or 4: ");
-                    cin >> lastControl;
+                    cin >> control;
                     loopAgain = false;
                     insideLoopAgain = true;
                     break;
@@ -107,15 +107,15 @@ string UserInterface::gender()
     cout << "Select gender 1) for female\n"
          << "              2) for male       : ";
 
-    char ans;
-    cin >> ans;
-    bool again = true;
+    char control;
+    cin >> control;
+    bool loopAgain = true;
     string gender;
 
-    while(again == true)
+    while(loopAgain == true)
     {
-        again = false;
-        switch (ans)
+        loopAgain = false;
+        switch (control)
         {
             case '1':
                 gender = "female";
@@ -125,9 +125,9 @@ string UserInterface::gender()
                 break;
             default:
                 errorMessage("input 1 or 2. ");
-                cin >> ans;
+                cin >> control;
                 cout <<"selection:    ";
-                again = true;
+                loopAgain = true;
                 break;
         }
     }
@@ -153,15 +153,15 @@ int UserInterface::deathYear()
     int year;
 
     cout << "Is the scientist still alive? (y/n): ";
-    char ans;
-    cin >> ans;
+    char control;
+    cin >> control;
 
-    bool again = true;
+    bool loopAgain = true;
 
-    while(again == true)
+    while(loopAgain == true)
     {
-        again = false;
-        switch (ans)
+        loopAgain = false;
+        switch (control)
         {
             case 'y':
             case 'Y':
@@ -179,8 +179,8 @@ int UserInterface::deathYear()
                 break;
             default:
                 errorMessage("input y or n. ");
-                cin >> ans;
-                again = true;
+                cin >> control;
+                loopAgain = true;
                 break;
         }
     }
@@ -243,16 +243,16 @@ void UserInterface::searchData()
         printList(sciFindData);
     }
 
-            char ans;
+            char control;
 
             cout << "Do want to try again? Y/N ";
-            cin >> ans;
+            cin >> control;
 
-            if(ans=='Y' || ans=='y')
+            if(control=='Y' || control=='y')
             {
                 searchData();
             }
-            else if (ans=='N' || ans=='n')
+            else if (control=='N' || control=='n')
             {
                 options();
             }
@@ -262,6 +262,11 @@ void UserInterface::searchData()
                 cout << endl << endl;
                 options();
             }
+}
+/*
+void UserInterface::viewData()
+{
+    sortOption();
 }
 
 void UserInterface::sortOption()
@@ -300,14 +305,101 @@ void UserInterface::sortOption()
     }
     while (repeat);
 }
-
+*/
+//----- ER AÐ VINNA Í ÞESSU ---------
 void UserInterface::viewData()
 {
-  //  printList(sci.getList());
-  //  cout << endl;
-    sortOption();
-    options();
+    bool loopAgain = true;
+    while(loopAgain == true)
+    {
+        cout << endl
+             << "Select:\n"
+             << "1) to view scientists.\n"
+             << "2) to view computers.\n"
+             << "3) to view connections between computer and scientist.\n"
+             << "4) to view connections between scientist and computer.\n"
+             << "5) back to main menu"
+             << endl
+             << "Selection: ";
+        char control;
+        cin >> control;
+        cout << endl;
+        bool insideLoopAgain = true;
+        while (insideLoopAgain == true)
+        {
+            insideLoopAgain = false;
+            switch (control)
+            {
+                case '1':
+                    sortOptionsScientist();
+                    printList(sci.viewScientistAlphabetically());
+                    loopAgain = true;
+                    break;
+                case '2':
+                    searchData();
+                    loopAgain = true;
+                    break;
+                case '3':
+                    viewData();
+                    loopAgain = true;
+                    break;
+                case '4':
+                    viewData();
+                    loopAgain = true;
+                    break;
+                case '5':
+                    loopAgain = false;
+                    options();
+                    break;
+                default:
+                    errorMessage(". Please select 1, 2, 3, 4 or 5: ");
+                    cin >> control;
+                    loopAgain = false;
+                    insideLoopAgain = true;
+                    break;
+            }
+        }
+    }
 }
+
+void UserInterface::sortOptionsScientist()
+{
+    cout << "Select:\n"
+         << "1) for alphabetical order.\n"
+         << "2) for reverse alphabetical order.\n"
+         << "3) for order by year of birth.\n"
+         << endl
+         << "Selection: ";
+        char control;
+        cin >> control;
+        bool loopAgain = true;
+        while(loopAgain == true)
+        {
+            loopAgain = false;
+            switch (control)
+            {
+                case '1':
+                    cout << "case 1";
+                    break;
+                case '2':
+                    cout << "case 2";
+                    break;
+                case '3':
+                    cout << "case 3";
+                    break;
+                default:
+                    errorMessage("input 1 or 2. ");
+                    cin >> control;
+                    cout <<"selection:    ";
+                    loopAgain = true;
+                    break;
+            }
+        }
+}
+
+
+
+//          --------------------------------------------------------
 
 
 void UserInterface::printList(list <Scientist> aList)
