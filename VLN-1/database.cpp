@@ -27,16 +27,6 @@ void Database::add(Scientist scientist)
     query.exec();
 }
 
-void Database::searchScientists()
-{
-
-
-    db.open();
-    QSqlQuery query(db);
-
-    query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
-    query.bindValue(":name", QString::fromStdString("inputFromUser"));
-}
 
 void Database::addcomputer(Computer computer)
 {
@@ -54,6 +44,17 @@ void Database::addcomputer(Computer computer)
     query.bindValue(":type",         QString::fromStdString(computer.getType()));
     query.bindValue(":built",        QString::number(computer.getwasItBuilt()));
     query.exec();
+}
+
+void Database::searchScientists()
+{
+
+
+    db.open();
+    QSqlQuery query(db);
+
+    query.prepare("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
+    query.bindValue(":name", QString::fromStdString("inputFromUser"));
 }
 
 /*void searchComputers()
