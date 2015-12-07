@@ -90,14 +90,17 @@ list <Scientist> Service::viewScientistReverse()
 
 list <Scientist> Service::findData(string nameSearch)
 {
-    //list <Scientist> temp = list <Scientist> ();
-    //temp = db.searchScientists();
     sciList = db.searchScientists(nameSearch);
 
     return sciList;
 }
 
+list <Scientist> Service::findDataComp(string nameSearch)
+{
+    compList = db.searchComputers(nameSearch);
 
+    return compList;
+}
 
 
 

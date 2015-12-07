@@ -76,18 +76,35 @@ list <Scientist> Database::searchScientists(string inputFromUser)
     return result;
 }
 
-/*void searchComputers()
+list <Scientist> Database::searchComputers(string inputFromUser)
 {
-    QSqlDatabase SciDatabase;
-    QSqlQuery query(SciDatabase);
-    //Setja inn fall sem les inn töfluna
-    query.searchId ("SELECT * FROM Computers WHERE ID LIKE inputId") // Search by ID
-    query.searchName ("SELECT * FROM Computers WHERE Name LIKE inputName") // Search by name
-    query.searchYearBuilt ("SELECT * FROM Computers WHERE YearBuilt LIKE inputYearBuilt") // Search by year built
-    query.searchType ("SELECT * FROM Computers WHERE Type LIKE inputType") // Search by type
-    query.searchWasItBuilt ("SELECT * FROM Computers WHERE WasItBuilt LIKE inputWasItBuilt") // Search by was it built
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dbScienc = "dbScience.sqlite";
+    db.setDatabaseName(dbScienc);
+
+    db.open();
+    if(!db.open())
+    {
+        exit(1);
+    }
+
+    QSqlQuery query(db);
+
+    query.prepare ("SELECT * FROM Computers WHERE name LIKE '%'||:name||'%'");
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Scientist> result = list <Scientist>();
+    result = databaseToScientistList(query);
+
+    db.close();
+
+    return result;
 }
-*/
 
 
 void Database::sortComputersAsc()

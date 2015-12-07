@@ -268,8 +268,10 @@ void UserInterface::searchData()
                     loopAgain = true;}
                     break;
                 case '2':
-               //     searchData();
-                    loopAgain = true;
+                    {list<Scientist> c = list<Scientist>();
+                    c = sci.findDataComp(searchString());
+                    printList(c);
+                    loopAgain = true;}
                     break;
                 case '3':
                     loopAgain = false;
