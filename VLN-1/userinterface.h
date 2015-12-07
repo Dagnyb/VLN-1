@@ -7,8 +7,9 @@
 #include <string>
 #include "scientist.h"
 #include "computer.h"
-#include "servicecomputer.h"
+#include "connected.h"
 #include "service.h"
+#include "servicecomputer.h"
 
 using namespace std;
 

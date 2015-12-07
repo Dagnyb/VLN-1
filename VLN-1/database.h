@@ -2,8 +2,9 @@
 #define DATABASE_H
 #include "scientist.h"
 #include "computer.h"
+#include "connected.h"
+
 //#include <QCoreApplication>
-#include <iostream>
 #include <string>
 #include <list>
 //#include <stdexcept>

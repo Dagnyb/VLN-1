@@ -263,9 +263,9 @@ void UserInterface::searchData()
             {
                 case '1':
               //      list<Scientist> s = list<Scientist> ();
-              //      s = sci.searchScientistName(searchName());
-              //      printList(s);
-              //       sortOptionsScientist();
+              //      s =
+                    printList(sci.findData(searchString()));
+               //        sortOptionsScientist();
                     loopAgain = true;
                     break;
                 case '2':
