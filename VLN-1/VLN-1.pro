@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     scientist.cpp \
     computer.cpp \
-    servicecomputer.cpp
+    servicecomputer.cpp \
+    connected.cpp
 
 HEADERS += \
     userinterface.h \
@@ -22,5 +23,6 @@ HEADERS += \
     database.h \
     scientist.h \
     computer.h \
-    servicecomputer.h
+    servicecomputer.h \
+    connected.h
 
