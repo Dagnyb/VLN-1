@@ -406,7 +406,7 @@ void UserInterface::viewData()
                     loopAgain = true;
                     break;
                 case '2':
-                    searchData();
+                    sortOptionsComputers();
                     loopAgain = true;
                     break;
                 case '3':
@@ -467,6 +467,36 @@ void UserInterface::sortOptionsScientist()
         }
 }
 
+void UserInterface::sortOptionsComputers()
+{
+    cout << "Select:\n"
+         << "1) for alphabetical order.\n"
+         << "2) for reverse alphabetical order.\n"
+         << endl
+         << "Selection: ";
+        char control;
+        cin >> control;
+        bool loopAgain = true;
+        while(loopAgain == true)
+        {
+            loopAgain = false;
+            switch (control)
+            {
+                case '1':
+                    printComputerList(com.viewComputerAlphabetically());
+                    break;
+                case '2':
+                   // printComputerList(com.viewComputerReverse());
+                    break;
+                default:
+                    errorMessage(". Please input 1 or 2: ");
+                    cin >> control;
+                    cout <<"selection:    ";
+                    loopAgain = true;
+                    break;
+            }
+        }
+}
 
 
 //          --------------------------------------------------------
