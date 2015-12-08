@@ -51,6 +51,14 @@ public:
     list<Connected> ComputerToScientistId(string Id);
 
     list <Connected> databaseToComputerScientistlist(QSqlQuery& query);
+
+    list <Scientist> searchScientistsId(string inputFromUser);
+
+    list <Scientist> databaseToScientistIdList(QSqlQuery& query);
+
+    list<Connected> searchComputerToScientistId(QSqlQuery& query );
+
+    list <Connected> databaseScientistIdToComputer(QSqlQuery& query);
 private:
     string searchId;
     string searchName;
