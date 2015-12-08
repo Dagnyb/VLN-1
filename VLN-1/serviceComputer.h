@@ -14,6 +14,7 @@ class ServiceComputer
     public:
         ServiceComputer();
         list <Computer> getComputerList();
+        list <Computer> findDataComp(string nameSearch);
 
 /**** föll sem búið var að skilgreina í gamala service klasanum ******
  *

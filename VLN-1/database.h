@@ -29,7 +29,7 @@ public:
     void add(Scientist);
     void addcomputer(Computer);
     list <Scientist> searchScientists(string inputFromUser);
-    list <Scientist> searchComputers(string inputFromUser);
+    list <Computer> searchComputers(string inputFromUser);
     list <Scientist> sortScientistsAlpabetically();
     list <Scientist> sortScientistsReverse();
 

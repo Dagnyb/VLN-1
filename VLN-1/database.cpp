@@ -76,7 +76,7 @@ list <Scientist> Database::searchScientists(string inputFromUser)
     return result;
 }
 
-list <Scientist> Database::searchComputers(string inputFromUser)
+list <Computer> Database::searchComputers(string inputFromUser)
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
@@ -98,8 +98,8 @@ list <Scientist> Database::searchComputers(string inputFromUser)
         qDebug() << query.lastError().text();
     }
 
-    list <Scientist> result = list <Scientist>();
-    result = databaseToScientistList(query);
+    list <Computer> result = list <Computer>();
+    result = databaseToComputerList(query);
 
     db.close();
 

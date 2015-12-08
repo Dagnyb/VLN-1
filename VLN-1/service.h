@@ -18,14 +18,14 @@ public:
     list <Scientist> getList(); // Returns sciList
 
     list <Scientist> findData(string name); // Allows the user to search in the list
-    list <Scientist> findDataComp(string nameSearch);
+    //list <Computer> findDataComp(string nameSearch);
     list <Scientist> viewScientistReverse();
     list <Scientist> viewScientistAlphabetically();
     list <Scientist> sortListS(); // Sorts the list in alphabetic order
     list <Computer> sortListR(); // Sorts the list in reverse alphabetic order
 private:
     list <Scientist> sciList;
-    list <Scientist> compList;
+
 
     Database db;
 };

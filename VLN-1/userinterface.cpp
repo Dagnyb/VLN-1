@@ -268,9 +268,9 @@ void UserInterface::searchData()
                     loopAgain = true;}
                     break;
                 case '2':
-                    {list<Scientist> c = list<Scientist>();
-                    c = sci.findDataComp(searchString());
-                    printList(c);
+                    {list<Computer> c = list<Computer>();
+                    c = com.findDataComp(searchString());
+                    printComputerList(c);
                     loopAgain = true;}
                     break;
                 case '3':
