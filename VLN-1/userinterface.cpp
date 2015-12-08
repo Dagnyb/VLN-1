@@ -81,10 +81,12 @@ void UserInterface::inputData()
     bool add = true;
     while (add == true)
     {
-        name();
-        gender();
-        birthYear();
-        deathYear();
+        string newName = name();
+        string newGender= gender();
+        int newBYear = birthYear();
+        int newDYear = deathYear();
+        Scientist temp(newName, newGender, newBYear, newDYear);
+        sci.newScientist(temp);
         cout << endl;
         add = addAnother();
     }

@@ -13,6 +13,9 @@ class Service
 public:
     Service(); // Initializes the list
     void dataFromFile(); // instreams the .txt file
+
+    void newScientist(Scientist newScientist);
+
     void putList(list <Scientist> inputList); // returns input in sciList
     Scientist extract (string aString); // read from the txt file in string and converts two string to int
     list <Scientist> getList(); // Returns sciList

@@ -95,5 +95,9 @@ list <Scientist> Service::findData(string nameSearch)
     return sciList;
 }
 
+void Service::newScientist(Scientist newScientist)
+{
+    db.add(newScientist);
+}
 
 
