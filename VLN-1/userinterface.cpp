@@ -33,8 +33,8 @@ void UserInterface::options()
     while(loopAgain == true)
     {
         cout << endl
-             << "Select:\n"
-             << "1) to input new computer scientist.\n"
+             << "Main menu:\n"
+             << "1) to input new data.\n"
              << "2) to search in the existing database.\n"
              << "3) to view existing data.\n"
              << "4) to quit program.\n"
@@ -77,6 +77,62 @@ void UserInterface::options()
 }
 
 void UserInterface::inputData()
+{
+    bool loopAgain = true;
+    while(loopAgain == true)
+    {
+        cout << endl
+             << "Input options:\n"
+             << "1) to input new computer scientist.\n"
+             << "2) to input new computer.\n"
+             << "3) to connect scientist and computer.\n"
+             << "4) to connect computer to scientist.\n"
+             << "5) back to main menu"
+             << endl
+             << "Selection: ";
+        char control;
+        cin >> control;
+        cout << endl;
+        bool insideLoopAgain = true;
+        while (insideLoopAgain == true)
+        {
+            insideLoopAgain = false;
+            switch (control)
+            {
+                case '1':
+                    inputScientist();
+                    loopAgain = true;
+                    break;
+                case '2':
+                //    inputComputer();
+                    loopAgain = true;
+                    break;
+                case '3':
+                 //   inputConnectionComSci();
+                    loopAgain = true;
+                    break;
+                case '4':
+                 //   inputConnectionSciCom();
+                    loopAgain = true;
+                    break;
+                case '5':
+                    loopAgain = false;
+                    options();
+                    break;
+                default:
+                    errorMessage(". Please select 1, 2, 3, 4 or 5: ");
+                    cin >> control;
+                    loopAgain = false;
+                    insideLoopAgain = true;
+                    break;
+            }
+        }
+    }
+}
+
+
+
+void UserInterface::inputScientist()
 {
     bool add = true;
     while (add == true)

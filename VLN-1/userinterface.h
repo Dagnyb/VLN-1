@@ -28,6 +28,10 @@ public:
     // allows the user to choose what to do
     void inputData();
 
+
+    void inputScientist();
+
+
     // search for name in List
     void searchData();
 
