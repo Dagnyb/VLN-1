@@ -486,7 +486,7 @@ void UserInterface::sortOptionsComputers()
                     printComputerList(com.viewComputerAlphabetically());
                     break;
                 case '2':
-                   // printComputerList(com.viewComputerReverse());
+                    printComputerList(com.viewComputerReverse());
                     break;
                 default:
                     errorMessage(". Please input 1 or 2: ");

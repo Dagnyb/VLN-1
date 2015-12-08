@@ -23,3 +23,10 @@ list <Computer> ServiceComputer::viewComputerAlphabetically()
 
     return comList;
 }
+
+list <Computer> ServiceComputer::viewComputerReverse()
+{
+    comList = db.sortComputersDesc();
+
+    return comList;
+}

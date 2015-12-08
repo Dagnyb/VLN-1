@@ -54,7 +54,7 @@ ostream& operator << (ostream& outs, const Computer& Computer)
     }
     else
 
-        outs << "No" << endl;
+        outs << "No";
 
     outs << endl;
     return outs;

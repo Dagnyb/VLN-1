@@ -40,9 +40,9 @@ public:
 
     list <Computer> sortComputer();
 
+    list <Computer> sortComputersAsc();
 
-    list<Computer> sortComputersAsc();
-    //void sortComputersDesc();
+    list <Computer> sortComputersDesc();
 private:
     string searchId;
     string searchName;

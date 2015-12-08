@@ -111,34 +111,22 @@ list <Computer> Database::sortComputersAsc()
     return result;
 }
 
-/*void sortComputersDesc()
+ list <Computer> Database::sortComputersDesc()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
+    QSqlQuery query(connectDatabase());
 
-    db.open();
-    if(!db.open())
-    {
-        exit(1);
-    }
-
-    QSqlQuery query(db);
-
-    query.prepare ("SELECT * FROM Scientists ORDER BY Name DESC");
+    query.prepare ("SELECT * FROM Computers ORDER BY Name DESC");
 
     if (!query.exec())
     {
         qDebug() << query.lastError().text();
     }
 
-    list <Scientist> result = list <Scientist>();
-    result = databaseToScientistList(query);
-
-    db.close();
+    list <Computer> result = list <Computer>();
+    result = databaseToComputerList(query);
 
     return result;
-}*/
+}
 
 
 list <Scientist> Database::sortScientistsReverse()
