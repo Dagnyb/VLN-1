@@ -15,6 +15,7 @@ class ServiceComputer
         ServiceComputer();
         list <Computer> getComputerList();
         list <Computer> findDataComp(string nameSearch);
+        list <Computer> viewComputerAlphabetically();
 
 /**** föll sem búið var að skilgreina í gamala service klasanum ******
  *

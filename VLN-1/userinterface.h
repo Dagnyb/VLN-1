@@ -43,6 +43,9 @@ public:
     // allows the user to choose how he wants to sort the list af scientists.
     void sortOptionsScientist();
 
+    // allows the user to choose how he wants to sort the list of computers
+    void sortOptionsComputers();
+
     // promt user and takes an input
     string searchString();
 

@@ -37,7 +37,7 @@ public:
     list <Computer> sortComputer();
 
 
-    void sortComputersAsc();
+    list<Computer> sortComputersAsc();
     //void sortComputersDesc();
 private:
     QSqlDatabase db;
