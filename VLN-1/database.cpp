@@ -2,7 +2,7 @@
 
 Database::Database()
 {
-    /*db = QSqlDatabase::addDatabase("QSQLITE");
+   /* db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);*/
 
@@ -51,6 +51,8 @@ list <Scientist> Database::searchScientists(string inputFromUser)
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
+
+    Database::Database();
 
     db.open();
     if(!db.open())

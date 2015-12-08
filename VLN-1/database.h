@@ -4,6 +4,7 @@
 #include "computer.h"
 #include "connected.h"
 
+
 //#include <QCoreApplication>
 #include <string>
 #include <list>

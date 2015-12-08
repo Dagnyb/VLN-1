@@ -240,6 +240,7 @@ string UserInterface::searchString()
     return search;
 }
 
+
 void UserInterface::searchData()
 {
     bool loopAgain = true;
@@ -263,10 +264,10 @@ void UserInterface::searchData()
             {
                 case '1':
                     {list<Scientist> s = list<Scientist>();
-                    s = sci.findData(searchString());
-                    printList(s);
-                    loopAgain = true;}
-                    break;
+                     s = sci.findData(searchString());
+                     printList(s);
+                     loopAgain = true;}
+                     break;
                 case '2':
                     {list<Computer> c = list<Computer>();
                     c = com.findDataComp(searchString());
@@ -287,6 +288,8 @@ void UserInterface::searchData()
         }
     }
 }
+
+
 /*  --------- er að vinna í að henda þessu út ------
 void UserInterface::searchData()
 {
