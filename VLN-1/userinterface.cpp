@@ -104,7 +104,7 @@ void UserInterface::inputData()
                     loopAgain = true;
                     break;
                 case '2':
-                //    inputComputer();
+                    inputComputer();
                     loopAgain = true;
                     break;
                 case '3':
@@ -137,6 +137,7 @@ void UserInterface::inputScientist()
     bool add = true;
     while (add == true)
     {
+        cout << "Name of the scientist: ";
         string newName = name();
         string newGender= gender();
         int newBYear = birthYear();
@@ -150,7 +151,6 @@ void UserInterface::inputScientist()
 
 string UserInterface::name()
 {
-    cout << "Name of the scientist: ";
     string name;
     cin.sync();
     getline(cin, name);
@@ -234,7 +234,7 @@ int UserInterface::deathYear()
                 cin >> year;
                 while (year < MINYEAR || year > MAXYEAR )
                 {
-                    errorMessage(" Please select y or n: ");
+                    errorMessage(" Please insert a valid year (from 1500 to current date) : ");
                     cin >> year;
                 }
                 break;
@@ -293,10 +293,11 @@ void UserInterface::inputComputer()
     bool add = true;
     while (add == true)
     {
+        cout << "Name of the computer: ";
         string newName = name();
-        int newYearBuilt = yearBuilt();
         string newtype = type();
-        bool newWasItBuilt = wasItBuilt();
+        newWasItBuilt = wasItBuilt();
+        int newYearBuilt = yearBuilt();
         Computer temp(newName, newYearBuilt, newtype, newWasItBuilt);
         com.newComputer(temp);
         cout << endl;
@@ -304,72 +305,40 @@ void UserInterface::inputComputer()
     }
 }
 
-string UserInterface::nameComputer()
+int UserInterface::yearBuilt()
 {
-    cout << "Name of the computer: ";
-    string name;
-    cin.sync();
-    getline(cin, name);
-    //locale loc;
-    while(name.empty())  //setja in isdigit held samt að það vinni bara með char ath ef við höfum tíma.
+    if(newWasItBuilt == true)
     {
-        errorMessage(". Please input name: ");
-        getline(cin, name);
-    }
-    return name;
-}
-
-/*string UserInterface::gender()
-{
-    cout << "Select gender 1) for female\n"
-         << "              2) for male       : ";
-
-    char control;
-    cin >> control;
-    bool loopAgain = true;
-    string gender;
-
-    while(loopAgain == true)
-    {
-        loopAgain = false;
-        switch (control)
-        {
-            case '1':
-                gender = "female";
-                break;
-            case '2':
-                gender = "male";
-                break;
-            default:
-                errorMessage(". Please input 1 or 2: ");
-                cin >> control;
-                cout <<"selection:    ";
-                loopAgain = true;
-                break;
-        }
-    }
-    return gender;
-}*/
-
-/*int UserInterface::birthYear()
-{
-    int year;
-    cout << "Year of birth: ";
-    cin >> year;
+        int year;
+        cout << "Year built: ";
+        cin >> year;
 
     while (year < MINYEAR || year > MAXYEAR )
     {
-        errorMessage(" Please input valid year on the format YYYY: ");
+        errorMessage(" Please input a valid year (from 1500 to current date) : ");
         cin >> year;
     }
-    return year;
-}*/
+        return year;
+    }else cout << "Your data has been processed" << endl;
+    return 0;
+    options();
 
-/*int UserInterface::deathYear()
+ }
+
+string UserInterface::type()
 {
-    int year;
+    cout << "Type of the computer: ";
 
-    cout << "Is the scientist still alive? (y/n): ";
+    string result = name();
+
+    return result;
+}
+
+bool UserInterface::wasItBuilt()
+{
+    int built;
+
+    cout << "Was the computer built? (y/n): ";
     char control;
     cin >> control;
 
@@ -380,19 +349,14 @@ string UserInterface::nameComputer()
         loopAgain = false;
         switch (control)
         {
-            case 'y':
-            case 'Y':
-                year = 0;  //kann ekki að gera ekkert eins og databaseinn tekur við
-                break;
             case 'n':
             case 'N':
-                cout << "Year of death: ";
-                cin >> year;
-                while (year < MINYEAR || year > MAXYEAR )
-                {
-                    errorMessage(" Please select y or n: ");
-                    cin >> year;
-                }
+                built = 0;
+                break;
+            case 'y':
+            case 'Y':
+                built = 1;
+               // yearBuilt();
                 break;
             default:
                 errorMessage("input y or n. ");
@@ -401,8 +365,8 @@ string UserInterface::nameComputer()
                 break;
         }
     }
-    return year;
-}*/
+    return built;
+}
 
 bool UserInterface::addAnotherComputer()
 {

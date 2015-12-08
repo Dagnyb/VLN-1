@@ -33,5 +33,5 @@ list <Computer> ServiceComputer::viewComputerReverse()
 
 void ServiceComputer::newComputer(Computer newComputer)
 {
-    db.add(newComputer);
+    db.addComputer(newComputer);
 }

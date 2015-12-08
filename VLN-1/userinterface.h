@@ -71,25 +71,33 @@ public:
     bool addAnother();
 
     // offers user to input another computer, returns bool value.
-    bool UserInterface::addAnotherComputer();
+    bool addAnotherComputer();
 
-    // promts user and takes in name as a string and returns it
+    // prompts user and takes in name as a string and returns it
     string name();
 
-    // promts user and takes in gender as a string and returns it
+    // prompts user and takes in gender as a string and returns it
     string gender();
 
-    // promts user and takes in year of birth s a int and returns it
+    // prompts user and takes in year of birth as a int and returns it
     int birthYear();
 
-    // promts user and takes in year of death s a int and returns it
+    // prompts user and takes in year of death as a int and returns it
     int deathYear();
 
-    // promts user and takes in name as a string and returns it
-    string UserInterface::nameComputer();
+    // prompts user and takes in year built as a int and returns it
+    int yearBuilt();
+
+    // prompts user and takes in type as a string and returns it
+    string type();
+
+    // prompts user and takes in if the computer was built as a string and returns it
+    bool wasItBuilt();
+
 private:
     Service sci;
     ServiceComputer com;
+    bool newWasItBuilt;
 };
 
 #endif // USERINTERFACE_H

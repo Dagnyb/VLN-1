@@ -18,7 +18,7 @@ class ServiceComputer
         list <Computer> viewComputerAlphabetically();
         list <Computer> viewComputerReverse();
 
-        void ServiceComputer::newComputer(Computer newComputer);
+        void newComputer(Computer newComputer);
 
 
 /**** föll sem búið var að skilgreina í gamala service klasanum ******
