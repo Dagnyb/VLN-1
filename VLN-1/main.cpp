@@ -3,7 +3,7 @@
 #include "userinterface.h"
 //#include "service.h"
 //#include "scientist_.h"
-#include "database.h" // Testing only
+//#include "database.h" // Testing only
                       // TODO Delete before final version
 
 
@@ -15,9 +15,6 @@ int main()
     UserInterface ui;
 
     ui.initial();
-
-
-
 
     return 0;
 }

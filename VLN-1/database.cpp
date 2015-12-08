@@ -2,22 +2,39 @@
 
 Database::Database()
 {
-    /*db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);*/
 
+}
+
+QSqlDatabase Database::connectDatabase()
+{
+    QString dbScience = "dbScience.sqlite";
+    QSqlDatabase db;
+
+    if(QSqlDatabase::contains(dbScience))
+    {
+        db = QSqlDatabase::database(dbScience);
+    }
+    else
+    {
+        db = QSqlDatabase::addDatabase("QSQLITE", dbScience);
+        db.setDatabaseName(dbScience);
+
+        db.open();
+    }
+
+    return db;
+
+}
+
+void Database::disconnectDatabase(QSqlDatabase database)
+{
+    database.close();
 }
 
 
 void Database::add(Scientist scientist)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    QSqlQuery query(db);
+    QSqlQuery query(connectDatabase());
 
     query.prepare("INSERT INTO Scientists (Name, Gender, YearOfBirth, YearOfDeath) VALUES (:Name, :Gender, :YearOfBirth, :YearOfDeath)");
     query.bindValue(":Name",         QString::fromStdString(scientist.getName()));
@@ -25,18 +42,13 @@ void Database::add(Scientist scientist)
     query.bindValue(":YearOfBirth",  QString::number(scientist.getBirthYear()));
     query.bindValue(":YearOfDeath",  QString::number(scientist.getDeathYear()));
     query.exec();
-}
 
+    //    db.disconnectDatabase();
+}
 
 void Database::addcomputer(Computer computer)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    QSqlQuery query(db);
+    QSqlQuery query(connectDatabase());
 
     query.prepare("INSERT INTO Computers (Name, YearBuilt, Type, WasItBuilt) VALUES (:name, :year, :type, :built)");
     query.bindValue(":name",         QString::fromStdString(computer.getName()));
@@ -44,21 +56,13 @@ void Database::addcomputer(Computer computer)
     query.bindValue(":type",         QString::fromStdString(computer.getType()));
     query.bindValue(":built",        QString::number(computer.getwasItBuilt()));
     query.exec();
+
+    //    db.disconnectDatabase();
 }
 
 list <Scientist> Database::searchScientists(string inputFromUser)
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    if(!db.open())
-    {
-        exit(1);
-    }
-
-    QSqlQuery query(db);
+    QSqlQuery query(connectDatabase());
 
     query.prepare ("SELECT * FROM Scientists WHERE name LIKE '%'||:name||'%'");
     query.bindValue(":name", QString::fromStdString(inputFromUser));
@@ -71,7 +75,7 @@ list <Scientist> Database::searchScientists(string inputFromUser)
     list <Scientist> result = list <Scientist>();
     result = databaseToScientistList(query);
 
-    db.close();
+//    db.disconnectDatabase();
 
     return result;
 }
@@ -89,16 +93,10 @@ list <Scientist> Database::searchScientists(string inputFromUser)
 }
 */
 
-
+/*
 void Database::sortComputersAsc()
-{/*
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-*/
-    db.open();
-    //QSqlQuery query(db);
+{
+    QSqlQuery query(connectDatabase());
 
     QSqlQuery q = db.exec("SELECT * FROM scientists");
     if(!q.lastError().isValid())
@@ -106,7 +104,7 @@ void Database::sortComputersAsc()
         qDebug()<<"works!";
     }else qDebug() << "Failed, error: " <<q.lastError().text();
 
-    db.close();
+//    db.disconnectDatabase();
 
 
     //query.prepare ("SELECT * FROM computers"); // TEST
@@ -133,10 +131,10 @@ void Database::sortComputersAsc()
     int death = query.value("YearOfDeath").toUInt();
     cout << id << name << gender << birth << death << endl;
     }
-    db.close();*/
+    db.close();
 }
 
-/*void sortComputersDesc()
+void sortComputersDesc()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -154,17 +152,7 @@ void Database::sortComputersAsc()
 
 list <Scientist> Database::sortScientistsReverse()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    if(!db.open())
-    {
-        exit(1);
-    }
-
-    QSqlQuery query(db);
+    QSqlQuery query(connectDatabase());
 
     query.prepare ("SELECT * FROM Scientists ORDER BY Name DESC");
 
@@ -176,7 +164,7 @@ list <Scientist> Database::sortScientistsReverse()
     list <Scientist> result = list <Scientist>();
     result = databaseToScientistList(query);
 
-    db.close();
+//    db.disconnectDatabase();
 
     return result;
 }
@@ -185,17 +173,7 @@ list <Scientist> Database::sortScientistsReverse()
 
 list <Scientist> Database::sortScientistsAlpabetically()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    if(!db.open())
-    {
-        exit(1);
-    }
-
-    QSqlQuery query(db);
+    QSqlQuery query(connectDatabase());
 
     query.prepare ("SELECT * FROM Scientists ORDER BY Name");
 
@@ -207,24 +185,15 @@ list <Scientist> Database::sortScientistsAlpabetically()
     list <Scientist> result = list <Scientist>();
     result = databaseToScientistList(query);
 
-    db.close();
+//    db.disconnectDatabase();
+
 
     return result;
 }
 
 list <Computer> Database::sortComputer()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbScienc = "dbScience.sqlite";
-    db.setDatabaseName(dbScienc);
-
-    db.open();
-    if(!db.open())
-    {
-        exit(1);
-    }
-
-    QSqlQuery query(db);
+    QSqlQuery query(connectDatabase());
 
     query.prepare ("SELECT * FROM Computers ORDER BY Name");
 
@@ -236,7 +205,7 @@ list <Computer> Database::sortComputer()
     list <Computer> result = list <Computer>();
     result = databaseToComputerList(query);
 
-    db.close();
+//    db.disconnectDatabase();
 
     return result;
 }

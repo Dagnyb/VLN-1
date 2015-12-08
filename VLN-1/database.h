@@ -6,6 +6,7 @@
 
 //#include <QCoreApplication>
 #include <string>
+#include <Qstring>
 #include <list>
 //#include <stdexcept>
 //#include <QSqlQuery>
@@ -21,16 +22,27 @@ using namespace std;
 class Database
 {
 public:
+
     Database();
 
+    //heldur utan um tenginguna
+    QSqlDatabase connectDatabase();
+
     list <Scientist> databaseToScientistList(QSqlQuery& query);
+
     list <Computer> databaseToComputerList(QSqlQuery& query);
 
     void add(Scientist);
+
     void addcomputer(Computer);
+
     list <Scientist> searchScientists(string inputFromUser);
+
     list <Scientist> sortScientistsAlpabetically();
+
     list <Scientist> sortScientistsReverse();
+
+    void disconnectDatabase(QSqlDatabase database);
 
     list <Computer> sortComputer();
 
@@ -38,8 +50,6 @@ public:
     void sortComputersAsc();
     //void sortComputersDesc();
 private:
-    QSqlDatabase db;
-
     string searchId;
     string searchName;
     string searchGender;
