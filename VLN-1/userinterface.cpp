@@ -108,7 +108,7 @@ void UserInterface::inputData()
                     loopAgain = true;
                     break;
                 case '3':
-                    inputConnectionComSci();
+                 //   inputConnectionComSci();
                     loopAgain = true;
                     break;
                 case '4':
@@ -129,12 +129,28 @@ void UserInterface::inputData()
         }
     }
 }
-
+/*
 void UserInterface::inputConnectionComSci()
 {
     cout << "Name of computer: ";
-}
+    string computer = name();
 
+
+    //string UserInterface::searchString()
+    {
+        string search;
+
+        cout << "Please enter the name: ";
+        cin.sync();
+     //   cin.ignore();  Fyrir Maca eða ????
+        getline(cin, search);
+
+        return search;
+    }
+
+
+}
+ */
 void UserInterface::inputScientist()
 {
     bool add = true;

@@ -17,14 +17,6 @@ class ServiceComputer
         list <Computer> findDataComp(string nameSearch);
         list <Computer> viewComputerAlphabetically();
         list <Computer> viewComputerReverse();
-
-
-/**** föll sem búið var að skilgreina í gamala service klasanum ******
- *
-
-**********************************************************************/
-
-
     private:
         list <Computer> comList;
         Database db;
