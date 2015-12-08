@@ -609,7 +609,7 @@ void UserInterface::viewData()
                     loopAgain = true;
                     break;
                 case '3':
-                //    viewScientistToComputer();
+                    viewScientistToComputer();
                     loopAgain = true;
                     break;
                 case '4':
@@ -698,6 +698,12 @@ void UserInterface::sortOptionsComputers()
 }
 
 
+void UserInterface::viewScientistToComputer()
+{
+     printConnectList(connect.viewSciToCom());
+
+}
+
 //          --------------------------------------------------------
 
 
@@ -712,6 +718,14 @@ void UserInterface::printList(list <Scientist> aList)
 void UserInterface::printComputerList(list <Computer> aList)
 {
     for (list <Computer>::iterator it = aList.begin(); it != aList.end(); it++)
+    {
+        cout << *it;
+    }
+}
+
+void UserInterface::printConnectList(list <Connected> aList)
+{
+    for (list <Connected>::iterator it = aList.begin(); it != aList.end(); it++)
     {
         cout << *it;
     }

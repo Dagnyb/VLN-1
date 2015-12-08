@@ -1,4 +1,5 @@
 #include "database.h"
+#include <iostream> // TESTING ONLY
 
 Database::Database()
 {
@@ -220,6 +221,8 @@ list <Computer> Database::databaseToComputerList(QSqlQuery& query)
 
 list <Connected> Database::AllScientistToComputer()
 {
+   cout << "IT WORKS !!!!!" << endl;
+
     QSqlQuery query(connectDatabase());
 
     query.prepare ("SELECT ScientistComputersConnect.ScientistID, Scientists.Id, Scientists.Name, Computers.Name, Computers.Id, ScientistComputersConnect.ComputersID"
@@ -295,3 +298,20 @@ list <Connected> Database::databaseToComputerScientistlist(QSqlQuery& query)
 
     return result;
 }
+/*
+list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
+{
+    list <Connected> result = list <Connected>();
+
+    while (query.next())
+    {
+        string SciName = query.value("Scientists.Name").toString().toStdString();
+        string CompName = query.value("Computers.Name").toString().toStdString();
+
+        Connected newLine(SciName, CompName);
+        result.push_back(newLine);
+    }
+
+    return result;
+}
+*/
