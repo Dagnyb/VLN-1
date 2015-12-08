@@ -82,7 +82,7 @@ void UserInterface::inputData()
     while(loopAgain == true)
     {
         cout << endl
-             << "Input options:\n"
+             << "Input menu:\n"
              << "1) to input new computer scientist.\n"
              << "2) to input new computer.\n"
              << "3) to connect scientist and computer.\n"
@@ -108,7 +108,7 @@ void UserInterface::inputData()
                     loopAgain = true;
                     break;
                 case '3':
-                 //   inputConnectionComSci();
+                    inputConnectionComSci();
                     loopAgain = true;
                     break;
                 case '4':
@@ -130,13 +130,17 @@ void UserInterface::inputData()
     }
 }
 
-
+void UserInterface::inputConnectionComSci()
+{
+    cout << "Name of computer: ";
+}
 
 void UserInterface::inputScientist()
 {
     bool add = true;
     while (add == true)
     {
+        cout << "Name of the scientist: ";
         string newName = name();
         string newGender= gender();
         int newBYear = birthYear();
@@ -150,7 +154,6 @@ void UserInterface::inputScientist()
 
 string UserInterface::name()
 {
-    cout << "Name of the scientist: ";
     string name;
     cin.sync();
     getline(cin, name);
