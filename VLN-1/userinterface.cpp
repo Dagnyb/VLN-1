@@ -230,6 +230,164 @@ bool UserInterface::addAnother()
     return add;
 }
 
+//_____________________________________________________________________________________________________________
+
+void UserInterface::inputComputer()
+{
+    bool add = true;
+    while (add == true)
+    {
+        string newName = name();
+        int newYearBuilt = yearBuilt();
+        string newtype = type();
+        bool newWasItBuilt = wasItBuilt();
+        Computer temp(newName, newYearBuilt, newtype, newWasItBuilt);
+        com.newComputer(temp);
+        cout << endl;
+        add = addAnotherComputer();
+    }
+}
+
+string UserInterface::nameComputer()
+{
+    cout << "Name of the computer: ";
+    string name;
+    cin.sync();
+    getline(cin, name);
+    //locale loc;
+    while(name.empty())  //setja in isdigit held samt að það vinni bara með char ath ef við höfum tíma.
+    {
+        errorMessage(". Please input name: ");
+        getline(cin, name);
+    }
+    return name;
+}
+
+/*string UserInterface::gender()
+{
+    cout << "Select gender 1) for female\n"
+         << "              2) for male       : ";
+
+    char control;
+    cin >> control;
+    bool loopAgain = true;
+    string gender;
+
+    while(loopAgain == true)
+    {
+        loopAgain = false;
+        switch (control)
+        {
+            case '1':
+                gender = "female";
+                break;
+            case '2':
+                gender = "male";
+                break;
+            default:
+                errorMessage(". Please input 1 or 2: ");
+                cin >> control;
+                cout <<"selection:    ";
+                loopAgain = true;
+                break;
+        }
+    }
+    return gender;
+}*/
+
+/*int UserInterface::birthYear()
+{
+    int year;
+    cout << "Year of birth: ";
+    cin >> year;
+
+    while (year < MINYEAR || year > MAXYEAR )
+    {
+        errorMessage(" Please input valid year on the format YYYY: ");
+        cin >> year;
+    }
+    return year;
+}*/
+
+/*int UserInterface::deathYear()
+{
+    int year;
+
+    cout << "Is the scientist still alive? (y/n): ";
+    char control;
+    cin >> control;
+
+    bool loopAgain = true;
+
+    while(loopAgain == true)
+    {
+        loopAgain = false;
+        switch (control)
+        {
+            case 'y':
+            case 'Y':
+                year = 0;  //kann ekki að gera ekkert eins og databaseinn tekur við
+                break;
+            case 'n':
+            case 'N':
+                cout << "Year of death: ";
+                cin >> year;
+                while (year < MINYEAR || year > MAXYEAR )
+                {
+                    errorMessage(" Please select y or n: ");
+                    cin >> year;
+                }
+                break;
+            default:
+                errorMessage("input y or n. ");
+                cin >> control;
+                loopAgain = true;
+                break;
+        }
+    }
+    return year;
+}*/
+
+bool UserInterface::addAnotherComputer()
+{
+    bool add = false;
+    bool loopAgain = true;
+
+    while(loopAgain == true)
+    {
+        cout << "Add another computer? (y/n): ";
+        char another1, another2;
+        cin >> another1;
+
+        if (another1 == 'y' || another1 == 'Y')
+        {
+            add = true;
+            loopAgain = false;
+        }
+        else if (another1 == 'n' || another1 == 'N')
+        {
+            add = false;
+            loopAgain = false;
+        }
+        else
+        {
+            do
+            {
+            errorMessage(". Please select y or n: ");
+            cin >> another2;
+            }
+            while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
+
+        another1 = another2;
+        loopAgain = true;
+        }
+    }
+
+    return add;
+}
+
+//_________________________________________________________________________________________________________
+
 string UserInterface::searchString()
 {
     string search;

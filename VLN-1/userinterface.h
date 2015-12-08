@@ -60,8 +60,14 @@ public:
     // writes out error message and takes in string of instructions.
     void errorMessage(string aString);
 
-    // offers user to input another scientist, returns bool walue.
+    // Allows the user to input new computer
+    void inputComputer();
+
+    // offers user to input another scientist, returns bool value.
     bool addAnother();
+
+    // offers user to input another computer, returns bool value.
+    bool UserInterface::addAnotherComputer();
 
     // promts user and takes in name as a string and returns it
     string name();
@@ -74,6 +80,9 @@ public:
 
     // promts user and takes in year of death s a int and returns it
     int deathYear();
+
+    // promts user and takes in name as a string and returns it
+    string UserInterface::nameComputer();
 private:
     Service sci;
     ServiceComputer com;
