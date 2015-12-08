@@ -44,7 +44,7 @@ void Database::add(Scientist scientist)
     query.exec();
 }
 
-void Database::addcomputer(Computer computer)
+void Database::addComputer(Computer computer)
 {
     QSqlQuery query(connectDatabase());
 

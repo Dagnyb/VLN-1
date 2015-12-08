@@ -30,3 +30,8 @@ list <Computer> ServiceComputer::viewComputerReverse()
 
     return comList;
 }
+
+void ServiceComputer::newComputer(Computer newComputer)
+{
+    db.addComputer(newComputer);
+}

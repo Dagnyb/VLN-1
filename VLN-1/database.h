@@ -27,7 +27,7 @@ public:
 
     void add(Scientist);
 
-    void addcomputer(Computer);
+    void addComputer(Computer);
 
     list <Scientist> searchScientists(string inputFromUser);
 
