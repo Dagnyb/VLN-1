@@ -82,7 +82,7 @@ void UserInterface::inputData()
     while(loopAgain == true)
     {
         cout << endl
-             << "Input options:\n"
+             << "Input menu:\n"
              << "1) to input new computer scientist.\n"
              << "2) to input new computer.\n"
              << "3) to connect scientist and computer.\n"
@@ -129,9 +129,28 @@ void UserInterface::inputData()
         }
     }
 }
+/*
+void UserInterface::inputConnectionComSci()
+{
+    cout << "Name of computer: ";
+    string computer = name();
 
 
+    //string UserInterface::searchString()
+    {
+        string search;
 
+        cout << "Please enter the name: ";
+        cin.sync();
+     //   cin.ignore();  Fyrir Maca eða ????
+        getline(cin, search);
+
+        return search;
+    }
+
+
+}
+ */
 void UserInterface::inputScientist()
 {
     bool add = true;

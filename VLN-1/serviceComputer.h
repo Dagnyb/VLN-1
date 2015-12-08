@@ -18,6 +18,7 @@ class ServiceComputer
         list <Computer> viewComputerAlphabetically();
         list <Computer> viewComputerReverse();
 
+
         void newComputer(Computer newComputer);
 
 
@@ -25,6 +26,7 @@ class ServiceComputer
  *
 
 **********************************************************************/
+
 
 
     private:
