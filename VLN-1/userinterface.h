@@ -67,23 +67,40 @@ public:
     // writes out error message and takes in string of instructions.
     void errorMessage(string aString);
 
-    // offers user to input another scientist, returns bool walue.
+    // Allows the user to input new computer
+    void inputComputer();
+
+    // offers user to input another scientist, returns bool value.
     bool addAnother();
 
-    // promts user and takes in name as a string and returns it
+    // offers user to input another computer, returns bool value.
+    bool addAnotherComputer();
+
+    // prompts user and takes in name as a string and returns it
     string name();
 
-    // promts user and takes in gender as a string and returns it
+    // prompts user and takes in gender as a string and returns it
     string gender();
 
-    // promts user and takes in year of birth s a int and returns it
+    // prompts user and takes in year of birth as a int and returns it
     int birthYear();
 
-    // promts user and takes in year of death s a int and returns it
+    // prompts user and takes in year of death as a int and returns it
     int deathYear();
+
+    // prompts user and takes in year built as a int and returns it
+    int yearBuilt();
+
+    // prompts user and takes in type as a string and returns it
+    string type();
+
+    // prompts user and takes in if the computer was built as a string and returns it
+    bool wasItBuilt();
+
 private:
     Service sci;
     ServiceComputer com;
+    bool newWasItBuilt;
 };
 
 #endif // USERINTERFACE_H

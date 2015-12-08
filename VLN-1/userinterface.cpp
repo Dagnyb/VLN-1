@@ -104,7 +104,7 @@ void UserInterface::inputData()
                     loopAgain = true;
                     break;
                 case '2':
-                //    inputComputer();
+                    inputComputer();
                     loopAgain = true;
                     break;
                 case '3':
@@ -253,7 +253,7 @@ int UserInterface::deathYear()
                 cin >> year;
                 while (year < MINYEAR || year > MAXYEAR )
                 {
-                    errorMessage(" Please select y or n: ");
+                    errorMessage(" Please insert a valid year (from 1500 to current date) : ");
                     cin >> year;
                 }
                 break;
@@ -304,6 +304,128 @@ bool UserInterface::addAnother()
 
     return add;
 }
+
+//_____________________________________________________________________________________________________________
+
+void UserInterface::inputComputer()
+{
+    bool add = true;
+    while (add == true)
+    {
+        cout << "Name of the computer: ";
+        string newName = name();
+        string newtype = type();
+        newWasItBuilt = wasItBuilt();
+        int newYearBuilt = yearBuilt();
+        Computer temp(newName, newYearBuilt, newtype, newWasItBuilt);
+        com.newComputer(temp);
+        cout << endl;
+        add = addAnotherComputer();
+    }
+}
+
+int UserInterface::yearBuilt()
+{
+    if(newWasItBuilt == true)
+    {
+        int year;
+        cout << "Year built: ";
+        cin >> year;
+
+    while (year < MINYEAR || year > MAXYEAR )
+    {
+        errorMessage(" Please input a valid year (from 1500 to current date) : ");
+        cin >> year;
+    }
+        return year;
+    }else cout << "Your data has been processed" << endl;
+    return 0;
+    options();
+
+ }
+
+string UserInterface::type()
+{
+    cout << "Type of the computer: ";
+
+    string result = name();
+
+    return result;
+}
+
+bool UserInterface::wasItBuilt()
+{
+    int built;
+
+    cout << "Was the computer built? (y/n): ";
+    char control;
+    cin >> control;
+
+    bool loopAgain = true;
+
+    while(loopAgain == true)
+    {
+        loopAgain = false;
+        switch (control)
+        {
+            case 'n':
+            case 'N':
+                built = 0;
+                break;
+            case 'y':
+            case 'Y':
+                built = 1;
+               // yearBuilt();
+                break;
+            default:
+                errorMessage("input y or n. ");
+                cin >> control;
+                loopAgain = true;
+                break;
+        }
+    }
+    return built;
+}
+
+bool UserInterface::addAnotherComputer()
+{
+    bool add = false;
+    bool loopAgain = true;
+
+    while(loopAgain == true)
+    {
+        cout << "Add another computer? (y/n): ";
+        char another1, another2;
+        cin >> another1;
+
+        if (another1 == 'y' || another1 == 'Y')
+        {
+            add = true;
+            loopAgain = false;
+        }
+        else if (another1 == 'n' || another1 == 'N')
+        {
+            add = false;
+            loopAgain = false;
+        }
+        else
+        {
+            do
+            {
+            errorMessage(". Please select y or n: ");
+            cin >> another2;
+            }
+            while(another2 != 'y' || another2 != 'Y' || another2 != 'n' || another2 != 'N');
+
+        another1 = another2;
+        loopAgain = true;
+        }
+    }
+
+    return add;
+}
+
+//_________________________________________________________________________________________________________
 
 string UserInterface::searchString()
 {
