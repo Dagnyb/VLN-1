@@ -1,21 +1,14 @@
 #ifndef DATABASE_H
 #define DATABASE_H
+
 #include "scientist.h"
 #include "computer.h"
 #include "connected.h"
-
-//#include <QCoreApplication>
 #include <string>
 #include <Qstring>
 #include <list>
-//#include <stdexcept>
-//#include <QSqlQuery>
 #include <QtSql>
 #include <cstdlib>
-//#include <QSql>
-
-#include <iostream> // For testing purposes only
-                    // TODO: Delete before final version
 
 using namespace std;
 
@@ -38,6 +31,7 @@ public:
 
     list <Scientist> searchScientists(string inputFromUser);
 
+    list <Computer> searchComputers(string inputFromUser);
     list <Scientist> sortScientistsAlpabetically();
 
     list <Scientist> sortScientistsReverse();

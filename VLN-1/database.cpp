@@ -23,9 +23,9 @@ QSqlDatabase Database::connectDatabase()
     }
 
     return db;
-
 }
 
+// erum ekki farin að nota þetta fall gott væri að finna út úr því.
 void Database::disconnectDatabase(QSqlDatabase database)
 {
     database.close();
@@ -42,8 +42,6 @@ void Database::add(Scientist scientist)
     query.bindValue(":YearOfBirth",  QString::number(scientist.getBirthYear()));
     query.bindValue(":YearOfDeath",  QString::number(scientist.getDeathYear()));
     query.exec();
-
-    //    db.disconnectDatabase();
 }
 
 void Database::addcomputer(Computer computer)
@@ -56,8 +54,6 @@ void Database::addcomputer(Computer computer)
     query.bindValue(":type",         QString::fromStdString(computer.getType()));
     query.bindValue(":built",        QString::number(computer.getwasItBuilt()));
     query.exec();
-
-    //    db.disconnectDatabase();
 }
 
 list <Scientist> Database::searchScientists(string inputFromUser)
@@ -75,23 +71,26 @@ list <Scientist> Database::searchScientists(string inputFromUser)
     list <Scientist> result = list <Scientist>();
     result = databaseToScientistList(query);
 
-//    db.disconnectDatabase();
-
     return result;
 }
 
-/*void searchComputers()
+list <Computer> Database::searchComputers(string inputFromUser)
 {
-    QSqlDatabase SciDatabase;
-    QSqlQuery query(SciDatabase);
-    //Setja inn fall sem les inn töfluna
-    query.searchId ("SELECT * FROM Computers WHERE ID LIKE inputId") // Search by ID
-    query.searchName ("SELECT * FROM Computers WHERE Name LIKE inputName") // Search by name
-    query.searchYearBuilt ("SELECT * FROM Computers WHERE YearBuilt LIKE inputYearBuilt") // Search by year built
-    query.searchType ("SELECT * FROM Computers WHERE Type LIKE inputType") // Search by type
-    query.searchWasItBuilt ("SELECT * FROM Computers WHERE WasItBuilt LIKE inputWasItBuilt") // Search by was it built
+    QSqlQuery query(connectDatabase());
+
+    query.prepare ("SELECT * FROM Computers WHERE name LIKE '%'||:name||'%'");
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Computer> result = list <Computer>();
+    result = databaseToComputerList(query);
+
+    return result;
 }
-*/
 
 /*
 void Database::sortComputersAsc()
@@ -164,8 +163,6 @@ list <Scientist> Database::sortScientistsReverse()
     list <Scientist> result = list <Scientist>();
     result = databaseToScientistList(query);
 
-//    db.disconnectDatabase();
-
     return result;
 }
 
@@ -185,9 +182,6 @@ list <Scientist> Database::sortScientistsAlpabetically()
     list <Scientist> result = list <Scientist>();
     result = databaseToScientistList(query);
 
-//    db.disconnectDatabase();
-
-
     return result;
 }
 
@@ -204,8 +198,6 @@ list <Computer> Database::sortComputer()
 
     list <Computer> result = list <Computer>();
     result = databaseToComputerList(query);
-
-//    db.disconnectDatabase();
 
     return result;
 }
