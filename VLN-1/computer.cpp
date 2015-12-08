@@ -38,24 +38,36 @@ bool Computer::getwasItBuilt() const
 
 ostream& operator << (ostream& outs, const Computer& Computer)
 {
-    outs << setw(30);
-    outs.setf(ios::left);
-    outs << Computer.name;
-     if (Computer.built == true)
-    {
-         outs << Computer.year << "\t";
-    }
-    else  outs << "\t" << " " << "\t";
-
-    outs  << Computer.type << "\t";
+        outs << setw(30);
+        outs.setf(ios::left);
+        outs << Computer.name;
     if (Computer.built == true)
     {
+         outs << setw(20);
+         outs.setf(ios::left);
+         outs << Computer.year;
+    }
+    else
+    {
+         outs << setw(10);
+         outs.setf(ios::left);
+         outs << " ";
+    }
+        outs << setw(15);
+        outs.setf(ios::left);
+        outs  << Computer.type;
+    if (Computer.built == true)
+    {
+        outs << setw(10);
+        outs.setf(ios::left);
         outs << "Yes";
     }
     else
-
+    {
+        outs << setw(10);
+        outs.setf(ios::left);
         outs << "No";
-
+    }
     outs << endl;
     return outs;
 }
