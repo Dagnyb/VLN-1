@@ -10,7 +10,7 @@ list <Computer> ServiceComputer::getComputerList()
     return comList;
 }
 
-list <Computer> ServiceComputer::findDataComp(string nameSearch) // á að vera list <Computer> Service, eftir að breyta
+list <Computer> ServiceComputer::findDataComp(string nameSearch)
 {
     comList = db.searchComputers(nameSearch);
 
