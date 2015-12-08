@@ -16,3 +16,10 @@ list <Computer> ServiceComputer::findDataComp(string nameSearch)
 
     return comList;
 }
+
+list <Computer> ServiceComputer::viewComputerAlphabetically()
+{
+    comList = db.sortComputersAsc();
+
+    return comList;
+}

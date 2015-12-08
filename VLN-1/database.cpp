@@ -92,60 +92,52 @@ list <Computer> Database::searchComputers(string inputFromUser)
     return result;
 }
 
-/*
-void Database::sortComputersAsc()
+
+
+list <Computer> Database::sortComputersAsc()
 {
     QSqlQuery query(connectDatabase());
 
-    QSqlQuery q = db.exec("SELECT * FROM scientists");
-    if(!q.lastError().isValid())
-    {
-        qDebug()<<"works!";
-    }else qDebug() << "Failed, error: " <<q.lastError().text();
+    query.prepare ("SELECT * FROM Computers ORDER BY Name");
 
-//    db.disconnectDatabase();
-
-
-    //query.prepare ("SELECT * FROM computers"); // TEST
-    //query.prepare ("SELECT * FROM computers c ORDER BY c.name "); // Sort computers by name Ascending
-    //query.bindValue(":name", QString::fromStdString("%"));
-
-/*    if( !query.exec() )
+    if (!query.exec())
     {
         qDebug() << query.lastError().text();
     }
-*/
-    /*if(query.exec())
-    {
-        cout << "exec virkar" << endl;
-    }else cout << "Not Working" << endl;
-    */
 
-   /* while(query.next())
-    {
-    int id = query.value(0).toInt();
-    string name = query.value("Name").toString().toStdString();
-    string gender = query.value ("Gender").toString().toStdString();
-    int birth = query.value ("YearOfBirth").toInt();
-    int death = query.value("YearOfDeath").toUInt();
-    cout << id << name << gender << birth << death << endl;
-    }
-    db.close();
+    list <Computer> result = list <Computer>();
+    result = databaseToComputerList(query);
+
+    return result;
 }
 
-void sortComputersDesc()
+/*void sortComputersDesc()
 {
-    QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbScienc = "dbScience.sqlite";
     db.setDatabaseName(dbScienc);
 
     db.open();
+    if(!db.open())
+    {
+        exit(1);
+    }
+
     QSqlQuery query(db);
 
-    query.prepare ("SELECT * FROM computers c ORDER BY c.name DESC"); // Sort computers by name Descending
-    query.bindValue(":name","%");
-    query.exec();
+    query.prepare ("SELECT * FROM Scientists ORDER BY Name DESC");
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Scientist> result = list <Scientist>();
+    result = databaseToScientistList(query);
+
+    db.close();
+
+    return result;
 }*/
 
 

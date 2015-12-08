@@ -40,16 +40,22 @@ ostream& operator << (ostream& outs, const Computer& Computer)
 {
     outs << setw(30);
     outs.setf(ios::left);
-    outs << Computer.name
-         << Computer.year << "\t"
-         << Computer.type << "\t";
+    outs << Computer.name;
+     if (Computer.built == true)
+    {
+         outs << Computer.year << "\t";
+    }
+    else  outs << "\t" << " " << "\t";
+
+    outs  << Computer.type << "\t";
     if (Computer.built == true)
     {
-        cout << "Yes";
+        outs << "Yes";
     }
     else
-    {
-        cout << "No" << endl;
-    }
+
+        outs << "No" << endl;
+
+    outs << endl;
     return outs;
 }
