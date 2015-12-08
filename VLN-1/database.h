@@ -43,6 +43,14 @@ public:
     list <Computer> sortComputersAsc();
 
     list <Computer> sortComputersDesc();
+
+    list<Connected> AllScientistToComputer();
+
+    list <Connected> databaseToAllScientistToComputer(QSqlQuery& query);
+
+    list<Connected> ComputerToScientistId(string Id);
+
+    list <Connected> databaseToComputerScientistlist(QSqlQuery& query);
 private:
     string searchId;
     string searchName;
