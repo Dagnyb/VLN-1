@@ -11,24 +11,41 @@ using namespace std;
 class Service
 {
 public:
-    Service(); // Initializes the list
-    void dataFromFile(); // instreams the .txt file
+     // Initializes the list
+    Service();
+
+     // instreams the .txt file
+    void dataFromFile();
 
     void newScientist(Scientist newScientist);
 
-    void putList(list <Scientist> inputList); // returns input in sciList
-    Scientist extract (string aString); // read from the txt file in string and converts two string to int
-    list <Scientist> getList(); // Returns sciList
+     // returns input in sciList
+    void putList(list <Scientist> inputList);
 
-    list <Scientist> findData(string name); // Allows the user to search in the list
+     // read from the txt file in string and converts two string to int
+    Scientist extract (string aString);
+
+    // Returns sciList
+    list <Scientist> getList();
+
+     // Allows the user to search in the list
+    list <Scientist> findData(string name);
+
     list <Scientist> findDataFull(string nameSearch);
 
     //list <Computer> findDataComp(string nameSearch);
     list <Scientist> viewScientistReverse();
+
     list <Scientist> viewScientistAlphabetically();
-    list <Scientist> sortListS(); // Sorts the list in alphabetic order
-    list <Computer> sortListR(); // Sorts the list in reverse alphabetic order
+
+    // Sorts the list in alphabetic order
+    list <Scientist> sortListS();
+
+     // Sorts the list in reverse alphabetic order
+    list <Computer> sortListR();
+
 private:
+
     list <Scientist> sciList;
 
     Database db;

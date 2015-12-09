@@ -33,6 +33,7 @@ int Scientist::getDeathYear() const
 {
     return deathYear;
 }
+
 ostream& operator << (ostream& outs, const Scientist& Scientist)
 {
     outs << setw(30);

@@ -53,27 +53,6 @@ Scientist Service::extract (string aString)
 return sciInfo;
 }
 
-// Óþarfi fyrir database - notast með .txt skjali
-/*bool sortlikethis(Scientist a, Scientist b)
-{
-    return a.getName() < b.getName();
-}*/
-/* ---- hætt að nota þetta -------
-list <Scientist> Service::sortListS()
-{
-    list <Scientist> temp = sciList;
-    temp = db.sortScientists();
-    return temp;
-}-------- hrund -------------------*/
-
-// Óþarfi fyrir database - notast með .txt skjali
-/*list <Computer> Service::sortListR()
-{
-    list <Computer> temp = comList;
-    temp = db.sortComputer();
-    return temp;
-}*/
-
 list <Scientist> Service::viewScientistAlphabetically()
 {
     //list <Scientist> temp = sciList;

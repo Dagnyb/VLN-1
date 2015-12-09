@@ -26,7 +26,6 @@ QSqlDatabase Database::connectDatabase()
     return db;
 }
 
-
 void Database::add(Scientist scientist)
 {
     QSqlQuery query(connectDatabase());
@@ -87,8 +86,6 @@ list <Computer> Database::searchComputers(string inputFromUser)
     return result;
 }
 
-
-
 list <Computer> Database::sortComputersAsc()
 {
     QSqlQuery query(connectDatabase());
@@ -106,7 +103,7 @@ list <Computer> Database::sortComputersAsc()
     return result;
 }
 
- list <Computer> Database::sortComputersDesc()
+list <Computer> Database::sortComputersDesc()
 {
     QSqlQuery query(connectDatabase());
 
@@ -122,7 +119,6 @@ list <Computer> Database::sortComputersAsc()
 
     return result;
 }
-
 
 list <Scientist> Database::sortScientistsReverse()
 {
@@ -140,8 +136,6 @@ list <Scientist> Database::sortScientistsReverse()
 
     return result;
 }
-
-
 
 list <Scientist> Database::sortScientistsAlpabetically()
 {
@@ -324,7 +318,6 @@ int Database::ScientistId(string inputFromUser)
 
     return sciId;
 }
-
 
 list <Computer> Database::searchComputerId(string inputFromUser)
 {

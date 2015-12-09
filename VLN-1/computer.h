@@ -23,11 +23,11 @@ class Computer
         // returns name.
         string getName() const;
 
-        // returns year.
-        int getYear() const;
-
         // returns type.
         string getType() const;
+
+        // returns year.
+        int getYear() const;
 
         // returns bool value if computer was built.
         bool getwasItBuilt() const;
@@ -36,6 +36,7 @@ class Computer
         friend ostream& operator << (ostream& outs, const Computer& Computer);
 
     private:
+
         string name, type;
         int year;
         bool built;

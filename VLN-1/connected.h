@@ -29,6 +29,7 @@ class Connected
         friend ostream& operator << (ostream& outs, const Connected& Connected);
 
     private:
+
         string nameOne, nameTwo;
 };
 

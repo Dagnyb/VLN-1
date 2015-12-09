@@ -18,6 +18,12 @@ public:
 
     Database();
 
+    void add(Scientist);
+
+    void addComputer(Computer);
+
+    void disconnectDatabase(QSqlDatabase database);
+
     //heldur utan um tenginguna
     QSqlDatabase connectDatabase();
 
@@ -25,18 +31,13 @@ public:
 
     list <Computer> databaseToComputerList(QSqlQuery& query);
 
-    void add(Scientist);
-
-    void addComputer(Computer);
-
     list <Scientist> searchScientists(string inputFromUser);
 
     list <Computer> searchComputers(string inputFromUser);
+
     list <Scientist> sortScientistsAlpabetically();
 
     list <Scientist> sortScientistsReverse();
-
-    void disconnectDatabase(QSqlDatabase database);
 
     list <Computer> sortComputer();
 
@@ -60,17 +61,16 @@ public:
 
     list <Computer> searchComputerId(string inputFromUser);
 
+    list <Connected> databaseScientistIdToComputer(QSqlQuery& query);
+
     bool conncetScientistToComputer(Connected newCon);
 
     int ComputerId(string inputFromUser);
 
-
     int ScientistId(string inputFromUser);
 
-
-
-    list <Connected> databaseScientistIdToComputer(QSqlQuery& query);
 private:
+
     string searchId;
     string searchName;
     string searchGender;

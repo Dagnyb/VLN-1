@@ -27,6 +27,7 @@ void UserInterface::initial()
     options();
 
 }
+
 void UserInterface::options()
 {
     bool loopAgain = true;
@@ -182,7 +183,6 @@ void UserInterface::inputConnectionSciCom()
     }
 }
 
-
 void UserInterface::inputScientist()
 {
     bool add = true;
@@ -337,8 +337,6 @@ bool UserInterface::addAnother()
     return add;
 }
 
-//_____________________________________________________________________________________________________________
-
 void UserInterface::inputComputer()
 {
     bool add = true;
@@ -374,7 +372,7 @@ int UserInterface::yearBuilt()
     return 0;
     options();
 
- }
+}
 
 string UserInterface::type()
 {
@@ -457,8 +455,6 @@ bool UserInterface::addAnotherComputer()
     return add;
 }
 
-//_________________________________________________________________________________________________________
-
 string UserInterface::searchString()
 {
     string search;
@@ -470,7 +466,6 @@ string UserInterface::searchString()
 
     return search;
 }
-
 
 void UserInterface::searchData()
 {
@@ -523,94 +518,7 @@ void UserInterface::searchData()
 }
 
 
-/*  --------- er að vinna í að henda þessu út ------
-void UserInterface::searchData()
-{
-    string nameSearch;
 
-    cout << "Please enter the name of scientist you wish to find: ";
-    cin.sync();
-    getline(cin, nameSearch);
-    list <Scientist> findData = sci.findData(nameSearch); // Upphaflsstillir listann
-
-
-    if (sciFindData.empty())
-    {
-            cout << "Scientist not found\n";
-    }
-    else
-    {
-        printList(findData);
-    }
-
-            char control;
-
-            cout << "Do want to try again? Y/N ";
-            cin >> control;
-
-            if(control=='Y' || control=='y')
-            {
-                searchData();
-            }
-            else if (control=='N' || control=='n')
-            {
-                options();
-            }
-            else
-            {
-                cout << "Sorry this was invalid input. You will be directed to the main menu";
-                cout << endl << endl;
-                options();
-            }
-}----------------------------------------hingað ------------------
-*/
-
-/*
-void UserInterface::viewData()
-{
-    sortOption();
-}
-
-void UserInterface::sortOption()
-{
-   char sort;
-   bool repeat;
-   cout << "Please enter s for an alphabetically "
-        << "sorted list, r for a reversed alphabetically "
-        << "sorted list or q to quit: "
-        << endl;
-
-   do
-    {
-       repeat = false;
-       cin >> sort;
-       sort = toupper(sort);
-
-
-    switch (sort)
-    {
-       case 'S':
-           cout << "The list in alphabetical order: " << endl;
-           printList(.sortListS());
-       break;
-       case 'R':
-           cout << "The list in reversed alphabetical order: " << endl;
-           printComputerList(.sortListR());
-
-       break;
-       case 'Q':
-       break;
-       default:
-       repeat = true;
-       cout << "Invalid input please enter s for an alphabetically sorted list, r for a reversed alphabetically sorted list or q to quit: " << endl;
-    }
-    }
-    while (repeat);
-}
-*/
-
-
-//----- ER AÐ VINNA Í ÞESSU ---------
 void UserInterface::viewData()
 {
     bool loopAgain = true;
@@ -733,15 +641,11 @@ void UserInterface::sortOptionsComputers()
         }
 }
 
-
 void UserInterface::viewScientistToComputer()
 {
      printConnectList(connect.viewSciToCom());
 
 }
-
-//          --------------------------------------------------------
-
 
 void UserInterface::printList(list <Scientist> aList)
 {
