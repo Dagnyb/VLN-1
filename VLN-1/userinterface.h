@@ -3,13 +3,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <list>
-//#include <fstream>
 #include <string>
 #include "scientist.h"
 #include "computer.h"
 #include "connected.h"
 #include "service.h"
 #include "servicecomputer.h"
+#include "serviceconnected.h"
 
 using namespace std;
 
@@ -50,11 +50,17 @@ public:
     // prints out the list of computer
     void printComputerList (list<Computer> aList);
 
+    // prints out the list of connected Scientists and computers
+    void printConnectList(list <Connected> aList);
+
     // allows the user to choose how he wants to sort the list af scientists.
     void sortOptionsScientist();
 
     // allows the user to choose how he wants to sort the list of computers
     void sortOptionsComputers();
+
+    // allows the user to view Scientist and connected computers
+    void viewScientistToComputer();
 
     // promt user and takes an input
     string searchString();
@@ -104,6 +110,7 @@ private:
     Service sci;
     ServiceComputer com;
     bool newWasItBuilt;
+    ServiceConnected connect;
 };
 
 #endif // USERINTERFACE_H
