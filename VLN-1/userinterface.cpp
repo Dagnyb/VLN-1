@@ -1,6 +1,6 @@
 #include "userinterface.h"
 
-const int MINYEAR = 1800;
+const int MINYEAR = 1500;
 const int MAXYEAR = 2015;
 
 
@@ -34,6 +34,8 @@ void UserInterface::options()
     {
         cout << endl
              << "Main menu:\n"
+             << "-----------\n"
+             << "\n"
              << "1) to input new data.\n"
              << "2) to search in the existing database.\n"
              << "3) to view existing data.\n"
@@ -83,9 +85,11 @@ void UserInterface::inputData()
     {
         cout << endl
              << "Input menu:\n"
+             << "-----------\n"
+             << "\n"
              << "1) to input new computer scientist.\n"
              << "2) to input new computer.\n"
-             << "3) to connect scientist and computer.\n"
+             << "3) to connect scientist to computer.\n"
              << "4) to connect computer to scientist.\n"
              << "5) back to main menu"
              << endl
@@ -446,7 +450,9 @@ void UserInterface::searchData()
     while(loopAgain == true)
     {
         cout << endl
-             << "Select:\n"
+             << "Search Menu:\n"
+             << "------------\n"
+             << "\n"
              << "1) to search for scientists.\n"
              << "2) to search for computer.\n"
              << "3) back to main menu"
@@ -584,10 +590,12 @@ void UserInterface::viewData()
     {
         cout << endl
              << "View menu:\n"
+             << "-----------\n"
+             << "\n"
              << "1) to view scientists.\n"
              << "2) to view computers.\n"
              << "3) to view connections between scientist and computer.\n"
-             << "4) to view connections between scientist and computer.\n"
+             << "4) to view connections between computer and scientist.\n"
              << "5) back to main menu"
              << endl
              << "Selection: ";

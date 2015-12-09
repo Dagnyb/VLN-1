@@ -99,7 +99,7 @@ list <Computer> Database::sortComputersAsc()
 {
     QSqlQuery query(connectDatabase());
 
-    query.prepare ("SELECT * FROM Computers ORDER BY Name");
+    query.prepare ("SELECT * FROM Computers ORDER BY LOWER(Name), Name");
 
     if (!query.exec())
     {
@@ -116,7 +116,7 @@ list <Computer> Database::sortComputersAsc()
 {
     QSqlQuery query(connectDatabase());
 
-    query.prepare ("SELECT * FROM Computers ORDER BY Name DESC");
+    query.prepare ("SELECT * FROM Computers ORDER BY LOWER(Name) DESC, Name DESC");
 
     if (!query.exec())
     {
@@ -221,14 +221,9 @@ list <Computer> Database::databaseToComputerList(QSqlQuery& query)
 
 list <Connected> Database::AllScientistToComputer()
 {
-   cout << "IT WORKS !!!!!" << endl;
-
     QSqlQuery query(connectDatabase());
 
-    query.prepare ("SELECT ScientistComputersConnect.ScientistID, Scientists.Id, Scientists.Name, Computers.Name, Computers.Id, ScientistComputersConnect.ComputersID"
-                   "FROM ScientistComputersConnect, Scientists, Computers"
-                   "WHERE ScientistComputersConnect.ScientistID = Scientists.Id AND ScientistComputersConnect.ComputersID = Computers.Id"
-                   "ORDER BY Scientists.Name");
+    query.prepare ("SELECT Scientists.Name, Computers.Name FROM ScientistComputersConnect, Scientists, Computers WHERE ScientistComputersConnect.ScientistID = Scientists.Id AND ScientistComputersConnect.ComputersID = Computers.Id ORDER BY Scientists.Name");
 
     if (!query.exec())
     {
