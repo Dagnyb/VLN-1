@@ -225,7 +225,7 @@ list <Connected> Database::AllScientistToComputer()
 
     QSqlQuery query(connectDatabase());
 
-    query.prepare ("SELECT Scientists.Name, Computers.Name);
+    query.prepare ("SELECT Scientists.Name, Computers.ComputersName FROM ScientistComputersConnect, Scientists, Computers WHERE ScientistComputersConnect.ScientistID = Scientists.Id AND ScientistComputersConnect.ComputersID = Computers.Id ORDER BY Scientists.Name");
 
     if (!query.exec())
     {
@@ -234,19 +234,19 @@ list <Connected> Database::AllScientistToComputer()
     }
 
     list <Connected> result = list <Connected>();
-    result = databaseToAllScientistToComputer(query);
+    result = databaseScientistToComputer(query);
 
     return result;
 }
 
-list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
+list <Connected> Database::databaseScientistToComputer(QSqlQuery& query)
 {
     list <Connected> result = list <Connected>();
 
     while (query.next())
     {
-        string SciName = query.value("Scientists.Name").toString().toStdString();
-        string CompName = query.value("Computers.Name").toString().toStdString();
+        string SciName = query.value("Name").toString().toStdString();
+        string CompName = query.value("ComputersName").toString().toStdString();
 
         Connected newLine(SciName, CompName);
         result.push_back(newLine);
@@ -297,83 +297,4 @@ list <Connected> Database::databaseToComputerScientistlist(QSqlQuery& query)
 
     return result;
 }
-/*
-<<<<<<< HEAD
 
-list <Scientist> Database::searchScientistsId(string inputFromUser)
-{
-    QSqlQuery query(connectDatabase());
-
-    query.prepare ("SELECT * FROM Scientists WHERE name LIKE :name");
-    query.bindValue(":name", QString::fromStdString(inputFromUser));
-
-    if (!query.exec())
-    {
-        qDebug() << query.lastError().text();
-    }
-
-    list <Scientist> result = list <Scientist>();
-    result = databaseToScientistIdList(query);
-
-    return result;
-}
-
-list <Scientist> Database::databaseToScientistIdList(QSqlQuery& query)
-{
-    list <Scientist> result = list <Scientist>();
-
-    int Id = query.value("Id").toInt();
-
-    Scientist newLine(Id);
-        result.push_back(newLine);
-
-    result = searchComputerToScientistId(query);
-    return result;
-}
-
-
-list<Connected> Database::searchComputerToScientistId(QSqlQuery& query)
-{
-    list<Connected> result = list<Connected>();
-
-    QSqlQuery query(connectDatabase());
-
-    query.prepare("SELECT * FROM Computers  "
-                  "INNER JOIN ScientistComputersConnect, Scientists "
-                  "ON ScientistComputersConnect.ScientistID = Scientists.Id "
-                  "AND ScientistComputersConnect.ComputersID = Computers.Id "
-                  "WHERE ScientistComputersConnect.ScientistID = :SciId "
-                  "ORDER BY Scientists.Name" );
-
-    query.bindValue(":SciId", QString::fromStdString(Id));
-
-    if (!query.exec())
-    {
-        qDebug() << query.lastError().text();
-    }
-
-    query.exec();
-
-    result = databaseScientistIdToComputer (query);
-
-    return result;
-}
-list <Connected> Database::databaseScientistIdToComputer(QSqlQuery& query)
-=======
-list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
->>>>>>> 950d7b3564c34d69eff11a94f3081a834a9365fe
-{
-    list <Connected> result = list <Connected>();
-
-    while (query.next())
-    {
-        string SciName = query.value("Scientists.Name").toString().toStdString();
-        string CompName = query.value("Computers.Name").toString().toStdString();
-
-        Connected newLine(SciName, CompName);
-        result.push_back(newLine);
-    }
-
-    return result;
-}
-*/

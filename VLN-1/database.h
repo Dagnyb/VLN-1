@@ -46,7 +46,7 @@ public:
 
     list<Connected> AllScientistToComputer();
 
-    list <Connected> databaseToAllScientistToComputer(QSqlQuery& query);
+    list <Connected> databaseScientistToComputer(QSqlQuery& query);
 
     list<Connected> ComputerToScientistId(string Id);
 

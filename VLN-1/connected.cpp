@@ -23,10 +23,12 @@ string Connected::getNameTwo() const
 
 ostream& operator << (ostream& outs, const Connected& Connected)
 {
-    outs << setw(30);
+    outs << setw(40);
     outs.setf(ios::left);
-    outs << Connected.nameOne
-         << Connected.nameTwo;
+    outs << Connected.nameOne;
+            outs << setw(40);
+            outs.setf(ios::left);
+       outs  << Connected.nameTwo;
 
     return outs;
 }
