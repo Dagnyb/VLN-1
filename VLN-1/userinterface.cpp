@@ -130,7 +130,7 @@ void UserInterface::inputData()
     }
 }
 
-Connected UserInterface::inputConnectionSciCom()
+void UserInterface::inputConnectionSciCom()
 {
     cout << "Enter full name of the scientist you wich to find: ";
     string scientist = name();
@@ -142,35 +142,40 @@ Connected UserInterface::inputConnectionSciCom()
         cout << "Scientist not found\n"
              << "you will be directed to main menu"
              << endl;
-        scientist = "NULL";
+//        scientist = "NULL";
         options();
     }
     else
     {
         printList(findScientistFull);
+
+        cout << "Enter full name of the computer you wich to find: ";
+        string computer = name();
+        list <Computer> findComputerFull = list <Computer>();
+        findComputerFull = com.findDataFull(computer);
+
+        if (findComputerFull.empty())
+        {
+            cout << "Computer not found\n"
+                 << "you will be directed to main menu"
+                 << endl;
+//          computer = "NULL";
+            options();
+        }
+        else
+        {
+            printComputerList(findComputerFull);
+            Connected sciToCom(scientist, computer);
+            if(connect.connectSciToCom(sciToCom))
+            {
+                cout << "Connection made";
+            }
+            else
+            {
+                cout << "connecion faild";
+            }
+        }
     }
-
-    cout << "Enter full name of the computer you wich to find: ";
-    string computer = name();
-    list <Computer> findComputerFull = list <Computer>();
-    findComputerFull = com.findDataFull(computer);
-
-    if (findComputerFull.empty())
-    {
-        cout << "Computer not found\n"
-             << "you will be directed to main menu"
-             << endl;
-        computer = "NULL";
-        options();
-    }
-    else
-    {
-        printComputerList(findComputerFull);
-    }
-
-    Connected sciToCom(scientist, computer);
-
-    return sciToCom;
 }
 
 
