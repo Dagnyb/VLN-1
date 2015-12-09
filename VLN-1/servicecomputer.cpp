@@ -18,7 +18,7 @@ list <Computer> ServiceComputer::findDataComp(string nameSearch)
 }
 list <Computer> ServiceComputer::findDataFull(string nameSearch)
 {
-//    comList = db.searchScientistsId(nameSearch);
+    comList = db.searchComputerId(nameSearch);
 
     return comList;
 }

@@ -35,7 +35,7 @@ public:
     Connected inputConnectionComSci();
 
     //
-    Connected inputConnectionSciCom();
+    void inputConnectionSciCom();
 
 
     // search for name in List

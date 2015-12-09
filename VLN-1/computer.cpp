@@ -49,9 +49,9 @@ ostream& operator << (ostream& outs, const Computer& Computer)
     }
     else
     {
-         outs << setw(10);
+         outs << setw(20);
          outs.setf(ios::left);
-         outs << " ";
+         outs << "    ";
     }
         outs << setw(15);
         outs.setf(ios::left);

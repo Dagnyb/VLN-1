@@ -58,6 +58,17 @@ public:
 
     list<Connected> searchComputerToScientistId(QSqlQuery& query );
 
+    list <Computer> searchComputerId(string inputFromUser);
+
+    bool conncetScientistToComputer(Connected newCon);
+
+    int ComputerId(string inputFromUser);
+
+
+    int ScientistId(string inputFromUser);
+
+
+
     list <Connected> databaseScientistIdToComputer(QSqlQuery& query);
 private:
     string searchId;

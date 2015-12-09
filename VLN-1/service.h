@@ -31,7 +31,6 @@ public:
 private:
     list <Scientist> sciList;
 
-
     Database db;
 };
 

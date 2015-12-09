@@ -23,3 +23,13 @@ list <Connected> ServiceConnected::viewSciToCom()
     conList = db.AllScientistToComputer();
     return conList;
 }
+
+bool ServiceConnected::connectSciToCom(Connected newConnection)
+{
+    bool result;
+    if(db.conncetScientistToComputer(newConnection))
+    {
+        result = true;
+    }
+    return result;
+}
