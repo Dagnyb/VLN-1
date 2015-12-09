@@ -15,20 +15,10 @@ class ServiceComputer
         ServiceComputer();
         list <Computer> getComputerList();
         list <Computer> findDataComp(string nameSearch);
+        list <Computer> findDataFull(string nameSearch);
         list <Computer> viewComputerAlphabetically();
         list <Computer> viewComputerReverse();
-
-
         void newComputer(Computer newComputer);
-
-
-/**** föll sem búið var að skilgreina í gamala service klasanum ******
- *
-
-**********************************************************************/
-
-
-
     private:
         list <Computer> comList;
         Database db;

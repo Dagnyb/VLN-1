@@ -16,6 +16,8 @@ class ServiceConnected
         list <Connected> getConection();
         list <Connected> findConnectons(string stringSearch);
         list <Connected> viewSciToCom();
+        bool connectSciToCom(Connected newConnection);
+
     private:
         list <Connected> conList;
         Database db;

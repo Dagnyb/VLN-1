@@ -95,6 +95,12 @@ list <Scientist> Service::findData(string nameSearch)
     return sciList;
 }
 
+list <Scientist> Service::findDataFull(string nameSearch)
+{
+    sciList = db.searchScientistsId(nameSearch);
+
+    return sciList;
+}
 void Service::newScientist(Scientist newScientist)
 {
     db.add(newScientist);

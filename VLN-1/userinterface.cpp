@@ -112,11 +112,11 @@ void UserInterface::inputData()
                     loopAgain = true;
                     break;
                 case '3':
-                 //   inputConnectionComSci();
+                    inputConnectionSciCom();
                     loopAgain = true;
                     break;
                 case '4':
-                 //   inputConnectionSciCom();
+                 //   inputConnectionComSci();
                     loopAgain = true;
                     break;
                 case '5':
@@ -133,28 +133,56 @@ void UserInterface::inputData()
         }
     }
 }
-/*
-void UserInterface::inputConnectionComSci()
+
+void UserInterface::inputConnectionSciCom()
 {
-    cout << "Name of computer: ";
-    string computer = name();
+    cout << "Enter full name of the scientist you wich to find: ";
+    string scientist = name();
+    list <Scientist> findScientistFull = list <Scientist>();
+    findScientistFull = sci.findDataFull(scientist);
 
-
-    //string UserInterface::searchString()
+    if (findScientistFull.empty())
     {
-        string search;
-
-        cout << "Please enter the name: ";
-        cin.sync();
-     //   cin.ignore();  Fyrir Maca eða ????
-        getline(cin, search);
-
-        return search;
+        cout << "Scientist not found\n"
+             << "you will be directed to main menu"
+             << endl;
+//        scientist = "NULL";
+        options();
     }
+    else
+    {
+        printList(findScientistFull);
 
+        cout << "Enter full name of the computer you wich to find: ";
+        string computer = name();
+        list <Computer> findComputerFull = list <Computer>();
+        findComputerFull = com.findDataFull(computer);
 
+        if (findComputerFull.empty())
+        {
+            cout << "Computer not found\n"
+                 << "you will be directed to main menu"
+                 << endl;
+//          computer = "NULL";
+            options();
+        }
+        else
+        {
+            printComputerList(findComputerFull);
+            Connected sciToCom(scientist, computer);
+            if(connect.connectSciToCom(sciToCom))
+            {
+                cout << "Connection made";
+            }
+            else
+            {
+                cout << "connecion faild";
+            }
+        }
+    }
 }
- */
+
+
 void UserInterface::inputScientist()
 {
     bool add = true;

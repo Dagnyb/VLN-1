@@ -26,12 +26,13 @@ QSqlDatabase Database::connectDatabase()
     return db;
 }
 
-// erum ekki farin að nota þetta fall gott væri að finna út úr því.
+/* *******************************************************
+    erum ekki farin að nota þetta fall gott væri að finna út úr því.
 void Database::disconnectDatabase(QSqlDatabase database)
 {
     database.close();
 }
-
+*********************************************************/
 
 void Database::add(Scientist scientist)
 {
@@ -228,11 +229,13 @@ list <Connected> Database::AllScientistToComputer()
     if (!query.exec())
     {
         qDebug() << query.lastError().text();
+
     }
 
     list <Connected> result = list <Connected>();
     result = databaseToAllScientistToComputer(query);
-  return result;
+
+    return result;
 }
 
 list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
@@ -293,20 +296,101 @@ list <Connected> Database::databaseToComputerScientistlist(QSqlQuery& query)
 
     return result;
 }
-/*
-list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
+
+list <Scientist> Database::searchScientistsId(string inputFromUser)
 {
-    list <Connected> result = list <Connected>();
+    QSqlQuery query(connectDatabase());
 
-    while (query.next())
+    query.prepare ("SELECT * FROM Scientists WHERE name LIKE :name");
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
+
+    if (!query.exec())
     {
-        string SciName = query.value("Scientists.Name").toString().toStdString();
-        string CompName = query.value("Computers.Name").toString().toStdString();
+        qDebug() << query.lastError().text();
+    }
 
-        Connected newLine(SciName, CompName);
-        result.push_back(newLine);
+    list <Scientist> result = list <Scientist>();
+    result = databaseToScientistList(query);
+
+    return result;
+}
+
+int Database::ScientistId(string inputFromUser)
+{
+    QSqlQuery query(connectDatabase());
+
+    query.prepare ("SELECT Id FROM Scientists WHERE Name LIKE :name");
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    int sciId = query.value("Scientists.Id").toInt();
+
+    return sciId;
+}
+
+
+list <Computer> Database::searchComputerId(string inputFromUser)
+{
+    QSqlQuery query(connectDatabase());
+
+    query.prepare ("SELECT * FROM Computers WHERE name LIKE :name");
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    list <Computer> result = list <Computer>();
+    result = databaseToComputerList(query);
+
+    return result;
+}
+
+int Database::ComputerId(string inputFromUser)
+{
+    QSqlQuery query(connectDatabase());
+
+    query.prepare ("SELECT Id FROM Computers WHERE Name LIKE :name");
+    query.bindValue(":name", QString::fromStdString(inputFromUser));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+    }
+
+    int comId = query.value("Computers.Id").toInt();
+
+    return comId;
+}
+
+bool Database::conncetScientistToComputer(Connected newCon)
+{
+    bool result;
+
+    string sciName = newCon.getNameOne();
+    string comName = newCon.getNameTwo();
+
+    int sciId = ScientistId(sciName);
+    cout << "integerinn sci " << sciId;
+    int comId = ScientistId(comName);
+    cout << "integerinn com" << comId;
+
+    QSqlQuery query(connectDatabase());
+
+    query.prepare ("INSERT INTO ScientistComputersConnect VALUES(:sciId, :comId)");
+    query.bindValue(":sciId", QString::number(sciId));
+    query.bindValue(":comId", QString::number(comId));
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text();
+        result = false;
     }
 
     return result;
 }
-*/
