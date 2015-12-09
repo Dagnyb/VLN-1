@@ -583,10 +583,10 @@ void UserInterface::viewData()
     while(loopAgain == true)
     {
         cout << endl
-             << "Select:\n"
+             << "View menu:\n"
              << "1) to view scientists.\n"
              << "2) to view computers.\n"
-             << "3) to view connections between computer and scientist.\n"
+             << "3) to view connections between scientist and computer.\n"
              << "4) to view connections between scientist and computer.\n"
              << "5) back to main menu"
              << endl
@@ -609,11 +609,11 @@ void UserInterface::viewData()
                     loopAgain = true;
                     break;
                 case '3':
-                    viewData();
+                    viewScientistToComputer();
                     loopAgain = true;
                     break;
                 case '4':
-                    viewData();
+                //    viewComputerToScientist();
                     loopAgain = true;
                     break;
                 case '5':
@@ -698,6 +698,12 @@ void UserInterface::sortOptionsComputers()
 }
 
 
+void UserInterface::viewScientistToComputer()
+{
+     printConnectList(connect.viewSciToCom());
+
+}
+
 //          --------------------------------------------------------
 
 
@@ -712,6 +718,14 @@ void UserInterface::printList(list <Scientist> aList)
 void UserInterface::printComputerList(list <Computer> aList)
 {
     for (list <Computer>::iterator it = aList.begin(); it != aList.end(); it++)
+    {
+        cout << *it;
+    }
+}
+
+void UserInterface::printConnectList(list <Connected> aList)
+{
+    for (list <Connected>::iterator it = aList.begin(); it != aList.end(); it++)
     {
         cout << *it;
     }

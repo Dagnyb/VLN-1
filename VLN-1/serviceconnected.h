@@ -15,6 +15,7 @@ class ServiceConnected
         ServiceConnected();
         list <Connected> getConection();
         list <Connected> findConnectons(string stringSearch);
+        list <Connected> viewSciToCom();
     private:
         list <Connected> conList;
         Database db;

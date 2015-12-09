@@ -17,3 +17,9 @@ list <Connected> ServiceConnected::findConnectons(string stringSearch)
 
     return conList;
 }
+
+list <Connected> ServiceConnected::viewSciToCom()
+{
+    conList = db.AllScientistToComputer();
+    return conList;
+}

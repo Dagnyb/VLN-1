@@ -1,4 +1,5 @@
 #include "database.h"
+#include <iostream> // TESTING ONLY
 
 Database::Database()
 {
@@ -220,21 +221,22 @@ list <Computer> Database::databaseToComputerList(QSqlQuery& query)
 
 list <Connected> Database::AllScientistToComputer()
 {
+   cout << "IT WORKS !!!!!" << endl;
+
     QSqlQuery query(connectDatabase());
 
-    query.prepare ("SELECT Scientists.Name, Computers.Name, ScientistComputersConnect.ComputersID"
-                   "FROM ScientistComputersConnect, Scientists, Computers"
-                   "WHERE ScientistComputersConnect.ScientistID = Scientists.Id AND ScientistComputersConnect.ComputersID = Computers.Id"
-                   "ORDER BY Scientists.Name");
+    query.prepare ("SELECT Scientists.Name, Computers.Name);
 
     if (!query.exec())
     {
         qDebug() << query.lastError().text();
+        cout << "erum vid her";
     }
 
     list <Connected> result = list <Connected>();
     result = databaseToAllScientistToComputer(query);
-  return result;
+
+    return result;
 }
 
 list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
@@ -296,6 +298,7 @@ list <Connected> Database::databaseToComputerScientistlist(QSqlQuery& query)
     return result;
 }
 /*
+<<<<<<< HEAD
 
 list <Scientist> Database::searchScientistsId(string inputFromUser)
 {
@@ -356,6 +359,9 @@ list<Connected> Database::searchComputerToScientistId(QSqlQuery& query)
     return result;
 }
 list <Connected> Database::databaseScientistIdToComputer(QSqlQuery& query)
+=======
+list <Connected> Database::databaseToAllScientistToComputer(QSqlQuery& query)
+>>>>>>> 950d7b3564c34d69eff11a94f3081a834a9365fe
 {
     list <Connected> result = list <Connected>();
 
