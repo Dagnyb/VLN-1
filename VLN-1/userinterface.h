@@ -32,7 +32,10 @@ public:
     void inputScientist();
 
     //
-    void inputConnectionComSci();
+    Connected inputConnectionComSci();
+
+    //
+    Connected inputConnectionSciCom();
 
 
     // search for name in List

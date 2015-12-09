@@ -21,6 +21,8 @@ public:
     list <Scientist> getList(); // Returns sciList
 
     list <Scientist> findData(string name); // Allows the user to search in the list
+    list <Scientist> findDataFull(string nameSearch);
+
     //list <Computer> findDataComp(string nameSearch);
     list <Scientist> viewScientistReverse();
     list <Scientist> viewScientistAlphabetically();
